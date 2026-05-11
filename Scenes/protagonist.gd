@@ -13,10 +13,16 @@ extends CharacterBody2D
 @export var coyote_time := 0.1
 @export var jump_buffer_time := 0.12
 
+@onready var sprite = $AnimatedSprite2D
+
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 
 func _physics_process(delta):
+	handle_movement(delta)
+	handle_animation(delta)
+
+func handle_movement(delta):
 	var input_dir := Input.get_axis("move_left", "move_right")
 
 	if is_on_floor():
@@ -48,5 +54,18 @@ func _physics_process(delta):
 		velocity.y += gravity_up * delta
 	else:
 		velocity.y += gravity_down * delta
-
 	move_and_slide()
+
+func handle_animation(delta):
+	if velocity.x != 0:
+		if sprite.animation != "run":
+			sprite.play("run")
+			
+	else:
+		if sprite.animation != "idle":
+			sprite.play("idle")
+
+	if velocity.x > 0:
+		sprite.flip_h = false
+	elif velocity.x < 0:
+		sprite.flip_h = true
