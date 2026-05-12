@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export_group("Horizontal")
-@export var walk_speed := 300.0
 @export var run_speed := 400.0
 @export var acceleration := 1800.0
 @export var air_acceleration := 1300.0
@@ -14,7 +13,7 @@ extends CharacterBody2D
 @export var fall_gravity_multiplier := 1.55
 @export var low_jump_gravity_multiplier := 2.4
 @export var max_fall_speed := 700.0
-@export var coyote_time := 0.12
+@export var coyote_time := 0.1
 @export var jump_buffer_time := 0.12
 
 @export_group("Wall")
@@ -88,15 +87,7 @@ func update_timers(delta: float) -> void:
 		dash_cooldown_timer -= delta
 
 func handle_horizontal_movement(delta: float, input_axis: float) -> void:
-	if input_axis != 0:
-		walking_timer += delta
-	else:
-		walking_timer = 0.0
-
-	var target_speed := walk_speed
-	if walking_timer >= run_after_time:
-		target_speed = run_speed
-		
+	var target_speed = run_speed
 
 	var accel := acceleration if is_on_floor() else air_acceleration
 
@@ -104,6 +95,7 @@ func handle_horizontal_movement(delta: float, input_axis: float) -> void:
 		velocity.x = move_toward(velocity.x, input_axis * target_speed, accel * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+	
 
 func handle_jump() -> void:
 	if jump_buffer_timer <= 0:
@@ -118,6 +110,7 @@ func handle_jump() -> void:
 	elif can_double_jump:
 		can_double_jump = false
 		jump(jump_velocity)
+		print("double jump")
 
 func jump(force: float) -> void:
 	velocity.y = force
@@ -160,6 +153,7 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		dash_cooldown_timer = dash_cooldown
 		can_dash = false
 		velocity = dash_direction * dash_speed
+		print("dash")
 
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
@@ -183,5 +177,18 @@ func player_visuals(input_axis) -> void:
 		animated_sprite_2d.flip_h = true
 	elif input_axis > 0:
 		animated_sprite_2d.flip_h = false
-	
-	
+
+### running
+	if input_axis != 0 and is_on_floor() == true:
+		animated_sprite_2d.play("run")
+
+	if is_on_wall() == true and is_on_floor() == false:
+		animated_sprite_2d.play("wall_one_frame")
+
+	if is_on_wall() == false and is_on_floor() == false and velocity.y < 0:
+		animated_sprite_2d.play("jump_up")
+	if is_on_wall() == false and is_on_floor() == false and velocity.y > 0:
+		animated_sprite_2d.play("jump_down")
+
+	if input_axis == 0 and is_on_floor() == true:
+		animated_sprite_2d.play("idle")
