@@ -24,12 +24,15 @@ extends CharacterBody2D
 @export var wall_coyote_time := 0.12
 
 @export_group("Dash")
-@export var dash_speed := 430.0
+@export var dash_speed := 800.0
 @export var dash_time := 0.14
-@export var dash_cooldown := 0.15
+@export var dash_cooldown := 1
 
 @export_group("Corner Correction")
-@export var corner_correction_pixels := 6
+@export var corner_correction_pixels := 60
+
+@export_group("Visuals")
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var facing := 1
 var walking_timer := 0.0
@@ -44,7 +47,7 @@ var dash_cooldown_timer := 0.0
 var dash_direction := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	var input_axis := Input.get_axis("move_left", "move_right")
+	var input_axis := Input.get_axis("ui_left", "ui_right")
 
 	if input_axis != 0:
 		facing = sign(input_axis)
@@ -59,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		handle_wall_slide()
 
 	move_and_slide()
+	player_visuals(input_axis)
 	apply_corner_correction()
 
 func update_timers(delta: float) -> void:
@@ -70,6 +74,8 @@ func update_timers(delta: float) -> void:
 		coyote_timer -= delta
 
 	if is_on_wall() and not is_on_floor():
+		can_double_jump = true
+		can_dash = true
 		wall_coyote_timer = wall_coyote_time
 	else:
 		wall_coyote_timer -= delta
@@ -170,3 +176,10 @@ func apply_corner_correction() -> void:
 
 			global_position.x += offset.x
 			return
+
+func player_visuals(input_axis) -> void:
+### this so the player character faces the right way
+	if input_axis < 0:
+		animated_sprite_2d.flip_h = true
+	elif input_axis > 0:
+		animated_sprite_2d.flip_h = false
