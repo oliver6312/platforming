@@ -10,7 +10,6 @@ extends CharacterBody2D
 
 @export_group("Jump")
 @export var jump_velocity := -500.0
-@export var double_jump_velocity := -500.0
 @export var gravity := 1100.0
 @export var fall_gravity_multiplier := 1.55
 @export var low_jump_gravity_multiplier := 2.4
@@ -20,7 +19,7 @@ extends CharacterBody2D
 
 @export_group("Wall")
 @export var wall_slide_speed := 80.0
-@export var wall_jump_velocity := Vector2(280.0, -340.0)
+@export var wall_jump_velocity := Vector2(250.0, -500.0)
 @export var wall_coyote_time := 0.12
 
 @export_group("Dash")
@@ -118,13 +117,14 @@ func handle_jump() -> void:
 		jump(wall_jump_velocity.y)
 	elif can_double_jump:
 		can_double_jump = false
-		jump(double_jump_velocity)
+		jump(jump_velocity)
 
 func jump(force: float) -> void:
 	velocity.y = force
 	jump_buffer_timer = 0.0
 	coyote_timer = 0.0
 	wall_coyote_timer = 0.0
+	animated_sprite_2d.play("jump")
 
 func apply_gravity(delta: float) -> void:
 	if is_on_floor():
@@ -183,3 +183,5 @@ func player_visuals(input_axis) -> void:
 		animated_sprite_2d.flip_h = true
 	elif input_axis > 0:
 		animated_sprite_2d.flip_h = false
+	
+	
