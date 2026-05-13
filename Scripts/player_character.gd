@@ -96,6 +96,8 @@ func handle_horizontal_movement(delta: float, input_axis: float) -> void:
 		velocity.x = move_toward(velocity.x, input_axis * target_speed, accel * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+	 
+	
 	
 
 func handle_jump() -> void:
