@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export_group("Horizontal")
-@export var run_speed := 400.0
+@export var run_speed := 600.0
 @export var acceleration := 1800.0
 @export var air_acceleration := 1300.0
-@export var friction := 2000.0
+@export var friction := 3000.0
 @export var run_after_time := 2.0
 
 @export_group("Jump")
