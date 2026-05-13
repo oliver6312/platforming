@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	player_visuals(input_axis)
 	apply_corner_correction()
+	
 
 func update_timers(delta: float) -> void:
 	if is_on_floor():
