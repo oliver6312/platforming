@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var run_speed := 400.0
 @export var acceleration := 1800.0
 @export var air_acceleration := 1300.0
-@export var friction := 2200.0
+@export var friction := 2000.0
 @export var run_after_time := 2.0
 
 @export_group("Jump")
@@ -134,8 +134,12 @@ func apply_gravity(delta: float) -> void:
 	velocity.y = min(velocity.y, max_fall_speed)
 
 func handle_wall_slide() -> void:
-	if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
-		velocity.y = wall_slide_speed
+	if Input.get_axis("ui_left", "ui_right"):
+		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
+			velocity.y = wall_slide_speed
+
+func is_wall_sliding() -> bool:
+	return is_on_wall() and not is_on_floor() and velocity.y > 0
 
 func handle_dash(delta: float, input_axis: float) -> void:
 	if dash_timer > 0:
@@ -145,15 +149,19 @@ func handle_dash(delta: float, input_axis: float) -> void:
 
 	if Input.is_action_just_pressed("dash") and can_dash and dash_cooldown_timer <= 0:
 		var x_dir := input_axis
+		
+		if is_wall_sliding():
+			x_dir = get_wall_normal().x
 		if x_dir == 0:
 			x_dir = facing
 
-		dash_direction = Vector2(x_dir, 0).normalized()
+		dash_direction = Vector2(x_dir, 0.5).normalized()
 		dash_timer = dash_time
 		dash_cooldown_timer = dash_cooldown
 		can_dash = false
 		velocity = dash_direction * dash_speed
 		print("dash")
+
 
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
@@ -172,13 +180,13 @@ func apply_corner_correction() -> void:
 			return
 
 func player_visuals(input_axis) -> void:
-### this so the player character faces the right way
+
 	if input_axis < 0:
 		animated_sprite_2d.flip_h = true
 	elif input_axis > 0:
 		animated_sprite_2d.flip_h = false
 
-### running
+
 	if input_axis != 0 and is_on_floor() == true:
 		animated_sprite_2d.play("run")
 
