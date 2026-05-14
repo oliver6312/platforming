@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 @export_group("Horizontal")
-@export var run_speed := 600.0
+@export var run_speed := 400.0
 @export var acceleration := 1800.0
 @export var air_acceleration := 1300.0
-@export var friction := 3000.0
+@export var friction := 6000.0
 @export var run_after_time := 2.0
 
 @export_group("Jump")
@@ -96,9 +96,6 @@ func handle_horizontal_movement(delta: float, input_axis: float) -> void:
 		velocity.x = move_toward(velocity.x, input_axis * target_speed, accel * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
-	 
-	
-	
 
 func handle_jump() -> void:
 	if jump_buffer_timer <= 0:
@@ -155,12 +152,14 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		
 		if is_wall_sliding():
 			x_dir = get_wall_normal().x
+			dash_cooldown_timer = 0.0
+		else:
+			dash_cooldown_timer = dash_cooldown
 		if x_dir == 0:
 			x_dir = facing
 
 		dash_direction = Vector2(x_dir, 0.5).normalized()
 		dash_timer = dash_time
-		dash_cooldown_timer = dash_cooldown
 		can_dash = false
 		velocity = dash_direction * dash_speed
 		print("dash")
