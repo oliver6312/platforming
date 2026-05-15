@@ -142,6 +142,7 @@ func handle_wall_slide() -> void:
 	if Input.get_axis("ui_left", "ui_right"):
 		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
 			velocity.y = wall_slide_speed
+			
 
 func is_wall_sliding() -> bool:
 	return is_on_wall() and not is_on_floor() and velocity.y > 0
