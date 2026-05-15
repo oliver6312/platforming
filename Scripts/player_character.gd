@@ -168,6 +168,7 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		can_dash = false
 		velocity = dash_direction * dash_speed
 		print("dash")
+		
 
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
