@@ -1,7 +1,25 @@
 [gd_scene format=3 uid="uid://dfy7x0d3g5rxs"]
 
 [ext_resource type="Script" uid="uid://0gqvx6unaqgm" path="res://Scripts/player_character.gd" id="1_v7sut"]
+[ext_resource type="Texture2D" uid="uid://bnbqq7opff83i" path="res://Sprites/spearanimationattempt-Sheet.png" id="2_2getf"]
 [ext_resource type="Texture2D" uid="uid://1peehsoap52" path="res://Sprites/PlayerAnimationTemplate.png" id="2_5gnj7"]
+[ext_resource type="Texture2D" uid="uid://llk6o5a1euxp" path="res://Sprites/spearattackimage.png" id="2_mdaju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ks0q"]
+atlas = ExtResource("2_mdaju")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftush"]
+atlas = ExtResource("2_2getf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln6y3"]
+atlas = ExtResource("2_2getf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b25c5"]
+atlas = ExtResource("2_2getf")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2getf"]
 atlas = ExtResource("2_5gnj7")
@@ -415,6 +433,28 @@ region = Rect2(96, 576, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_1ks0q")
+}],
+"loop": true,
+"name": &"attack_sideways_ground_spear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ftush")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ln6y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b25c5")
+}],
+"loop": true,
+"name": &"attack_spear_ground",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2getf")
 }, {
 "duration": 1.0,
@@ -674,22 +714,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_axwtu")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_lg6vm")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_w2ts0")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_ckw1w")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_4mqur")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_r81er")
 }],
 "loop": true,
@@ -808,7 +848,7 @@ script = ExtResource("1_v7sut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=657857633]
 sprite_frames = SubResource("SpriteFrames_uvrlg")
-animation = &"run"
+animation = &"attack_sideways_ground_spear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987484218]
 position = Vector2(0, 0.5)

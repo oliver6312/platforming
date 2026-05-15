@@ -59,8 +59,13 @@ func _physics_process(delta: float) -> void:
 		apply_gravity(delta)
 		handle_wall_slide()
 
+
+
 	move_and_slide()
 	player_visuals(input_axis)
+	if Input.is_action_just_pressed("left_mouse_click"):
+		animated_sprite_2d.play("attack_spear_ground")
+		print("attack!")
 	apply_corner_correction()
 	
 
@@ -201,4 +206,4 @@ func player_visuals(input_axis) -> void:
 		animated_sprite_2d.play("jump_down")
 
 	if input_axis == 0 and is_on_floor() == true:
-		animated_sprite_2d.play("idle")
+		animated_sprite_2d.play("attack_sideways_ground_spear")
