@@ -169,7 +169,6 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		velocity = dash_direction * dash_speed
 		print("dash")
 
-
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
 		return
@@ -206,4 +205,4 @@ func player_visuals(input_axis) -> void:
 		animated_sprite_2d.play("jump_down")
 
 	if input_axis == 0 and is_on_floor() == true:
-		animated_sprite_2d.play("attack_sideways_ground_spear")
+		animated_sprite_2d.play("idle")
