@@ -44,14 +44,45 @@ var dash_timer := 0.0
 var dash_cooldown_timer := 0.0
 var dash_direction := Vector2.ZERO
 
+var locked_action := ""
+var movement_locked := false
+var animation_locked := false
+var direction_locked := false
+
+@onready var spear_hitbox: Area2D = %SpearHitbox
+@onready var right_spear: CollisionShape2D = %RightSpear
+@onready var left_spear: CollisionShape2D = %LeftSpear
+@onready var right_up_spear: CollisionShape2D = %RightUpSpear
+@onready var left_up_spear: CollisionShape2D = %LeftUpSpear
+@onready var right_down_spear: CollisionShape2D = %RightDownSpear
+@onready var left_down_spear: CollisionShape2D = %LeftDownSpear
+
+
+@export var spear_recoil_force := 700.0
+var attack_has_recoiled := false
+
+func _ready() -> void:
+	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
+	spear_hitbox.body_entered.connect(_on_spear_hitbox_body_entered)
+	right_spear.disabled = true
+	left_spear.disabled = true
+	right_up_spear.disabled = true
+	right_down_spear.disabled = true
+	spear_hitbox.monitoring = false
+
 func _physics_process(delta: float) -> void:
 	var input_axis := Input.get_axis("ui_left", "ui_right")
 
-	if input_axis != 0:
+	if input_axis != 0 and not direction_locked:
 		facing = sign(input_axis)
 
+	handle_attack()
 	update_timers(delta)
-	handle_dash(delta, input_axis)
+
+	if not movement_locked:
+		handle_dash(delta, input_axis)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 
 	if dash_timer <= 0.0:
 		handle_horizontal_movement(delta, input_axis)
@@ -59,15 +90,14 @@ func _physics_process(delta: float) -> void:
 		apply_gravity(delta)
 		handle_wall_slide()
 
-
-
 	move_and_slide()
-	player_visuals(input_axis)
-	if Input.is_action_just_pressed("left_mouse_click"):
-		animated_sprite_2d.play("attack_spear_ground")
-		print("attack!")
+
+	if dash_timer > 0.0 and is_on_floor() and dash_direction.y > 0.0:
+		dash_timer = 0.0
+		velocity.x = 0.0
+
 	apply_corner_correction()
-	
+	player_visuals(input_axis)
 
 func update_timers(delta: float) -> void:
 	if is_on_floor():
@@ -93,6 +123,10 @@ func update_timers(delta: float) -> void:
 		dash_cooldown_timer -= delta
 
 func handle_horizontal_movement(delta: float, input_axis: float) -> void:
+	if movement_locked:
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		return
+
 	var target_speed = run_speed
 
 	var accel := acceleration if is_on_floor() else air_acceleration
@@ -122,7 +156,7 @@ func jump(force: float) -> void:
 	jump_buffer_timer = 0.0
 	coyote_timer = 0.0
 	wall_coyote_timer = 0.0
-	animated_sprite_2d.play("jump")
+#	animated_sprite_2d.play("jump")
 
 func apply_gravity(delta: float) -> void:
 	if is_on_floor():
@@ -142,8 +176,6 @@ func handle_wall_slide() -> void:
 	if Input.get_axis("ui_left", "ui_right"):
 		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
 			velocity.y = wall_slide_speed
-			
-			
 
 func is_wall_sliding() -> bool:
 	return is_on_wall() and not is_on_floor() and velocity.y > 0
@@ -170,7 +202,6 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		can_dash = false
 		velocity = dash_direction * dash_speed
 		print("dash")
-		
 
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
@@ -188,24 +219,73 @@ func apply_corner_correction() -> void:
 			global_position.x += offset.x
 			return
 
-func player_visuals(input_axis) -> void:
+func player_visuals(input_axis: float) -> void:
+	if not direction_locked:
+		if input_axis < 0:
+			animated_sprite_2d.flip_h = true
+			right_spear.disabled = true
+			left_spear.disabled = false
+		elif input_axis > 0:
+			animated_sprite_2d.flip_h = false
+			right_spear.disabled = false
+			left_spear.disabled = true
 
-	if input_axis < 0:
-		animated_sprite_2d.flip_h = true
-	elif input_axis > 0:
-		animated_sprite_2d.flip_h = false
+	if animation_locked:
+		return
 
-
-	if input_axis != 0 and is_on_floor() == true:
+	if input_axis != 0 and is_on_floor():
 		animated_sprite_2d.play("run")
-
-	if is_on_wall() == true and is_on_floor() == false:
+	elif is_on_wall() and not is_on_floor():
 		animated_sprite_2d.play("wall_one_frame")
-
-	if is_on_wall() == false and is_on_floor() == false and velocity.y < 0:
+	elif not is_on_wall() and not is_on_floor() and velocity.y < 0:
 		animated_sprite_2d.play("jump_up")
-	if is_on_wall() == false and is_on_floor() == false and velocity.y > 0:
+	elif not is_on_wall() and not is_on_floor() and velocity.y > 0:
 		animated_sprite_2d.play("jump_down")
-
-	if input_axis == 0 and is_on_floor() == true:
+	elif input_axis == 0 and is_on_floor():
 		animated_sprite_2d.play("idle")
+
+func handle_attack() -> void:
+	if Input.is_action_just_pressed("attack") and locked_action == "":
+		locked_action = "attack"
+		movement_locked = true
+		animation_locked = true
+		direction_locked = true
+		attack_has_recoiled = false
+		spear_hitbox.monitoring = true 
+		
+		if Input.is_action_just_pressed("ui_up") :
+			animated_sprite_2d.play("attack_air_spear_up") 
+			right_up_spear.disabled = false
+			print("attack up")
+		else:
+			velocity.x = 0.0
+			animated_sprite_2d.play("attack_ground_spear_sideways") 
+
+
+func _on_spear_hitbox_body_entered(body: Node2D) -> void:
+	if locked_action != "attack":
+		return
+
+	if attack_has_recoiled:
+		return
+
+	if body.is_in_group("spear_recoil"):
+		attack_has_recoiled = true
+		print("hit the object")
+
+		var recoil_direction := -facing
+		velocity.x = recoil_direction * spear_recoil_force
+
+func _on_animation_finished() -> void:
+	if locked_action == "attack":
+		locked_action = ""
+		movement_locked = false
+		animation_locked = false
+		direction_locked = false
+		
+		spear_hitbox.monitoring = false
+		right_spear.disabled = true
+		left_spear.disabled = true
+		right_up_spear.disabled = true
+		right_down_spear.disabled = true
+		spear_hitbox.monitoring = false
