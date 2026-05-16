@@ -49,13 +49,17 @@ var movement_locked := false
 var animation_locked := false
 var direction_locked := false
 
-@onready var spear_hitbox: Area2D = %SpearHitbox
-@onready var right_spear: CollisionShape2D = %RightSpear
-@onready var left_spear: CollisionShape2D = %LeftSpear
+
+@onready var spear_hitbox_up: Area2D = %SpearHitboxUp
 @onready var right_up_spear: CollisionShape2D = %RightUpSpear
 @onready var left_up_spear: CollisionShape2D = %LeftUpSpear
+@onready var spear_hitbox_down: Area2D = %SpearHitboxDown
 @onready var right_down_spear: CollisionShape2D = %RightDownSpear
 @onready var left_down_spear: CollisionShape2D = %LeftDownSpear
+@onready var spear_hitbox_side: Area2D = %SpearHitboxSide
+@onready var right_side_spear: CollisionShape2D = %RightSideSpear
+@onready var left_side_spear: CollisionShape2D = %LeftSideSpear
+
 
 
 @export var spear_recoil_force := 700.0
@@ -63,12 +67,37 @@ var attack_has_recoiled := false
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
-	spear_hitbox.body_entered.connect(_on_spear_hitbox_body_entered)
-	right_spear.disabled = true
-	left_spear.disabled = true
+
+	spear_hitbox_up.body_entered.connect(_on_spear_hitbox_body_entered)
+	spear_hitbox_down.body_entered.connect(_on_spear_hitbox_body_entered)
+	spear_hitbox_side.body_entered.connect(_on_spear_hitbox_body_entered)
+
+	disable_all_right_hitbox()
+	disable_all_left_hitbox()
+
+	spear_hitbox_up.monitoring = false
+	spear_hitbox_down.monitoring = false
+	spear_hitbox_side.monitoring = false
+
+func disable_all_right_hitbox() -> void:
 	right_up_spear.disabled = true
 	right_down_spear.disabled = true
-	spear_hitbox.monitoring = false
+	right_side_spear.disabled = true
+
+func enable_all_right_hitbox() -> void:
+	right_up_spear.disabled = false
+	right_down_spear.disabled = false
+	right_side_spear.disabled = false
+
+func disable_all_left_hitbox() -> void:
+	left_up_spear.disabled = true
+	left_down_spear.disabled = true
+	left_side_spear.disabled = true
+
+func enable_all_left_hitbox() -> void:
+	left_up_spear.disabled = false
+	left_down_spear.disabled = false
+	left_side_spear.disabled = false
 
 func _physics_process(delta: float) -> void:
 	var input_axis := Input.get_axis("ui_left", "ui_right")
@@ -156,7 +185,6 @@ func jump(force: float) -> void:
 	jump_buffer_timer = 0.0
 	coyote_timer = 0.0
 	wall_coyote_timer = 0.0
-#	animated_sprite_2d.play("jump")
 
 func apply_gravity(delta: float) -> void:
 	if is_on_floor():
@@ -223,12 +251,13 @@ func player_visuals(input_axis: float) -> void:
 	if not direction_locked:
 		if input_axis < 0:
 			animated_sprite_2d.flip_h = true
-			right_spear.disabled = true
-			left_spear.disabled = false
+			enable_all_left_hitbox()
+			disable_all_right_hitbox()
+			
 		elif input_axis > 0:
 			animated_sprite_2d.flip_h = false
-			right_spear.disabled = false
-			left_spear.disabled = true
+			enable_all_right_hitbox()
+			disable_all_left_hitbox()
 
 	if animation_locked:
 		return
@@ -251,16 +280,10 @@ func handle_attack() -> void:
 		animation_locked = true
 		direction_locked = true
 		attack_has_recoiled = false
-		spear_hitbox.monitoring = true 
-		
-		if Input.is_action_just_pressed("ui_up") :
-			animated_sprite_2d.play("attack_air_spear_up") 
-			right_up_spear.disabled = false
-			print("attack up")
-		else:
-			velocity.x = 0.0
-			animated_sprite_2d.play("attack_ground_spear_sideways") 
+		spear_hitbox_side.monitoring = true 
 
+		velocity.x = 0.0
+		animated_sprite_2d.play("attack_ground_spear_sideways") 
 
 func _on_spear_hitbox_body_entered(body: Node2D) -> void:
 	if locked_action != "attack":
@@ -283,9 +306,9 @@ func _on_animation_finished() -> void:
 		animation_locked = false
 		direction_locked = false
 		
-		spear_hitbox.monitoring = false
-		right_spear.disabled = true
-		left_spear.disabled = true
+		spear_hitbox_side.monitoring = false
+#		right_spear.disabled = true
+#		left_spear.disabled = true
 		right_up_spear.disabled = true
 		right_down_spear.disabled = true
-		spear_hitbox.monitoring = false
+#		spear_hitbox.monitoring = false
