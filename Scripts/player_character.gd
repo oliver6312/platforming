@@ -249,12 +249,12 @@ func apply_corner_correction() -> void:
 
 func player_visuals(input_axis: float) -> void:
 	if not direction_locked:
-		if input_axis < 0:
+		if facing < 0:
 			animated_sprite_2d.flip_h = true
 			enable_all_left_hitbox()
 			disable_all_right_hitbox()
 			
-		elif input_axis > 0:
+		elif facing > 0:
 			animated_sprite_2d.flip_h = false
 			enable_all_right_hitbox()
 			disable_all_left_hitbox()

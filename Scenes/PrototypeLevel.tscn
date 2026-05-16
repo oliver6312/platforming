@@ -123,6 +123,14 @@ tile_set = SubResource("TileSet_hh5uf")
 [node name="PlayerCharacter" parent="." unique_id=1078641646 instance=ExtResource("2_jfle5")]
 position = Vector2(13, -64)
 
+[node name="Label" type="Label" parent="PlayerCharacter" unique_id=693540110]
+offset_left = 222.0
+offset_top = 132.0
+offset_right = 267.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 9
+text = "ver 1.2.2.1"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=391401146 groups=["spear_recoil"]]
 position = Vector2(-185, -107)
 physics_material_override = SubResource("PhysicsMaterial_v1qfn")
