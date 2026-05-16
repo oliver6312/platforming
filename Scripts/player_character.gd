@@ -68,8 +68,8 @@ var attack_has_recoiled := false
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
-	spear_hitbox_up.body_entered.connect(_on_spear_hitbox_body_entered)
-	spear_hitbox_down.body_entered.connect(_on_spear_hitbox_body_entered)
+	spear_hitbox_up.body_entered.connect(_on_spear_up_hitbox_body_entered)
+	spear_hitbox_down.body_entered.connect(_on_spear_down_hitbox_body_entered)
 	spear_hitbox_side.body_entered.connect(_on_spear_hitbox_body_entered)
 
 	disable_all_right_hitbox()
@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 	if input_axis != 0 and not direction_locked:
 		facing = sign(input_axis)
 
-	handle_attack()
+	handle_attack(input_axis)
 	update_timers(delta)
 
 	if not movement_locked:
@@ -273,17 +273,79 @@ func player_visuals(input_axis: float) -> void:
 	elif input_axis == 0 and is_on_floor():
 		animated_sprite_2d.play("idle")
 
-func handle_attack() -> void:
-	if Input.is_action_just_pressed("attack") and locked_action == "":
-		locked_action = "attack"
-		movement_locked = true
-		animation_locked = true
-		direction_locked = true
-		attack_has_recoiled = false
-		spear_hitbox_side.monitoring = true 
+func handle_attack(input_axis: float) -> void:
+	if not Input.is_action_just_pressed("attack"):
+		return
 
-		velocity.x = 0.0
-		animated_sprite_2d.play("attack_ground_spear_sideways") 
+	if locked_action != "":
+		return
+
+	locked_action = "attack"
+	animation_locked = true
+	direction_locked = true
+	attack_has_recoiled = false
+
+	if not is_on_floor() and Input.is_action_pressed("ui_up"):
+		attack_ground_up()
+	elif not is_on_floor() and Input.is_action_pressed("ui_down"):
+		attack_air_down()
+	elif not is_on_floor():
+		attack_air_side()
+
+	elif Input.is_action_pressed("ui_up"):
+		attack_ground_up()
+	else:
+		attack_ground_side()
+
+func attack_ground_side() -> void:
+	movement_locked = true
+	spear_hitbox_side.monitoring = true 
+	velocity.x = 0.0
+	animated_sprite_2d.play("attack_ground_spear_sideways") 
+
+func attack_ground_up() -> void:
+	movement_locked = true
+	spear_hitbox_up.monitoring = true 
+	velocity.x = 0.0
+	animated_sprite_2d.play("attack_ground_spear_up") 
+
+func attack_air_side() -> void:
+	spear_hitbox_side.monitoring = true 
+	animated_sprite_2d.play("attack_ground_spear_sideways") 
+
+func attack_air_up() -> void:
+	spear_hitbox_up.monitoring = true 
+	animated_sprite_2d.play("attack_air_spear_up") 
+
+func attack_air_down() -> void:
+	spear_hitbox_down.monitoring = true 
+	animated_sprite_2d.play("attack_air_spear_down") 
+
+func _on_spear_up_hitbox_body_entered(body: Node2D) -> void:
+	if locked_action != "attack":
+		return
+
+	if attack_has_recoiled:
+		return
+
+	if body.is_in_group("spear_recoil"):
+		attack_has_recoiled = true
+		print("hit the object")
+
+		velocity.y = spear_recoil_force
+
+func _on_spear_down_hitbox_body_entered(body: Node2D) -> void:
+	if locked_action != "attack":
+		return
+
+	if attack_has_recoiled:
+		return
+
+	if body.is_in_group("spear_recoil"):
+		attack_has_recoiled = true
+		print("hit the object")
+
+		velocity.y = -spear_recoil_force
 
 func _on_spear_hitbox_body_entered(body: Node2D) -> void:
 	if locked_action != "attack":
@@ -306,9 +368,6 @@ func _on_animation_finished() -> void:
 		animation_locked = false
 		direction_locked = false
 		
+		spear_hitbox_up.monitoring = false
 		spear_hitbox_side.monitoring = false
-#		right_spear.disabled = true
-#		left_spear.disabled = true
-		right_up_spear.disabled = true
-		right_down_spear.disabled = true
-#		spear_hitbox.monitoring = false
+		spear_hitbox_down.monitoring = false

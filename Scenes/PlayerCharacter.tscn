@@ -893,7 +893,7 @@ script = ExtResource("1_v7sut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=657857633]
 sprite_frames = SubResource("SpriteFrames_uvrlg")
-animation = &"attack_air_spear_up"
+animation = &"attack_ground_spear_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
 position = Vector2(0, 0.5)
