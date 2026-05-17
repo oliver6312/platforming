@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [global_group]
 
-spear_recoil=""
+weapon_recoil=""
 
 [input]
 

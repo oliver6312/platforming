@@ -861,6 +861,8 @@ shape = SubResource("RectangleShape2D_mdaju")
 
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
 unique_name_in_owner = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="RightUpWeapon" type="CollisionShape2D" parent="WeaponHitboxUp" unique_id=881761719]
 unique_name_in_owner = true
@@ -876,6 +878,8 @@ debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
 [node name="WeaponHitboxDown" type="Area2D" parent="." unique_id=263593156]
 unique_name_in_owner = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="RightDownWeapon" type="CollisionShape2D" parent="WeaponHitboxDown" unique_id=1646368294]
 unique_name_in_owner = true
@@ -894,6 +898,8 @@ debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 [node name="WeaponHitboxSide" type="Area2D" parent="." unique_id=883477958]
 unique_name_in_owner = true
 visible = false
+collision_layer = 3
+collision_mask = 3
 
 [node name="RightSideWeapon" type="CollisionShape2D" parent="WeaponHitboxSide" unique_id=1832676694]
 unique_name_in_owner = true

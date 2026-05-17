@@ -60,8 +60,6 @@ var direction_locked := false
 @onready var right_side_weapon: CollisionShape2D = %RightSideWeapon
 @onready var left_side_weapon: CollisionShape2D = %LeftSideWeapon
 
-
-
 @export var weapon_recoil_force := 500.0
 var attack_has_recoiled := false
 
@@ -105,7 +103,7 @@ func _physics_process(delta: float) -> void:
 	if input_axis != 0 and not direction_locked:
 		facing = sign(input_axis)
 
-	handle_attack(input_axis)
+	handle_attack()
 	update_timers(delta)
 
 	if not movement_locked:
@@ -200,6 +198,9 @@ func apply_gravity(delta: float) -> void:
 	velocity.y = min(velocity.y, max_fall_speed)
 
 func handle_wall_slide() -> void:
+	if locked_action != "":
+		return
+
 	if Input.get_axis("ui_left", "ui_right"):
 		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
 			velocity.y = wall_slide_speed
@@ -271,7 +272,7 @@ func player_visuals(input_axis: float) -> void:
 	elif input_axis == 0 and is_on_floor():
 		animated_sprite_2d.play("idle")
 
-func handle_attack(input_axis: float) -> void:
+func handle_attack() -> void:
 	if not Input.is_action_just_pressed("attack"):
 		return
 
@@ -324,6 +325,7 @@ func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
+		can_double_jump = true
 
 		velocity.y = weapon_recoil_force
 
@@ -336,6 +338,7 @@ func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
+		can_double_jump = true
 
 		velocity.y = -weapon_recoil_force
 
@@ -348,6 +351,7 @@ func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
+		can_double_jump = true
 
 		var recoil_direction := -facing
 		velocity.x = recoil_direction * weapon_recoil_force
