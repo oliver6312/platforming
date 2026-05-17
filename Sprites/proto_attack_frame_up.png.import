@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bekiiyodiiv2c"
-path="res://.godot/imported/attack_air_spear_down.png-615a17e66dfec167a3ef9c08b80680ff.ctex"
+uid="uid://difk02cietw6q"
+path="res://.godot/imported/proto_attack_frame_up.png-1ff59efb09584e26949539a04e8b3525.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/attack_air_spear_down.png"
-dest_files=["res://.godot/imported/attack_air_spear_down.png-615a17e66dfec167a3ef9c08b80680ff.ctex"]
+source_file="res://Sprites/proto_attack_frame_up.png"
+dest_files=["res://.godot/imported/proto_attack_frame_up.png-1ff59efb09584e26949539a04e8b3525.ctex"]
 
 [params]
 

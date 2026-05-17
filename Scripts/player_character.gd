@@ -50,54 +50,54 @@ var animation_locked := false
 var direction_locked := false
 
 
-@onready var spear_hitbox_up: Area2D = %SpearHitboxUp
-@onready var right_up_spear: CollisionShape2D = %RightUpSpear
-@onready var left_up_spear: CollisionShape2D = %LeftUpSpear
-@onready var spear_hitbox_down: Area2D = %SpearHitboxDown
-@onready var right_down_spear: CollisionShape2D = %RightDownSpear
-@onready var left_down_spear: CollisionShape2D = %LeftDownSpear
-@onready var spear_hitbox_side: Area2D = %SpearHitboxSide
-@onready var right_side_spear: CollisionShape2D = %RightSideSpear
-@onready var left_side_spear: CollisionShape2D = %LeftSideSpear
+@onready var weapon_hitbox_up: Area2D = %WeaponHitboxUp
+@onready var right_up_weapon: CollisionShape2D = %RightUpWeapon
+@onready var left_up_weapon: CollisionShape2D = %LeftUpWeapon
+@onready var weapon_hitbox_down: Area2D = %WeaponHitboxDown
+@onready var right_down_weapon: CollisionShape2D = %RightDownWeapon
+@onready var left_down_weapon: CollisionShape2D = %LeftDownWeapon
+@onready var weapon_hitbox_side: Area2D = %WeaponHitboxSide
+@onready var right_side_weapon: CollisionShape2D = %RightSideWeapon
+@onready var left_side_weapon: CollisionShape2D = %LeftSideWeapon
 
 
 
-@export var spear_recoil_force := 700.0
+@export var weapon_recoil_force := 500.0
 var attack_has_recoiled := false
 
 func _ready() -> void:
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
-	spear_hitbox_up.body_entered.connect(_on_spear_up_hitbox_body_entered)
-	spear_hitbox_down.body_entered.connect(_on_spear_down_hitbox_body_entered)
-	spear_hitbox_side.body_entered.connect(_on_spear_hitbox_body_entered)
+	weapon_hitbox_up.body_entered.connect(_on_weapon_up_hitbox_body_entered)
+	weapon_hitbox_down.body_entered.connect(_on_weapon_down_hitbox_body_entered)
+	weapon_hitbox_side.body_entered.connect(_on_weapon_hitbox_body_entered)
 
 	disable_all_right_hitbox()
 	disable_all_left_hitbox()
 
-	spear_hitbox_up.monitoring = false
-	spear_hitbox_down.monitoring = false
-	spear_hitbox_side.monitoring = false
+	weapon_hitbox_up.monitoring = false
+	weapon_hitbox_down.monitoring = false
+	weapon_hitbox_side.monitoring = false
 
 func disable_all_right_hitbox() -> void:
-	right_up_spear.disabled = true
-	right_down_spear.disabled = true
-	right_side_spear.disabled = true
+	right_up_weapon.disabled = true
+	right_down_weapon.disabled = true
+	right_side_weapon.disabled = true
 
 func enable_all_right_hitbox() -> void:
-	right_up_spear.disabled = false
-	right_down_spear.disabled = false
-	right_side_spear.disabled = false
+	right_up_weapon.disabled = false
+	right_down_weapon.disabled = false
+	right_side_weapon.disabled = false
 
 func disable_all_left_hitbox() -> void:
-	left_up_spear.disabled = true
-	left_down_spear.disabled = true
-	left_side_spear.disabled = true
+	left_up_weapon.disabled = true
+	left_down_weapon.disabled = true
+	left_side_weapon.disabled = true
 
 func enable_all_left_hitbox() -> void:
-	left_up_spear.disabled = false
-	left_down_spear.disabled = false
-	left_side_spear.disabled = false
+	left_up_weapon.disabled = false
+	left_down_weapon.disabled = false
+	left_side_weapon.disabled = false
 
 func _physics_process(delta: float) -> void:
 	var input_axis := Input.get_axis("ui_left", "ui_right")
@@ -178,7 +178,6 @@ func handle_jump() -> void:
 	elif can_double_jump:
 		can_double_jump = false
 		jump(jump_velocity)
-		print("double jump")
 
 func jump(force: float) -> void:
 	velocity.y = force
@@ -229,7 +228,6 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		dash_timer = dash_time
 		can_dash = false
 		velocity = dash_direction * dash_speed
-		print("dash")
 
 func apply_corner_correction() -> void:
 	if velocity.y >= 0:
@@ -298,68 +296,61 @@ func handle_attack(input_axis: float) -> void:
 		attack_ground_side()
 
 func attack_ground_side() -> void:
-	movement_locked = true
-	spear_hitbox_side.monitoring = true 
-	velocity.x = 0.0
-	animated_sprite_2d.play("attack_ground_spear_sideways") 
+	weapon_hitbox_side.monitoring = true 
+	animated_sprite_2d.play("attack_weapon_sideways") 
 
 func attack_ground_up() -> void:
-	movement_locked = true
-	spear_hitbox_up.monitoring = true 
-	velocity.x = 0.0
-	animated_sprite_2d.play("attack_ground_spear_up") 
+	weapon_hitbox_up.monitoring = true 
+	animated_sprite_2d.play("attack_weapon_up") 
 
 func attack_air_side() -> void:
-	spear_hitbox_side.monitoring = true 
-	animated_sprite_2d.play("attack_ground_spear_sideways") 
+	weapon_hitbox_side.monitoring = true 
+	animated_sprite_2d.play("attack_weapon_sideways") 
 
 func attack_air_up() -> void:
-	spear_hitbox_up.monitoring = true 
-	animated_sprite_2d.play("attack_air_spear_up") 
+	weapon_hitbox_up.monitoring = true 
+	animated_sprite_2d.play("attack_weapon_up") 
 
 func attack_air_down() -> void:
-	spear_hitbox_down.monitoring = true 
-	animated_sprite_2d.play("attack_air_spear_down") 
+	weapon_hitbox_down.monitoring = true 
+	animated_sprite_2d.play("attack_weapon_down") 
 
-func _on_spear_up_hitbox_body_entered(body: Node2D) -> void:
+func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
 	if locked_action != "attack":
 		return
 
 	if attack_has_recoiled:
 		return
 
-	if body.is_in_group("spear_recoil"):
+	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		print("hit the object")
 
-		velocity.y = spear_recoil_force
+		velocity.y = weapon_recoil_force
 
-func _on_spear_down_hitbox_body_entered(body: Node2D) -> void:
+func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
 	if locked_action != "attack":
 		return
 
 	if attack_has_recoiled:
 		return
 
-	if body.is_in_group("spear_recoil"):
+	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		print("hit the object")
 
-		velocity.y = -spear_recoil_force
+		velocity.y = -weapon_recoil_force
 
-func _on_spear_hitbox_body_entered(body: Node2D) -> void:
+func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
 	if locked_action != "attack":
 		return
 
 	if attack_has_recoiled:
 		return
 
-	if body.is_in_group("spear_recoil"):
+	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		print("hit the object")
 
 		var recoil_direction := -facing
-		velocity.x = recoil_direction * spear_recoil_force
+		velocity.x = recoil_direction * weapon_recoil_force
 
 func _on_animation_finished() -> void:
 	if locked_action == "attack":
@@ -368,6 +359,6 @@ func _on_animation_finished() -> void:
 		animation_locked = false
 		direction_locked = false
 		
-		spear_hitbox_up.monitoring = false
-		spear_hitbox_side.monitoring = false
-		spear_hitbox_down.monitoring = false
+		weapon_hitbox_up.monitoring = false
+		weapon_hitbox_side.monitoring = false
+		weapon_hitbox_down.monitoring = false

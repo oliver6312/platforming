@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2msgk6vf2u48"
-path="res://.godot/imported/oak_woods_tileset.png-7990290672110cdc518651b45e4a4ce8.ctex"
+uid="uid://c326rhh6do3xr"
+path="res://.godot/imported/proto_attack_frame_down.png-190fc1899cc81344a321ae6440c1d6a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset/oak_woods_tileset.png"
-dest_files=["res://.godot/imported/oak_woods_tileset.png-7990290672110cdc518651b45e4a4ce8.ctex"]
+source_file="res://Sprites/proto_attack_frame_down.png"
+dest_files=["res://.godot/imported/proto_attack_frame_down.png-190fc1899cc81344a321ae6440c1d6a9.ctex"]
 
 [params]
 

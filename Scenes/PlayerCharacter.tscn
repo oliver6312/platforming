@@ -1,40 +1,22 @@
 [gd_scene format=3 uid="uid://dfy7x0d3g5rxs"]
 
 [ext_resource type="Script" uid="uid://0gqvx6unaqgm" path="res://Scripts/player_character.gd" id="1_v7sut"]
-[ext_resource type="Texture2D" uid="uid://bnbqq7opff83i" path="res://Sprites/spearanimationattempt-Sheet.png" id="2_2getf"]
 [ext_resource type="Texture2D" uid="uid://1peehsoap52" path="res://Sprites/PlayerAnimationTemplate.png" id="2_5gnj7"]
-[ext_resource type="Texture2D" uid="uid://llk6o5a1euxp" path="res://Sprites/spearattackimage.png" id="2_mdaju"]
-[ext_resource type="Texture2D" uid="uid://bekiiyodiiv2c" path="res://Sprites/attack_air_spear_down.png" id="2_wnmxb"]
-[ext_resource type="Texture2D" uid="uid://uqvranp25ny2" path="res://Sprites/attack_air_spear_up.png" id="3_k5f8r"]
-[ext_resource type="Texture2D" uid="uid://sna4ocjviie7" path="res://Sprites/attack_ground_spear_up.png" id="3_r4x55"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aa6r6"]
-atlas = ExtResource("2_wnmxb")
-region = Rect2(0, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v00f3"]
-atlas = ExtResource("3_k5f8r")
-region = Rect2(0, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ks0q"]
-atlas = ExtResource("2_mdaju")
-region = Rect2(0, 0, 80, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cm3j5"]
-atlas = ExtResource("3_r4x55")
-region = Rect2(0, 0, 48, 80)
+[ext_resource type="Texture2D" uid="uid://c326rhh6do3xr" path="res://Sprites/proto_attack_frame_down.png" id="2_r4x55"]
+[ext_resource type="Texture2D" uid="uid://difk02cietw6q" path="res://Sprites/proto_attack_frame_up.png" id="3_id6tp"]
+[ext_resource type="Texture2D" uid="uid://bwn7mfj2hqi3o" path="res://Sprites/proto_attack_frame_forward.png" id="4_wnmxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftush"]
-atlas = ExtResource("2_2getf")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln6y3"]
-atlas = ExtResource("2_2getf")
-region = Rect2(64, 0, 64, 64)
+atlas = ExtResource("2_r4x55")
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b25c5"]
-atlas = ExtResource("2_2getf")
-region = Rect2(128, 0, 64, 64)
+atlas = ExtResource("4_wnmxb")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln6y3"]
+atlas = ExtResource("3_id6tp")
+region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2getf"]
 atlas = ExtResource("2_5gnj7")
@@ -448,48 +430,26 @@ region = Rect2(96, 576, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aa6r6")
-}],
-"loop": false,
-"name": &"attack_air_spear_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v00f3")
-}],
-"loop": false,
-"name": &"attack_air_spear_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ks0q")
-}],
-"loop": false,
-"name": &"attack_ground_spear_sideways",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cm3j5")
-}],
-"loop": false,
-"name": &"attack_ground_spear_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 0.5,
 "texture": SubResource("AtlasTexture_ftush")
+}],
+"loop": false,
+"name": &"attack_weapon_down",
+"speed": 5.0
 }, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_ln6y3")
-}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b25c5")
 }],
-"loop": true,
-"name": &"attack_spear_ground",
+"loop": false,
+"name": &"attack_weapon_sideways",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln6y3")
+}],
+"loop": false,
+"name": &"attack_weapon_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -883,64 +843,67 @@ animations = [{
 size = Vector2(12, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id6tp"]
-size = Vector2(4, 16)
+size = Vector2(48, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4x55"]
-size = Vector2(24, 4)
+size = Vector2(19, 48)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1078641646]
 script = ExtResource("1_v7sut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=657857633]
 sprite_frames = SubResource("SpriteFrames_uvrlg")
-animation = &"attack_ground_spear_up"
+animation = &"attack_weapon_down"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mdaju")
 
-[node name="SpearHitboxUp" type="Area2D" parent="." unique_id=2072588664]
+[node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
 unique_name_in_owner = true
 
-[node name="RightUpSpear" type="CollisionShape2D" parent="SpearHitboxUp" unique_id=881761719]
+[node name="RightUpWeapon" type="CollisionShape2D" parent="WeaponHitboxUp" unique_id=881761719]
 unique_name_in_owner = true
-position = Vector2(3, -23.5)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_id6tp")
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
-[node name="LeftUpSpear" type="CollisionShape2D" parent="SpearHitboxUp" unique_id=1910282003]
+[node name="LeftUpWeapon" type="CollisionShape2D" parent="WeaponHitboxUp" unique_id=1910282003]
 unique_name_in_owner = true
-position = Vector2(-3, -23.5)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_id6tp")
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
-[node name="SpearHitboxDown" type="Area2D" parent="." unique_id=263593156]
+[node name="WeaponHitboxDown" type="Area2D" parent="." unique_id=263593156]
 unique_name_in_owner = true
 
-[node name="RightDownSpear" type="CollisionShape2D" parent="SpearHitboxDown" unique_id=1646368294]
+[node name="RightDownWeapon" type="CollisionShape2D" parent="WeaponHitboxDown" unique_id=1646368294]
 unique_name_in_owner = true
-position = Vector2(-1, 24)
+position = Vector2(6.999999, 9)
+rotation = -0.7853982
 shape = SubResource("RectangleShape2D_id6tp")
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
-[node name="LeftDownSpear" type="CollisionShape2D" parent="SpearHitboxDown" unique_id=263637968]
+[node name="LeftDownWeapon" type="CollisionShape2D" parent="WeaponHitboxDown" unique_id=263637968]
 unique_name_in_owner = true
-position = Vector2(1, 24)
+position = Vector2(-7, 9)
+rotation = 0.7853982
 shape = SubResource("RectangleShape2D_id6tp")
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
-[node name="SpearHitboxSide" type="Area2D" parent="." unique_id=883477958]
+[node name="WeaponHitboxSide" type="Area2D" parent="." unique_id=883477958]
 unique_name_in_owner = true
+visible = false
 
-[node name="RightSideSpear" type="CollisionShape2D" parent="SpearHitboxSide" unique_id=1832676694]
+[node name="RightSideWeapon" type="CollisionShape2D" parent="WeaponHitboxSide" unique_id=1832676694]
 unique_name_in_owner = true
-position = Vector2(18, 0)
+position = Vector2(19, 0)
 shape = SubResource("RectangleShape2D_r4x55")
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
 
-[node name="LeftSideSpear" type="CollisionShape2D" parent="SpearHitboxSide" unique_id=747029852]
+[node name="LeftSideWeapon" type="CollisionShape2D" parent="WeaponHitboxSide" unique_id=747029852]
 unique_name_in_owner = true
-position = Vector2(-18, 0)
+position = Vector2(-19, 0)
 shape = SubResource("RectangleShape2D_r4x55")
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
 
