@@ -230,11 +230,10 @@ tile_set = SubResource("TileSet_s0kwr")
 [node name="PlayerCharacter" parent="." unique_id=1078641646 instance=ExtResource("2_jfle5")]
 position = Vector2(13, -64)
 
-[node name="Label" type="Label" parent="PlayerCharacter" unique_id=693540110]
-offset_left = 242.0
-offset_top = 148.0
-offset_right = 287.0
-offset_bottom = 171.0
-theme_override_font_sizes/font_size = 9
-text = "ver 1.2.5"
+[node name="Label" type="Label" parent="PlayerCharacter" unique_id=1055543624]
+offset_left = 395.0
+offset_top = 246.0
+offset_right = 461.0
+offset_bottom = 269.0
+text = "ver 1.2.5.2"
 metadata/_edit_use_anchors_ = true
