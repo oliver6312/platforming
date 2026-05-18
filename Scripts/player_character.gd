@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var run_speed := 400.0
 @export var acceleration := 1800.0
 @export var air_acceleration := 1300.0
-@export var friction := 6000.0
+@export var friction := 4000.0
 @export var run_after_time := 2.0
 
 @export_group("Jump")
@@ -60,7 +60,7 @@ var direction_locked := false
 @onready var right_side_weapon: CollisionShape2D = %RightSideWeapon
 @onready var left_side_weapon: CollisionShape2D = %LeftSideWeapon
 
-@export var weapon_recoil_force := 500.0
+@export var weapon_recoil_force := 1000.0
 var attack_has_recoiled := false
 
 func _ready() -> void:
@@ -225,7 +225,7 @@ func handle_dash(delta: float, input_axis: float) -> void:
 		if x_dir == 0:
 			x_dir = facing
 
-		dash_direction = Vector2(x_dir, 0.5).normalized()
+		dash_direction = Vector2(x_dir, 0).normalized()
 		dash_timer = dash_time
 		can_dash = false
 		velocity = dash_direction * dash_speed
@@ -340,6 +340,9 @@ func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
 		attack_has_recoiled = true
 		can_double_jump = true
 
+		var recoil_direction := -facing
+
+		velocity.x = recoil_direction * weapon_recoil_force * 0.5
 		velocity.y = -weapon_recoil_force
 
 func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
