@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c326rhh6do3xr"
-path="res://.godot/imported/proto_attack_frame_down.png-190fc1899cc81344a321ae6440c1d6a9.ctex"
+uid="uid://1peehsoap52"
+path="res://.godot/imported/PlayerAnimationTemplate.png-45a566cff3357bcd67314cdedfc8ee92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/proto_attack_frame_down.png"
-dest_files=["res://.godot/imported/proto_attack_frame_down.png-190fc1899cc81344a321ae6440c1d6a9.ctex"]
+source_file="res://Sprites/PlayerCharacter/PlayerAnimationTemplate.png"
+dest_files=["res://.godot/imported/PlayerAnimationTemplate.png-45a566cff3357bcd67314cdedfc8ee92.ctex"]
 
 [params]
 

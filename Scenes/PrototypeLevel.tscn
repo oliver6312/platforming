@@ -217,6 +217,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7v14k")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfle5"]
+size = Vector2(267, 64)
+
 [node name="PrototypeLevel" type="Node2D" unique_id=408323406]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50723501]
@@ -237,3 +240,9 @@ offset_right = 461.0
 offset_bottom = 269.0
 text = "ver 1.2.5.2"
 metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=970472610]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1069235408]
+position = Vector2(9.5, 120)
+shape = SubResource("RectangleShape2D_jfle5")
