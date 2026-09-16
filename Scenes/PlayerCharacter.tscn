@@ -871,6 +871,9 @@ unique_name_in_owner = true
 position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_mdaju")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1845018807]
+zoom = Vector2(2, 2)
+
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
 unique_name_in_owner = true
 collision_layer = 3
@@ -926,9 +929,6 @@ unique_name_in_owner = true
 position = Vector2(-17, -1)
 shape = SubResource("CircleShape2D_k5f8r")
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1468216987]
-zoom = Vector2(2, 2)
 
 [node name="BodyHitbox" type="Area2D" parent="." unique_id=1091795433]
 collision_layer = 3

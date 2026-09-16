@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export_group("Horizontal")
-@export var run_speed := 400.0
-@export var acceleration := 1800.0
+@export var run_speed := 340.0
+@export var acceleration := 1600.0
 @export var air_acceleration := 1300.0
 @export var friction := 4000.0
 @export var run_after_time := 2.0
@@ -131,13 +131,13 @@ func _physics_process(delta: float) -> void:
 func update_timers(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = coyote_time
-		can_double_jump = true
+		can_double_jump = false
 		can_dash = true
 	else:
 		coyote_timer -= delta
 
 	if is_on_wall() and not is_on_floor():
-		can_double_jump = true
+		can_double_jump = false
 		can_dash = true
 		wall_coyote_timer = wall_coyote_time
 	else:
@@ -172,9 +172,10 @@ func handle_jump() -> void:
 	if coyote_timer > 0:
 		jump(jump_velocity)
 	elif wall_coyote_timer > 0:
-		var wall_dir := get_wall_normal().x
-		velocity.x = wall_dir * wall_jump_velocity.x
-		jump(wall_jump_velocity.y)
+		if can_wall_slide():
+			var wall_dir := get_wall_normal().x
+			velocity.x = wall_dir * wall_jump_velocity.x
+			jump(wall_jump_velocity.y)
 	elif can_double_jump:
 		can_double_jump = false
 		jump(jump_velocity)
