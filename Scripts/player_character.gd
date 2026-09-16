@@ -37,7 +37,6 @@ var walking_timer := 0.0
 var coyote_timer := 0.0
 var wall_coyote_timer := 0.0
 var jump_buffer_timer := 0.0
-var can_wall_slide = true
 
 var can_double_jump := true
 var can_dash := true
@@ -50,6 +49,7 @@ var movement_locked := false
 var animation_locked := false
 var direction_locked := false
 
+@onready var body_hitbox: Area2D = $BodyHitbox
 @onready var collision_box: CollisionShape2D = %CollisionBox
 @onready var weapon_hitbox_up: Area2D = %WeaponHitboxUp
 @onready var right_up_weapon: CollisionShape2D = %RightUpWeapon
@@ -202,14 +202,18 @@ func apply_gravity(delta: float) -> void:
 func handle_wall_slide() -> void:
 	if locked_action != "":
 		return
-	if can_wall_slide == false:
-		return
 
 	if Input.get_axis("ui_left", "ui_right"):
 		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
-			velocity.y = wall_slide_speed
+			if can_wall_slide():
+				velocity.y = wall_slide_speed
 
-
+func can_wall_slide() -> bool:
+	for area in body_hitbox.get_overlapping_areas():
+		if area.is_in_group("no_wall_slide"):
+			print("entered no wall sliding area")
+			return false
+	return true
 
 func is_wall_sliding() -> bool:
 	return is_on_wall() and not is_on_floor() and velocity.y > 0
@@ -269,7 +273,7 @@ func player_visuals(input_axis: float) -> void:
 
 	if input_axis != 0 and is_on_floor():
 		animated_sprite_2d.play("run")
-	elif is_on_wall() and not is_on_floor():
+	elif is_on_wall() and not is_on_floor() and can_wall_slide():
 		animated_sprite_2d.play("wall_one_frame")
 	elif not is_on_wall() and not is_on_floor() and velocity.y < 0:
 		animated_sprite_2d.play("jump_up")
@@ -375,6 +379,3 @@ func _on_animation_finished() -> void:
 		weapon_hitbox_up.monitoring = false
 		weapon_hitbox_side.monitoring = false
 		weapon_hitbox_down.monitoring = false
-
-func _on_body_hitbox_area_entered(area: Area2D) -> void:
-	pass
