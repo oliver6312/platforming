@@ -840,7 +840,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdaju"]
-size = Vector2(9, 29)
+size = Vector2(9, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl0yw"]
 
@@ -856,6 +856,9 @@ radius = 9.219544
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5f8r"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4x55"]
+size = Vector2(11, 30)
+
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1078641646]
 script = ExtResource("1_v7sut")
 
@@ -864,7 +867,8 @@ sprite_frames = SubResource("SpriteFrames_uvrlg")
 animation = &"attack_weapon_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
-position = Vector2(-1.5, 1.5)
+unique_name_in_owner = true
+position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_mdaju")
 
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
@@ -925,3 +929,11 @@ debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1468216987]
 zoom = Vector2(2, 2)
+
+[node name="BodyHitbox" type="Area2D" parent="." unique_id=1091795433]
+
+[node name="Body" type="CollisionShape2D" parent="BodyHitbox" unique_id=1692334041]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_r4x55")
+
+[connection signal="area_entered" from="BodyHitbox" to="." method="_on_body_hitbox_area_entered"]
