@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dfy7x0d3g5rxs" path="res://Scenes/PlayerCharacter.tscn" id="2_jfle5"]
 [ext_resource type="Texture2D" uid="uid://dk5lyl5kglbc4" path="res://Tileset/DualGrid1.0.1 (red).png" id="2_xbnwo"]
 [ext_resource type="Texture2D" uid="uid://5to7adjstkds" path="res://Tileset/NormalGrid1.0.0.png" id="4_s0kwr"]
-[ext_resource type="PackedScene" uid="uid://mwuwqqk7pyis" path="res://Scenes/NoWallSlideArea.tscn" id="5_7v14k"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/DirtClump1.tscn" id="6_s0kwr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v14k"]
@@ -569,7 +568,7 @@ offset_top = 246.0
 offset_right = 461.0
 offset_bottom = 269.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.4.0"
+text = "ver 1.5.0"
 metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=762008170]
@@ -627,21 +626,6 @@ polygon = PackedVector2Array(-48, 94, 140, 94, 140, 280, 124, 280, 111, 237, -48
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1481016505]
 polygon = PackedVector2Array(-606, 50, -492, 50, -558, 237, -605, 247)
-
-[node name="NoWallSlideArea" parent="." unique_id=1540030112 instance=ExtResource("5_7v14k")]
-position = Vector2(1096.0001, 309.00003)
-rotation = 0.20245819
-scale = Vector2(2, 2)
-
-[node name="NoWallSlideArea2" parent="." unique_id=1266881798 instance=ExtResource("5_7v14k")]
-position = Vector2(698.99994, 243.99997)
-rotation = 0.30717796
-scale = Vector2(2, 2.8)
-
-[node name="NoWallSlideArea3" parent="." unique_id=1118028360 instance=ExtResource("5_7v14k")]
-position = Vector2(-637, -71.00003)
-rotation = 0.54105204
-scale = Vector2(1, 2)
 
 [node name="Sprite2D2" parent="." unique_id=772117592 instance=ExtResource("6_s0kwr")]
 position = Vector2(-851, -202)
