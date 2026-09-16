@@ -246,7 +246,7 @@ a = Vector2(-172, 63)
 b = Vector2(-396, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbnwo"]
-size = Vector2(320, 134)
+size = Vector2(291, 118)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v14k"]
 size = Vector2(745, 78)
@@ -269,13 +269,28 @@ b = Vector2(136, 280)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bx147"]
 size = Vector2(189, 45)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_l54ic"]
-a = Vector2(112, 237)
-b = Vector2(-46, 136)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbnwo"]
+radius = 23.0
+height = 215.17896
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0ipl1"]
 a = Vector2(-208, -106)
 b = Vector2(-188, -105)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v14k"]
+radius = 14.0
+height = 294.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgiph"]
+size = Vector2(27, 39)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_l54ic"]
+a = Vector2(-139, 224)
+b = Vector2(-113, 135)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0kwr"]
+radius = 6.049011
+height = 51.59912
 
 [node name="PrototypeLevel" type="Node2D" unique_id=408323406]
 
@@ -301,7 +316,7 @@ offset_top = 246.0
 offset_right = 461.0
 offset_bottom = 269.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.3.0"
+text = "ver 1.3.1"
 metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=762008170]
@@ -335,7 +350,7 @@ shape = SubResource("SegmentShape2D_vgiph")
 one_way_collision = true
 
 [node name="HouseGround" type="CollisionShape2D" parent="StaticBody2D" unique_id=1315340166]
-position = Vector2(-272, 166)
+position = Vector2(-284.5, 158)
 shape = SubResource("RectangleShape2D_xbnwo")
 
 [node name="GroundCave" type="CollisionShape2D" parent="StaticBody2D" unique_id=1418067052]
@@ -363,8 +378,27 @@ position = Vector2(46.5, 113.5)
 shape = SubResource("RectangleShape2D_bx147")
 
 [node name="Fieldlower" type="CollisionShape2D" parent="StaticBody2D" unique_id=1284575279]
-shape = SubResource("SegmentShape2D_l54ic")
+position = Vector2(47, 169)
+rotation = -1.012291
+shape = SubResource("CapsuleShape2D_xbnwo")
 
 [node name="Chimney" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912413445]
 shape = SubResource("SegmentShape2D_0ipl1")
 one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=276425437]
+position = Vector2(-284, 218)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_7v14k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=651401005]
+position = Vector2(-125.5, 118.5)
+shape = SubResource("RectangleShape2D_vgiph")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1189532379]
+shape = SubResource("SegmentShape2D_l54ic")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=24728505]
+position = Vector2(-582, 239)
+rotation = -1.8413223
+shape = SubResource("CapsuleShape2D_s0kwr")

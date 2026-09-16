@@ -840,7 +840,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdaju"]
-size = Vector2(12, 31)
+size = Vector2(9, 29)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl0yw"]
 
@@ -864,7 +864,7 @@ sprite_frames = SubResource("SpriteFrames_uvrlg")
 animation = &"attack_weapon_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
-position = Vector2(0, 0.5)
+position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_mdaju")
 
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
