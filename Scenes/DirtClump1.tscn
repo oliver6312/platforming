@@ -5,9 +5,14 @@
 [node name="Sprite2D" type="Sprite2D" unique_id=772117592]
 texture = ExtResource("1_c7l4q")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=118344602]
+[node name="Hard" type="StaticBody2D" parent="." unique_id=118344602]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hard" unique_id=357785040]
+polygon = PackedVector2Array(-207, -81, -207, 72, 249, 72, 249, -153, 90, -153, 90, -81)
+
+[node name="Slippery" type="StaticBody2D" parent="." unique_id=891148657]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=926988666]
-polygon = PackedVector2Array(-207, -81, -207, 72, -151, 122, -117, 122, -5, 167, 184, 167, 240, 88, 252, 63, 252, -153, 90, -153, 90, -81, 11, -81)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slippery" unique_id=831441082]
+polygon = PackedVector2Array(-204, 72, -204, 78, -174, 107, -116, 121, -58, 139, 7, 171, 54, 165, 182, 165, 249, 72)

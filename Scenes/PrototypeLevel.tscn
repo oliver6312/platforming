@@ -527,7 +527,7 @@ b = Vector2(-396, 63)
 size = Vector2(744.5, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0kwr"]
-size = Vector2(130, 126)
+size = Vector2(130, 112)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1bllb"]
 a = Vector2(41, 428)
@@ -573,6 +573,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=762008170]
 position = Vector2(1226, 97)
+collision_layer = 2
+collision_mask = 2
 
 [node name="BillboardUp" type="CollisionShape2D" parent="StaticBody2D" unique_id=50509152]
 shape = SubResource("SegmentShape2D_u1k0j")
@@ -599,7 +601,7 @@ position = Vector2(-231.75, 514)
 shape = SubResource("RectangleShape2D_7v14k")
 
 [node name="GroundRock" type="CollisionShape2D" parent="StaticBody2D" unique_id=290059046]
-position = Vector2(-539, 389)
+position = Vector2(-539, 396)
 shape = SubResource("RectangleShape2D_s0kwr")
 
 [node name="SewerLower" type="CollisionShape2D" parent="StaticBody2D" unique_id=1552098508]

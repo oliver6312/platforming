@@ -172,7 +172,7 @@ func handle_jump() -> void:
 
 	if coyote_timer > 0:
 		jump(jump_velocity)
-	elif is_on_wall():
+	elif wall_coyote_timer > 0:
 		if can_wall_slide():
 			var wall_dir := get_wall_normal().x
 			velocity.x = wall_dir * wall_jump_velocity.x
@@ -219,6 +219,7 @@ func can_wall_slide() -> bool:
 			if collider.collision_layer & SLIPPERY_lAYER:
 
 				print("is touching slippery")
+				wall_coyote_timer = 0
 				return false
 	return true
 

@@ -840,7 +840,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdaju"]
-size = Vector2(9, 28)
+size = Vector2(11, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl0yw"]
 
@@ -866,7 +866,7 @@ sprite_frames = SubResource("SpriteFrames_uvrlg")
 animation = &"attack_weapon_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
-position = Vector2(-1.5, 2)
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_mdaju")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1845018807]
