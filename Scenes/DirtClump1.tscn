@@ -6,6 +6,8 @@
 texture = ExtResource("1_c7l4q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=118344602]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=926988666]
 polygon = PackedVector2Array(-207, -81, -207, 72, -151, 122, -117, 122, -5, 167, 184, 167, 240, 88, 252, 63, 252, -153, 90, -153, 90, -81, 11, -81)

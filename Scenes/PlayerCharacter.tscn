@@ -856,10 +856,9 @@ radius = 9.219544
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5f8r"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4x55"]
-size = Vector2(11, 30)
-
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=1078641646]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_v7sut")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=657857633]
@@ -867,7 +866,6 @@ sprite_frames = SubResource("SpriteFrames_uvrlg")
 animation = &"attack_weapon_up"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1987484218]
-unique_name_in_owner = true
 position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_mdaju")
 
@@ -876,26 +874,27 @@ zoom = Vector2(2, 2)
 
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
 unique_name_in_owner = true
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0
 
 [node name="RightUpWeapon" type="CollisionShape2D" parent="WeaponHitboxUp" unique_id=881761719]
 unique_name_in_owner = true
 position = Vector2(-2, -20)
 shape = SubResource("CircleShape2D_cl0yw")
+disabled = true
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
 [node name="LeftUpWeapon" type="CollisionShape2D" parent="WeaponHitboxUp" unique_id=1910282003]
 unique_name_in_owner = true
 position = Vector2(-1, -20)
 shape = SubResource("CircleShape2D_vjvuw")
+disabled = true
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
 [node name="WeaponHitboxDown" type="Area2D" parent="." unique_id=263593156]
 unique_name_in_owner = true
-visible = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0
 
 [node name="RightDownWeapon" type="CollisionShape2D" parent="WeaponHitboxDown" unique_id=1646368294]
 unique_name_in_owner = true
@@ -903,6 +902,7 @@ position = Vector2(6.0000005, 16)
 rotation = -0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("CircleShape2D_r4x55")
+disabled = true
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
 [node name="LeftDownWeapon" type="CollisionShape2D" parent="WeaponHitboxDown" unique_id=263637968]
@@ -910,30 +910,24 @@ unique_name_in_owner = true
 position = Vector2(-6, 16)
 rotation = 0.7853982
 shape = SubResource("CircleShape2D_id6tp")
+disabled = true
 debug_color = Color(0.93333334, 0.23529412, 0.27450982, 0.41960785)
 
 [node name="WeaponHitboxSide" type="Area2D" parent="." unique_id=883477958]
 unique_name_in_owner = true
-visible = false
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0
 
 [node name="RightSideWeapon" type="CollisionShape2D" parent="WeaponHitboxSide" unique_id=1832676694]
 unique_name_in_owner = true
 position = Vector2(17, -1)
 shape = SubResource("CircleShape2D_wnmxb")
+disabled = true
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
 
 [node name="LeftSideWeapon" type="CollisionShape2D" parent="WeaponHitboxSide" unique_id=747029852]
 unique_name_in_owner = true
 position = Vector2(-17, -1)
 shape = SubResource("CircleShape2D_k5f8r")
+disabled = true
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
-
-[node name="BodyHitbox" type="Area2D" parent="." unique_id=1091795433]
-collision_layer = 3
-collision_mask = 3
-
-[node name="Body" type="CollisionShape2D" parent="BodyHitbox" unique_id=1692334041]
-position = Vector2(-1.5, 2)
-shape = SubResource("RectangleShape2D_r4x55")

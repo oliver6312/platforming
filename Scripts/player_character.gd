@@ -49,8 +49,10 @@ var movement_locked := false
 var animation_locked := false
 var direction_locked := false
 
-@onready var body_hitbox: Area2D = $BodyHitbox
-@onready var collision_box: CollisionShape2D = %CollisionBox
+##new shit
+const SLIPPERY_lAYER = 1 << 1
+var touching_slippery_wall = false
+
 @onready var weapon_hitbox_up: Area2D = %WeaponHitboxUp
 @onready var right_up_weapon: CollisionShape2D = %RightUpWeapon
 @onready var left_up_weapon: CollisionShape2D = %LeftUpWeapon
@@ -104,7 +106,6 @@ func _physics_process(delta: float) -> void:
 	if input_axis != 0 and not direction_locked:
 		facing = sign(input_axis)
 
-
 	handle_attack()
 	update_timers(delta)
 
@@ -131,13 +132,13 @@ func _physics_process(delta: float) -> void:
 func update_timers(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = coyote_time
-		can_double_jump = true
+#		can_double_jump = true
 		can_dash = true
 	else:
 		coyote_timer -= delta
 
 	if is_on_wall() and not is_on_floor():
-		can_double_jump = true
+#		can_double_jump = true
 		can_dash = true
 		wall_coyote_timer = wall_coyote_time
 	else:
@@ -171,7 +172,7 @@ func handle_jump() -> void:
 
 	if coyote_timer > 0:
 		jump(jump_velocity)
-	elif wall_coyote_timer > 0:
+	elif is_on_wall():
 		if can_wall_slide():
 			var wall_dir := get_wall_normal().x
 			velocity.x = wall_dir * wall_jump_velocity.x
@@ -179,6 +180,7 @@ func handle_jump() -> void:
 	elif can_double_jump:
 		can_double_jump = false
 		jump(jump_velocity)
+		print("double jumped")
 
 func jump(force: float) -> void:
 	velocity.y = force
@@ -205,15 +207,19 @@ func handle_wall_slide() -> void:
 		return
 
 	if Input.get_axis("ui_left", "ui_right"):
-		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed:
-			if can_wall_slide():
-				velocity.y = wall_slide_speed
+		if is_on_wall() and not is_on_floor() and velocity.y > wall_slide_speed and can_wall_slide():
+			velocity.y = wall_slide_speed
 
 func can_wall_slide() -> bool:
-	for area in body_hitbox.get_overlapping_areas():
-		if area.is_in_group("no_wall_slide"):
-			print("entered no wall sliding area")
-			return false
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is StaticBody2D:
+			if collider.collision_layer & SLIPPERY_lAYER:
+
+				print("is touching slippery")
+				return false
 	return true
 
 func is_wall_sliding() -> bool:
