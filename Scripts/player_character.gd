@@ -67,6 +67,9 @@ var touching_slippery_wall = false
 var attack_has_recoiled := false
 
 func _ready() -> void:
+
+	position.x = GameManager.x_player_start_position
+	position.y = GameManager.y_player_start_position
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 	weapon_hitbox_up.body_entered.connect(_on_weapon_up_hitbox_body_entered)
