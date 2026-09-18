@@ -869,9 +869,6 @@ animation = &"attack_weapon_up"
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_mdaju")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1845018807]
-zoom = Vector2(2, 2)
-
 [node name="WeaponHitboxUp" type="Area2D" parent="." unique_id=2072588664]
 unique_name_in_owner = true
 collision_layer = 0

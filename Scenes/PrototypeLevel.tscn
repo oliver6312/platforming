@@ -562,19 +562,16 @@ tile_set = SubResource("TileSet_vgiph")
 [node name="PlayerCharacter" parent="." unique_id=1078641646 instance=ExtResource("2_jfle5")]
 position = Vector2(13, -64)
 
-[node name="Label" type="Label" parent="PlayerCharacter" unique_id=1055543624]
-offset_left = 395.0
-offset_top = 246.0
-offset_right = 461.0
-offset_bottom = 269.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.5.1"
-metadata/_edit_use_anchors_ = true
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter" unique_id=770496823]
+zoom = Vector2(2, 2)
+limit_left = -2075
+limit_top = -704
+limit_right = 545
+limit_bottom = 225
+limit_smoothed = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=762008170]
 position = Vector2(1226, 97)
-collision_layer = 2
-collision_mask = 2
 
 [node name="BillboardUp" type="CollisionShape2D" parent="StaticBody2D" unique_id=50509152]
 shape = SubResource("SegmentShape2D_u1k0j")
@@ -631,3 +628,12 @@ polygon = PackedVector2Array(-606, 50, -492, 50, -558, 237, -605, 247)
 
 [node name="Sprite2D2" parent="." unique_id=772117592 instance=ExtResource("6_s0kwr")]
 position = Vector2(-851, -202)
+
+[node name="Label" type="Label" parent="." unique_id=1055543624]
+offset_left = 408.0
+offset_top = 181.99998
+offset_right = 474.0
+offset_bottom = 204.99998
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "ver 1.5.2"
+metadata/_edit_use_anchors_ = true
