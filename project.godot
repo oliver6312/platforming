@@ -75,6 +75,7 @@ attack={
 
 2d_physics/layer_1="Normal Terrain"
 2d_physics/layer_2="Slippery Terrain"
+2d_physics/layer_10="Auto Exit"
 
 [physics]
 
