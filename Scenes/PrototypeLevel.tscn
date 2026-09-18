@@ -504,6 +504,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_s0kwr")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v14k"]
+size = Vector2(11, 28)
+
 [node name="PrototypeLevel" type="Node2D" unique_id=408323406]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1260313332 groups=["weapon_recoil"]]
@@ -515,7 +518,7 @@ tile_set = SubResource("TileSet_vgiph")
 
 [node name="PlayerCharacter" parent="." unique_id=1078641646 instance=ExtResource("2_jfle5")]
 unique_name_in_owner = true
-position = Vector2(13, -64)
+position = Vector2(3, 16)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter" unique_id=770496823]
 zoom = Vector2(2, 2)
@@ -533,10 +536,18 @@ offset_top = 8.0
 offset_right = 124.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.6.0"
+text = "ver 1.7.0"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_7v14k")]
-position = Vector2(600, -23)
+position = Vector2(631, -1)
 scale = Vector2(6, 6)
-y_coodinate = -500.0
+
+[node name="SpawnArea" type="Area2D" parent="." unique_id=1299326826]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Entrance1" type="CollisionShape2D" parent="SpawnArea" unique_id=1986392365]
+unique_name_in_owner = true
+position = Vector2(551, 18)
+shape = SubResource("RectangleShape2D_7v14k")

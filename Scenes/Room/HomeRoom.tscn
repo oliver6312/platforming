@@ -396,6 +396,9 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_3vso6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a86t6"]
+size = Vector2(11, 28)
+
 [node name="HomeRoom" type="Node2D" unique_id=1523168768]
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=993084772]
@@ -414,7 +417,7 @@ limit_bottom = 225
 limit_smoothed = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("3_2xj4r")]
-position = Vector2(564, -15.000002)
+position = Vector2(-2135, 15.000001)
 room = "PrototypeRoom"
 
 [node name="Sprite2D" parent="." unique_id=772117592 instance=ExtResource("4_a86t6")]
@@ -422,3 +425,12 @@ position = Vector2(-899, -213)
 
 [node name="Sprite2D2" parent="." unique_id=1264659563 instance=ExtResource("4_a86t6")]
 position = Vector2(-689, -398)
+
+[node name="SpawnArea" type="Area2D" parent="." unique_id=75818794]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Entrance1" type="CollisionShape2D" parent="SpawnArea" unique_id=413021698]
+unique_name_in_owner = true
+position = Vector2(-2067, 50)
+shape = SubResource("RectangleShape2D_a86t6")

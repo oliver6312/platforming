@@ -66,10 +66,17 @@ var touching_slippery_wall = false
 @export var weapon_recoil_force := 1000.0
 var attack_has_recoiled := false
 
+
+
 func _ready() -> void:
 
-	position.x = GameManager.x_player_start_position
-	position.y = GameManager.y_player_start_position
+	var entrance = GameManager.entrance
+	match entrance:
+		1:
+			var entrance_1: CollisionShape2D = %Entrance1
+			self.position = entrance_1.position
+			print(entrance_1.position)
+
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 	weapon_hitbox_up.body_entered.connect(_on_weapon_up_hitbox_body_entered)
