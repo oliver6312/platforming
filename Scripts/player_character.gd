@@ -76,6 +76,10 @@ func _ready() -> void:
 			var entrance_1: CollisionShape2D = %Entrance1
 			self.position = entrance_1.position
 			print(entrance_1.position)
+		2:
+			var entrance_2: CollisionShape2D = %Entrance2
+			self.position = entrance_2.position
+			print(entrance_2.position)
 
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 

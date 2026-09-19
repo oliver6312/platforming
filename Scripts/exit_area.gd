@@ -10,8 +10,13 @@ func _on_body_entered(body: Node2D) -> void:
 		match room:
 			"HomeRoom":
 				get_tree().change_scene_to_file.call_deferred("res://Scenes/Room/HomeRoom.tscn")
-				GameManager.entrance = exit
 			"PrototypeRoom":
 				get_tree().change_scene_to_file.call_deferred("res://Scenes/PrototypeLevel.tscn")
-				GameManager.entrance = exit
+			"ThirdRoom":
+				get_tree().change_scene_to_file.call_deferred("res://Scenes/Room/ThirdRoom.tscn")
+		GameManager.entrance = exit
+
+	pass
+
+func _ready() -> void:
 	pass
