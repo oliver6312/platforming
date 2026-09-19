@@ -38,7 +38,7 @@ var coyote_timer := 0.0
 var wall_coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 
-var can_double_jump := true
+var can_double_jump := false
 var can_dash := true
 var dash_timer := 0.0
 var dash_cooldown_timer := 0.0
@@ -137,14 +137,18 @@ func _physics_process(delta: float) -> void:
 func update_timers(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = coyote_time
-#		can_double_jump = true
-		can_dash = true
+		if GameManager.double_jump_unlock:
+			can_double_jump = true
+		if GameManager.dash_unlock:
+			can_dash = true
 	else:
 		coyote_timer -= delta
 
 	if is_on_wall() and not is_on_floor():
-#		can_double_jump = true
-		can_dash = true
+		if GameManager.double_jump_unlock:
+			can_double_jump = true
+		if GameManager.dash_unlock:
+			can_dash = true
 		wall_coyote_timer = wall_coyote_time
 	else:
 		wall_coyote_timer -= delta
@@ -221,11 +225,14 @@ func can_wall_slide() -> bool:
 		var collider = collision.get_collider()
 		
 		if collider is StaticBody2D:
-			if collider.collision_layer & SLIPPERY_lAYER or GameManager.wall_jump_unlock == false:
+			if collider.collision_layer & SLIPPERY_lAYER:
 
 				print("is touching slippery")
 				wall_coyote_timer = 0
 				return false
+	if GameManager.wall_jump_unlock == false:
+		wall_coyote_timer = 0
+		return false
 
 	return true
 
