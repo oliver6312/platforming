@@ -70,10 +70,6 @@ var touching_slippery_wall = false
 var attack_has_recoiled := false
 
 func _ready() -> void:
-
-	print("player start position")
-	print(self.position)
-
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
 	weapon_hitbox_up.body_entered.connect(_on_weapon_up_hitbox_body_entered)
@@ -135,6 +131,8 @@ func _physics_process(delta: float) -> void:
 
 	apply_corner_correction()
 	player_visuals(input_axis)
+
+#		if GameManager.wall_jump_unlock == true:
 
 func update_timers(delta: float) -> void:
 	if is_on_floor():
@@ -223,11 +221,12 @@ func can_wall_slide() -> bool:
 		var collider = collision.get_collider()
 		
 		if collider is StaticBody2D:
-			if collider.collision_layer & SLIPPERY_lAYER:
+			if collider.collision_layer & SLIPPERY_lAYER or GameManager.wall_jump_unlock == false:
 
 				print("is touching slippery")
 				wall_coyote_timer = 0
 				return false
+
 	return true
 
 func is_wall_sliding() -> bool:

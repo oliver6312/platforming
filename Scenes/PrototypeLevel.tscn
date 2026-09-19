@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/exit_area.tscn" id="5_7v14k"]
 [ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/spawn_area.gd" id="6_bx147"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/DirtClump1.tscn" id="6_s0kwr"]
+[ext_resource type="PackedScene" uid="uid://cu8ebq73rwxte" path="res://Scenes/blue_orb.tscn" id="7_bx147"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v14k"]
 texture = ExtResource("2_xbnwo")
@@ -508,10 +509,6 @@ sources/0 = SubResource("TileSetAtlasSource_s0kwr")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7v14k"]
 size = Vector2(11, 28)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7v14k"]
-a = Vector2(-14, -32)
-b = Vector2(38, -32)
-
 [node name="PrototypeLevel" type="Node2D" unique_id=408323406]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1260313332 groups=["weapon_recoil"]]
@@ -540,7 +537,7 @@ offset_top = 8.0
 offset_right = 124.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.7.2"
+text = "ver 1.7.3.1"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_7v14k")]
@@ -562,8 +559,6 @@ unique_name_in_owner = true
 position = Vector2(-1111, -373)
 shape = SubResource("RectangleShape2D_7v14k")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2114604432]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2103779092]
-shape = SubResource("SegmentShape2D_7v14k")
-one_way_collision = true
+[node name="BlueOrb" parent="." unique_id=144427953 instance=ExtResource("7_bx147")]
+position = Vector2(37, -77)
+unlocks = "wall jump"
