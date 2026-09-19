@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dk5lyl5kglbc4" path="res://Tileset/DualGrid1.0.1 (red).png" id="2_xbnwo"]
 [ext_resource type="Texture2D" uid="uid://5to7adjstkds" path="res://Tileset/NormalGrid1.0.0.png" id="4_s0kwr"]
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/exit_area.tscn" id="5_7v14k"]
+[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/spawn_area.gd" id="6_bx147"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/DirtClump1.tscn" id="6_s0kwr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v14k"]
@@ -521,7 +522,6 @@ tile_map_data = PackedByteArray("AAANAAEAAAAKAAAAAAAMAAEAAAAKAAAAAAALAAEAAAAKAAA
 tile_set = SubResource("TileSet_vgiph")
 
 [node name="PlayerCharacter" parent="." unique_id=1078641646 instance=ExtResource("2_jfle5")]
-unique_name_in_owner = true
 position = Vector2(3, 16)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter" unique_id=770496823]
@@ -540,7 +540,7 @@ offset_top = 8.0
 offset_right = 124.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.7.1"
+text = "ver 1.7.2"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_7v14k")]
@@ -550,6 +550,7 @@ scale = Vector2(6, 6)
 [node name="SpawnArea" type="Area2D" parent="." unique_id=1299326826]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("6_bx147")
 
 [node name="Entrance1" type="CollisionShape2D" parent="SpawnArea" unique_id=1986392365]
 unique_name_in_owner = true

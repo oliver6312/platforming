@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfy7x0d3g5rxs" path="res://Scenes/PlayerCharacter.tscn" id="2_tf01q"]
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/exit_area.tscn" id="3_yyu7h"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/DirtClump1.tscn" id="4_thfdq"]
+[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/spawn_area.gd" id="5_tf01q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7h2ys"]
 texture = ExtResource("1_1wlg6")
@@ -434,6 +435,7 @@ position = Vector2(-689, -398)
 [node name="SpawnArea" type="Area2D" parent="." unique_id=108095515]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("5_tf01q")
 
 [node name="Entrance1" type="CollisionShape2D" parent="SpawnArea" unique_id=256750066]
 unique_name_in_owner = true

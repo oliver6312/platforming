@@ -53,6 +53,9 @@ var direction_locked := false
 const SLIPPERY_lAYER = 1 << 1
 var touching_slippery_wall = false
 
+###new shit (start position)
+
+
 @onready var weapon_hitbox_up: Area2D = %WeaponHitboxUp
 @onready var right_up_weapon: CollisionShape2D = %RightUpWeapon
 @onready var left_up_weapon: CollisionShape2D = %LeftUpWeapon
@@ -66,20 +69,10 @@ var touching_slippery_wall = false
 @export var weapon_recoil_force := 1000.0
 var attack_has_recoiled := false
 
-
-
 func _ready() -> void:
 
-	var entrance = GameManager.entrance
-	match entrance:
-		1:
-			var entrance_1: CollisionShape2D = %Entrance1
-			self.position = entrance_1.position
-			print(entrance_1.position)
-		2:
-			var entrance_2: CollisionShape2D = %Entrance2
-			self.position = entrance_2.position
-			print(entrance_2.position)
+	print("player start position")
+	print(self.position)
 
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
