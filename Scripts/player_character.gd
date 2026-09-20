@@ -181,11 +181,10 @@ func handle_jump() -> void:
 
 	if coyote_timer > 0:
 		jump(jump_velocity)
-	elif wall_coyote_timer > 0:
-		if can_wall_slide():
-			var wall_dir := get_wall_normal().x
-			velocity.x = wall_dir * wall_jump_velocity.x
-			jump(wall_jump_velocity.y)
+	elif wall_coyote_timer > 0 and can_wall_slide():
+		var wall_dir := get_wall_normal().x
+		velocity.x = wall_dir * wall_jump_velocity.x
+		jump(wall_jump_velocity.y)
 	elif can_double_jump:
 		can_double_jump = false
 		jump(jump_velocity)

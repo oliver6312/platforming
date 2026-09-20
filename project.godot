@@ -13,7 +13,6 @@ config_version=5
 config/name="Platforming"
 run/main_scene="uid://cgvqnpejgtacw"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
