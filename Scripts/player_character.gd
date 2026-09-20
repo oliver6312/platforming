@@ -39,7 +39,7 @@ var wall_coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 
 var can_double_jump := false
-var can_dash := true
+var can_dash := false
 var dash_timer := 0.0
 var dash_cooldown_timer := 0.0
 var dash_direction := Vector2.ZERO
@@ -294,11 +294,11 @@ func player_visuals(input_axis: float) -> void:
 
 	if input_axis != 0 and is_on_floor():
 		animated_sprite_2d.play("run")
-	elif is_on_wall() and not is_on_floor() and can_wall_slide():
+	elif is_on_wall() and not is_on_floor() and can_wall_slide() and velocity.y > 0:
 		animated_sprite_2d.play("wall_one_frame")
-	elif not is_on_wall() and not is_on_floor() and velocity.y < 0:
+	elif not is_on_floor() and velocity.y < 0:
 		animated_sprite_2d.play("jump_up")
-	elif not is_on_wall() and not is_on_floor() and velocity.y > 0:
+	elif not is_on_floor() and velocity.y > 0:
 		animated_sprite_2d.play("jump_down")
 	elif input_axis == 0 and is_on_floor():
 		animated_sprite_2d.play("idle")

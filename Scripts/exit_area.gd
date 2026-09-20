@@ -4,9 +4,6 @@ extends Area2D
 @export var room = "HomeRoom"
 @export var exit: int = 1
 
-@onready var player_character: CharacterBody2D = $"../PlayerCharacter"
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("player exits room")
