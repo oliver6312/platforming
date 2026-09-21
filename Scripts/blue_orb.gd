@@ -6,11 +6,11 @@ extends Area2D
 func _ready() -> void:
 	match unlocks:
 				"dash":
-					sprite_2d.texture = load("res://Sprites/OrangeMatOrb.png")
+					sprite_2d.texture = load("res://Sprites/Orb/OrangeMatOrb.png")
 				"double jump":
-					sprite_2d.texture = load("res://Sprites/GreenMatOrb.png")
+					sprite_2d.texture = load("res://Sprites/Orb/GreenMatOrb.png")
 				"wall jump":
-					sprite_2d.texture = load("res://Sprites/BlueMatOrb.png")
+					sprite_2d.texture = load("res://Sprites/Orb/BlueMatOrb.png")
 	pass
 	
 

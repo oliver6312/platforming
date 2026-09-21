@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwn7mfj2hqi3o"
-path="res://.godot/imported/proto_attack_frame_forward.png-7d7ab1c19d6890cd3cb30a7f863995ef.ctex"
+uid="uid://5to7adjstkds"
+path="res://.godot/imported/NormalGrid1.0.0.png-6cd8e956c0f4250d79f99acb810731ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCharacter/proto_attack_frame_forward.png"
-dest_files=["res://.godot/imported/proto_attack_frame_forward.png-7d7ab1c19d6890cd3cb30a7f863995ef.ctex"]
+source_file="res://Sprites/Terrain/Tileset/NormalGrid1.0.0.png"
+dest_files=["res://.godot/imported/NormalGrid1.0.0.png-6cd8e956c0f4250d79f99acb810731ff.ctex"]
 
 [params]
 

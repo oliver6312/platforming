@@ -9,11 +9,11 @@ func _on_body_entered(body: Node2D) -> void:
 		print("player exits room")
 		match room:
 			"HomeRoom":
-				get_tree().change_scene_to_file.call_deferred("res://Scenes/Room/HomeRoom.tscn")
+				get_tree().change_scene_to_file.call_deferred("res://Scenes/MapAssests/Room/HomeRoom.tscn")
 			"PrototypeRoom":
-				get_tree().change_scene_to_file.call_deferred("res://Scenes/PrototypeLevel.tscn")
+				get_tree().change_scene_to_file.call_deferred("res://Scenes/MapAssests/Room/PrototypeLevel.tscn")
 			"ThirdRoom":
-				get_tree().change_scene_to_file.call_deferred("res://Scenes/Room/ThirdRoom.tscn")
+				get_tree().change_scene_to_file.call_deferred("res://Scenes/MapAssests/Room/ThirdRoom.tscn")
 		GameManager.entrance = exit
 
 	pass

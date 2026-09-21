@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d100w4ibw5xcp"
-path="res://.godot/imported/DualGrid1.0.1.png-b21ca8655c34c936ea5899b8f4d15c62.ctex"
+uid="uid://cy12r2l1q8mwj"
+path="res://.godot/imported/CatIvy.png-1b427249eece9974d87035e34461cce3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tileset/DualGrid1.0.1.png"
-dest_files=["res://.godot/imported/DualGrid1.0.1.png-b21ca8655c34c936ea5899b8f4d15c62.ctex"]
+source_file="res://Sprites/Monster/CatIvy.png"
+dest_files=["res://.godot/imported/CatIvy.png-1b427249eece9974d87035e34461cce3.ctex"]
 
 [params]
 

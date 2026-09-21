@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4j7eo21xi2xb"
-path="res://.godot/imported/BlueMatOrb.png-d3aeacd9e71e642769251e41ba08deb0.ctex"
+uid="uid://dk5lyl5kglbc4"
+path="res://.godot/imported/DualGrid1.0.1 (red).png-74bfa49360c012b8ee6eb83601b52aaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/BlueMatOrb.png"
-dest_files=["res://.godot/imported/BlueMatOrb.png-d3aeacd9e71e642769251e41ba08deb0.ctex"]
+source_file="res://Sprites/Terrain/Tileset/DualGrid1.0.1 (red).png"
+dest_files=["res://.godot/imported/DualGrid1.0.1 (red).png-74bfa49360c012b8ee6eb83601b52aaa.ctex"]
 
 [params]
 

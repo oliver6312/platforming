@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kjo871qljhha"
-path="res://.godot/imported/GroundEarth.png-3e64e5043899c224df6e400163411422.ctex"
+uid="uid://cx7k6c2lukid4"
+path="res://.godot/imported/GreenMatOrb.png-866bd3f3487d716b3b69610cf11c7be7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tileset/GroundEarth.png"
-dest_files=["res://.godot/imported/GroundEarth.png-3e64e5043899c224df6e400163411422.ctex"]
+source_file="res://Sprites/Orb/GreenMatOrb.png"
+dest_files=["res://.godot/imported/GreenMatOrb.png-866bd3f3487d716b3b69610cf11c7be7.ctex"]
 
 [params]
 

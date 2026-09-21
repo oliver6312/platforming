@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ryfl5s6fey42"]
 
-[ext_resource type="Texture2D" uid="uid://b4sfvl3vy36tj" path="res://Sprites/BigClumpOfDirt.png" id="1_c7l4q"]
+[ext_resource type="Texture2D" uid="uid://b4sfvl3vy36tj" path="res://Sprites/Terrain/ForestTerrain/BigClumpOfDirt.png" id="1_c7l4q"]
 
 [node name="Sprite2D" type="Sprite2D" unique_id=772117592]
 texture = ExtResource("1_c7l4q")

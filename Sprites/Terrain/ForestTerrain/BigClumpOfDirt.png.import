@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c326rhh6do3xr"
-path="res://.godot/imported/proto_attack_frame_down.png-f3b0a1cfaed800d34e30ef21aeb95adb.ctex"
+uid="uid://b4sfvl3vy36tj"
+path="res://.godot/imported/BigClumpOfDirt.png-828e2d27b7f88b7778cb86e62d0b2730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCharacter/proto_attack_frame_down.png"
-dest_files=["res://.godot/imported/proto_attack_frame_down.png-f3b0a1cfaed800d34e30ef21aeb95adb.ctex"]
+source_file="res://Sprites/Terrain/ForestTerrain/BigClumpOfDirt.png"
+dest_files=["res://.godot/imported/BigClumpOfDirt.png-828e2d27b7f88b7778cb86e62d0b2730.ctex"]
 
 [params]
 

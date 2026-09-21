@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://difk02cietw6q"
-path="res://.godot/imported/proto_attack_frame_up.png-478587be3f621c2392e23cecab925c5e.ctex"
+uid="uid://i1saxlojce7m"
+path="res://.godot/imported/Dad.png-5bebfef537800017d7cc6b28412caa1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PlayerCharacter/proto_attack_frame_up.png"
-dest_files=["res://.godot/imported/proto_attack_frame_up.png-478587be3f621c2392e23cecab925c5e.ctex"]
+source_file="res://Sprites/Characters/NPC/Dad.png"
+dest_files=["res://.godot/imported/Dad.png-5bebfef537800017d7cc6b28412caa1c.ctex"]
 
 [params]
 

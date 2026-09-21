@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i1saxlojce7m"
-path="res://.godot/imported/Dad.png-0dca6944a0c313815622d6e58ae1157d.ctex"
+uid="uid://d100w4ibw5xcp"
+path="res://.godot/imported/DualGrid1.0.1.png-471fd47b80879ae45f7dcd6fd96139ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Dad.png"
-dest_files=["res://.godot/imported/Dad.png-0dca6944a0c313815622d6e58ae1157d.ctex"]
+source_file="res://Sprites/Terrain/Tileset/DualGrid1.0.1.png"
+dest_files=["res://.godot/imported/DualGrid1.0.1.png-471fd47b80879ae45f7dcd6fd96139ca.ctex"]
 
 [params]
 

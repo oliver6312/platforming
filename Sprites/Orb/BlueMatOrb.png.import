@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4sfvl3vy36tj"
-path="res://.godot/imported/BigClumpOfDirt.png-e3c1ce504430ac668ea5b2044c8c6efa.ctex"
+uid="uid://d4j7eo21xi2xb"
+path="res://.godot/imported/BlueMatOrb.png-d793de41f83235aa1ebbcee5bc864fd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/BigClumpOfDirt.png"
-dest_files=["res://.godot/imported/BigClumpOfDirt.png-e3c1ce504430ac668ea5b2044c8c6efa.ctex"]
+source_file="res://Sprites/Orb/BlueMatOrb.png"
+dest_files=["res://.godot/imported/BlueMatOrb.png-d793de41f83235aa1ebbcee5bc864fd7.ctex"]
 
 [params]
 
