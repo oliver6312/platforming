@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/MapAssests/Areas/exit_area.tscn" id="5_w5gt3"]
 [ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/Map/spawn_area.gd" id="6_1wonm"]
 [ext_resource type="PackedScene" uid="uid://cu8ebq73rwxte" path="res://Scenes/MapAssests/Areas/blue_orb.tscn" id="7_wbe84"]
+[ext_resource type="PackedScene" uid="uid://butebljyc3jvp" path="res://Scenes/Character/BaseNpc.tscn" id="8_y1kk7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v14k"]
 texture = ExtResource("1_m2ert")
@@ -537,7 +538,7 @@ offset_top = 8.0
 offset_right = 124.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.7.4.5"
+text = "ver 1.8.0"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_w5gt3")]
@@ -570,3 +571,8 @@ unlocks = "wall jump"
 [node name="BlueOrb3" parent="." unique_id=1623145030 instance=ExtResource("7_wbe84")]
 position = Vector2(-61, -81)
 unlocks = "dash"
+
+[node name="BaseNPC" parent="." unique_id=511328770 instance=ExtResource("8_y1kk7")]
+position = Vector2(-170, 16)
+greetings = "\"Hello son\""
+battler = true
