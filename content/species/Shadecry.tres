@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://bgoxqip1kv3fy"]
+
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Monster/species_resource.gd" id="1_e0gpw"]
+[ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="2_d78jy"]
+
+[resource]
+script = ExtResource("1_e0gpw")
+name = "Shadecry"
+element_one = 6
+sprite = ExtResource("2_d78jy")
+metadata/_custom_type_script = "uid://cv3lai601u55n"
