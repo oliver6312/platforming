@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk5lyl5kglbc4"
-path="res://.godot/imported/DualGrid1.0.1 (red).png-8ab0c5ff974a1f53b675e4e69e5c2f5c.ctex"
+uid="uid://5to7adjstkds"
+path="res://.godot/imported/NormalGrid1.0.0.png-fcf22fa414911ee18e438bc0a809f869.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset/DualGrid1.0.1 (red).png"
-dest_files=["res://.godot/imported/DualGrid1.0.1 (red).png-8ab0c5ff974a1f53b675e4e69e5c2f5c.ctex"]
+source_file="res://Sprites/Tileset/NormalGrid1.0.0.png"
+dest_files=["res://.godot/imported/NormalGrid1.0.0.png-fcf22fa414911ee18e438bc0a809f869.ctex"]
 
 [params]
 

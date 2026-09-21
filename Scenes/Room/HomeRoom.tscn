@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c2drbbntt7t1u"]
 
-[ext_resource type="Texture2D" uid="uid://5to7adjstkds" path="res://Tileset/NormalGrid1.0.0.png" id="1_1p3p8"]
+[ext_resource type="Texture2D" uid="uid://5to7adjstkds" path="res://Sprites/Tileset/NormalGrid1.0.0.png" id="1_1p3p8"]
 [ext_resource type="PackedScene" uid="uid://dfy7x0d3g5rxs" path="res://Scenes/PlayerCharacter.tscn" id="2_2xj4r"]
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/exit_area.tscn" id="3_2xj4r"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/DirtClump1.tscn" id="4_a86t6"]

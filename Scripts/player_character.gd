@@ -129,10 +129,8 @@ func _physics_process(delta: float) -> void:
 		dash_timer = 0.0
 		velocity.x = 0.0
 
-	apply_corner_correction()
+#	apply_corner_correction()
 	player_visuals(input_axis)
-
-#		if GameManager.wall_jump_unlock == true:
 
 func update_timers(delta: float) -> void:
 	if is_on_floor():
