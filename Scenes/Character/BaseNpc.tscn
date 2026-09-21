@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctaxmsssp5rdd" path="res://Scripts/Character/base_npc.gd" id="1_bs321"]
 [ext_resource type="Texture2D" uid="uid://i1saxlojce7m" path="res://Sprites/Characters/NPC/Dad.png" id="1_pjg57"]
+[ext_resource type="PackedScene" uid="uid://bg46ipiq0g553" path="res://Scenes/UI/Dialogue.tscn" id="3_hvwg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs321"]
 
@@ -17,6 +18,8 @@ texture = ExtResource("1_pjg57")
 position = Vector2(0, -14)
 scale = Vector2(4, 3)
 shape = SubResource("RectangleShape2D_bs321")
+
+[node name="Dialogue" parent="." unique_id=1738452948 instance=ExtResource("3_hvwg2")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

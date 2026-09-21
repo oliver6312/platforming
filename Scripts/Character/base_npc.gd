@@ -4,7 +4,7 @@ extends Area2D
 @export var greetings: String
 @export var battler: bool
 
-var player_in_chat_zone = false
+var player_in_chat_zone = false 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +15,7 @@ func _ready() -> void:
 func _process(delta):
 	if Input.is_action_just_pressed("attack") and player_in_chat_zone:
 		print("player activates NPC")
+		$Dialogue.start()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
