@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dfy7x0d3g5rxs" path="res://Scenes/Character/PlayerCharacter.tscn" id="3_n8q6j"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/MapAssests/Mound/DirtClump1.tscn" id="4_afk6f"]
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/MapAssests/Areas/exit_area.tscn" id="5_w5gt3"]
-[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/spawn_area.gd" id="6_1wonm"]
+[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/Map/spawn_area.gd" id="6_1wonm"]
 [ext_resource type="PackedScene" uid="uid://cu8ebq73rwxte" path="res://Scenes/MapAssests/Areas/blue_orb.tscn" id="7_wbe84"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7v14k"]
@@ -537,7 +537,7 @@ offset_top = 8.0
 offset_right = 124.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.7.4.4"
+text = "ver 1.7.4.5"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_w5gt3")]

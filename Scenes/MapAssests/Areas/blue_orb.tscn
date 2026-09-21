@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cu8ebq73rwxte"]
 
-[ext_resource type="Script" uid="uid://brejhfhsk4h7d" path="res://Scripts/blue_orb.gd" id="1_745ag"]
+[ext_resource type="Script" uid="uid://brejhfhsk4h7d" path="res://Scripts/Map/blue_orb.gd" id="1_745ag"]
 [ext_resource type="Texture2D" uid="uid://d4j7eo21xi2xb" path="res://Sprites/Orb/BlueMatOrb.png" id="1_y0klo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_745ag"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfy7x0d3g5rxs" path="res://Scenes/Character/PlayerCharacter.tscn" id="2_h8qip"]
 [ext_resource type="PackedScene" uid="uid://cy1s6t4u6xw2l" path="res://Scenes/MapAssests/Areas/exit_area.tscn" id="3_skif4"]
 [ext_resource type="PackedScene" uid="uid://ryfl5s6fey42" path="res://Scenes/MapAssests/Mound/DirtClump1.tscn" id="4_hgrlw"]
-[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/spawn_area.gd" id="5_wlmyq"]
+[ext_resource type="Script" uid="uid://drwy78x53kv41" path="res://Scripts/Map/spawn_area.gd" id="5_wlmyq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7h2ys"]
 texture = ExtResource("1_mtl02")
