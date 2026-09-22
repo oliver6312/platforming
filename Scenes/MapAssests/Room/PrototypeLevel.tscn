@@ -109,8 +109,8 @@ texture = ExtResource("1_m2ert")
 3:3/0/terrains_peering_bit/top_left_corner = 0
 
 [sub_resource type="TileSet" id="TileSet_s0kwr"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 4
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -513,6 +513,7 @@ size = Vector2(11, 28)
 [node name="PrototypeLevel" type="Node2D" unique_id=408323406]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1260313332 groups=["weapon_recoil"]]
+tile_map_data = PackedByteArray("AAAEAP7/AAACAAEAAAAFAP7/AAADAAIAAAAEAP//AAABAAIAAAADAP//AAAAAAIAAAADAP7/AAABAAAAAAAEAP3/AAACAAEAAAAFAP3/AAADAAIAAAAFAP//AAADAAMAAAADAP3/AAABAAAAAAADAPz/AAABAAMAAAAEAPz/AAADAAAAAAAFAPz/AAAAAAAAAAAFAPD/AAACAAEAAAAGAPD/AAADAAIAAAAGAPH/AAADAAMAAAAFAPH/AAABAAIAAAAEAPH/AAAAAAIAAAAEAPD/AAABAAAAAAAEAO//AAABAAMAAAAFAO//AAADAAAAAAAGAO//AAAAAAAAAAD5/+7/AAACAAEAAAD6/+7/AAADAAIAAAD6/+//AAADAAMAAAD5/+//AAABAAIAAAD4/+//AAAAAAIAAAD4/+7/AAABAAAAAAD4/+3/AAABAAMAAAD5/+3/AAADAAAAAAD6/+3/AAAAAAAAAACW//f/AAACAAEAAACX//f/AAADAAIAAACX//j/AAADAAMAAACW//j/AAABAAIAAACV//j/AAAAAAIAAACV//f/AAABAAAAAACV//b/AAABAAMAAACW//b/AAADAAAAAACX//b/AAAAAAAAAACN/+T/AAACAAEAAACO/+T/AAADAAIAAACO/+X/AAADAAMAAACN/+X/AAABAAIAAACM/+X/AAAAAAIAAACM/+T/AAABAAAAAACM/+P/AAABAAMAAACN/+P/AAADAAAAAACO/+P/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_s0kwr")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1295883531]
@@ -538,7 +539,7 @@ offset_top = 10.0
 offset_right = 127.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.8.2"
+text = "ver 1.8.3"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_w5gt3")]
