@@ -20,8 +20,8 @@ scale = Vector2(4, 3)
 shape = SubResource("RectangleShape2D_bs321")
 
 [node name="Dialogue" parent="." unique_id=1738452948 instance=ExtResource("3_hvwg2")]
-offset_top = -21.0
-offset_bottom = -21.0
+offset_top = -27.0
+offset_bottom = -27.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://covm6wia1j0t3"]
+
+[ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="1_qs3yr"]
+[ext_resource type="Script" uid="uid://ctcp6pmjxkqn5" path="res://Scripts/UI/monster_renderer_module.gd" id="1_roei1"]
+
+[node name="MonsterRendererModule" type="HBoxContainer" unique_id=1756774041]
+offset_right = 160.0
+offset_bottom = 129.0
+script = ExtResource("1_roei1")
+
+[node name="Frame" type="Control" parent="." unique_id=1210884349]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="Frame" unique_id=979093336]
+position = Vector2(73, -72)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qs3yr")
+
+[node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MonsterData" unique_id=604795796]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "MONSTERNAME"
+
+[node name="HealthBar" type="ProgressBar" parent="MonsterData" unique_id=1196824568]
+layout_mode = 2
+show_percentage = false
+
+[node name="SubHealthBar" type="HBoxContainer" parent="MonsterData" unique_id=745248698]
+layout_mode = 2
+
+[node name="Health" type="Label" parent="MonsterData/SubHealthBar" unique_id=2041818636]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "23/23"
+
+[node name="Status" type="Label" parent="MonsterData/SubHealthBar" unique_id=173650029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "PSO"
