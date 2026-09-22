@@ -6,13 +6,7 @@ extends Area2D
 
 var player_in_chat_zone = false 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("attack") and player_in_chat_zone:
 		print("player activates NPC")
 		$Dialogue.start()

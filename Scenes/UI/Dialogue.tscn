@@ -13,7 +13,6 @@ grow_vertical = 2
 script = ExtResource("1_q377h")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2031565029]
-visible = false
 layout_mode = 0
 offset_left = -38.0
 offset_top = -46.0
@@ -42,3 +41,24 @@ offset_right = 247.66666
 offset_bottom = 106.66667
 scale = Vector2(0.3, 0.3)
 text = "Chatting...."
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=952914047]
+layout_mode = 0
+offset_left = -21.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 2.0
+texture = ExtResource("1_o5qjv")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Challenge" type="RichTextLabel" parent="NinePatchRect2" unique_id=905542078]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 91.0
+offset_bottom = 39.0
+scale = Vector2(0.5, 0.5)
+text = "Challenge"

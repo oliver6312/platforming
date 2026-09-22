@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://bgoxqip1kv3fy"]
 
-[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Monster/species_resource.gd" id="1_e0gpw"]
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_e0gpw"]
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="2_d78jy"]
 
 [resource]

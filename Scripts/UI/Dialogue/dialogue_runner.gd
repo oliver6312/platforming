@@ -8,6 +8,7 @@ var dialogue_active = false
 
 func _ready() -> void:
 	$NinePatchRect.visible = false
+	$NinePatchRect2.visible = false
 
 func start():
 	if dialogue_active:
@@ -32,10 +33,19 @@ func _input(event: InputEvent) -> void:
 
 func next_script():
 	current_dialogue_id += 1
+	print(current_dialogue_id)
+#	print(len(dialogue))
 	if current_dialogue_id >= len(dialogue):
-		dialogue_active = false
 		$NinePatchRect.visible = false
+		dialogue_active = false
+		var dialogue_over = true
 		return
+	
+	if current_dialogue_id == 3:
+		$NinePatchRect2.visible = true
+#		dialogue_active = false
+#		var dialogue_over = true
+#		return
 	
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
 	$NinePatchRect/Text.text = dialogue[current_dialogue_id]['text']
