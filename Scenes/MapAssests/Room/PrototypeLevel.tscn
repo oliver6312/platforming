@@ -538,7 +538,7 @@ offset_top = 10.0
 offset_right = 127.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.8.1.1"
+text = "ver 1.8.2"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_w5gt3")]
@@ -573,7 +573,7 @@ position = Vector2(-61, -81)
 unlocks = "dash"
 
 [node name="BaseNPC" parent="." unique_id=511328770 instance=ExtResource("8_y1kk7")]
-position = Vector2(-170, 16)
+position = Vector2(-166, 20)
 character = "Dad"
 greetings = "\"Hello son\""
 battler = true
