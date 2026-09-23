@@ -539,7 +539,7 @@ offset_top = 10.0
 offset_right = 127.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "ver 1.8.3"
+text = "ver 1.8.3.1"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitArea" parent="." unique_id=734897167 instance=ExtResource("5_w5gt3")]

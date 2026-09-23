@@ -345,6 +345,7 @@ func attack_air_down() -> void:
 	animated_sprite_2d.play("attack_weapon_down") 
 
 func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
+	# TODO fix this repeated nonsense
 	if locked_action != "attack":
 		return
 
@@ -353,7 +354,8 @@ func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		can_double_jump = true
+		if GameManager.double_jump_unlock:
+			can_double_jump = true
 
 		velocity.y = weapon_recoil_force
 
@@ -366,7 +368,9 @@ func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		can_double_jump = true
+		if GameManager.double_jump_unlock:
+			can_double_jump = true
+
 
 		var recoil_direction := -facing
 
@@ -382,7 +386,8 @@ func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		can_double_jump = true
+		if GameManager.double_jump_unlock:
+			can_double_jump = true
 
 		var recoil_direction := -facing
 		velocity.x = recoil_direction * weapon_recoil_force
