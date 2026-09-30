@@ -67,6 +67,7 @@ var touching_slippery_wall = false
 @onready var left_side_weapon: CollisionShape2D = %LeftSideWeapon
 
 @export var weapon_recoil_force := 1000.0
+@export var weapon_recoil_air_speed_cap := 800.0
 var attack_has_recoiled := false
 
 func _ready() -> void:
@@ -344,53 +345,38 @@ func attack_air_down() -> void:
 	weapon_hitbox_down.monitoring = true 
 	animated_sprite_2d.play("attack_weapon_down") 
 
+func _apply_weapon_recoil(new_velocity: Vector2) -> void:
+	attack_has_recoiled = true
+	if GameManager.double_jump_unlock:
+		can_double_jump = true
+	velocity = new_velocity
+	if not is_on_floor() and velocity.length() > weapon_recoil_air_speed_cap:
+		velocity = velocity.limit_length(weapon_recoil_air_speed_cap)
+
 func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
-	# TODO fix this repeated nonsense
-	if locked_action != "attack":
+	if locked_action != "attack" or attack_has_recoiled:
 		return
-
-	if attack_has_recoiled:
+	if not body.is_in_group("weapon_recoil"):
 		return
-
-	if body.is_in_group("weapon_recoil"):
-		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
-			can_double_jump = true
-
-		velocity.y = weapon_recoil_force
+	_apply_weapon_recoil(Vector2(velocity.x, weapon_recoil_force))
 
 func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
-	if locked_action != "attack":
+	if locked_action != "attack" or attack_has_recoiled:
 		return
-
-	if attack_has_recoiled:
+	if not body.is_in_group("weapon_recoil"):
 		return
-
-	if body.is_in_group("weapon_recoil"):
-		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
-			can_double_jump = true
-
-
-		var recoil_direction := -facing
-
-		velocity.x = recoil_direction * weapon_recoil_force * 0.5
-		velocity.y = -weapon_recoil_force
+	var recoil_direction := -facing
+	_apply_weapon_recoil(
+		Vector2(recoil_direction * weapon_recoil_force * 0.5, -weapon_recoil_force)
+	)
 
 func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
-	if locked_action != "attack":
+	if locked_action != "attack" or attack_has_recoiled:
 		return
-
-	if attack_has_recoiled:
+	if not body.is_in_group("weapon_recoil"):
 		return
-
-	if body.is_in_group("weapon_recoil"):
-		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
-			can_double_jump = true
-
-		var recoil_direction := -facing
-		velocity.x = recoil_direction * weapon_recoil_force
+	var recoil_direction := -facing
+	_apply_weapon_recoil(Vector2(recoil_direction * weapon_recoil_force, velocity.y))
 
 func _on_animation_finished() -> void:
 	if locked_action == "attack":
