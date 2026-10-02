@@ -7,8 +7,8 @@ var current_dialogue_id = 0
 var dialogue_active = false
 
 func _ready() -> void:
-	$NinePatchRect.visible = false
-	$NinePatchRect2.visible = false
+	$NinePatchRect.hide()
+	$NinePatchRect2.hide()
 
 func start():
 	if dialogue_active:
@@ -30,6 +30,8 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("attack"):
 		next_script()
+	if event.is_action_pressed("challenge"):
+		Events.request_challenge_npc.emit()
 
 func next_script():
 	current_dialogue_id += 1

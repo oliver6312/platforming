@@ -4,7 +4,10 @@ class_name MonsterRendererModule extends Control
 # including its sprite, HPbar and name
 
 @export 
-var your_pov: bool
+var monster_position: int
+
+@export 
+var belongs_to_player: bool
 
 @export 
 var frame: Control

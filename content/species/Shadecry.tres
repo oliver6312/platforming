@@ -7,5 +7,5 @@
 script = ExtResource("1_e0gpw")
 name = "Shadecry"
 element_one = 6
-sprite = ExtResource("2_d78jy")
+image = ExtResource("2_d78jy")
 metadata/_custom_type_script = "uid://cv3lai601u55n"

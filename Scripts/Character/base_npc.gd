@@ -10,6 +10,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("attack") and player_in_chat_zone:
 		print("player activates NPC")
 		$Dialogue.start()
+#	if Input.is_action_just_pressed("challenge") and player_in_chat_zone:
+#		print("player challenges NPC")
+#		$Dialogue.start()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

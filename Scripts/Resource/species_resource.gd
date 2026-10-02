@@ -17,13 +17,7 @@ enum Element {NONE, AIR, EARTH, ICE, METAL, PLANT, SHADOW, SPARK, WATER}
 @export var base_melee_damage: int
 @export var base_range_damage: int
 
-@export var growth_max_hp: int
-@export var growth_defense: int
-@export var growth_speed: int
-@export var growth_melee_damage: int
-@export var growth_range_damage: int
-
 @export var element_one: Element
 @export var element_two: Element
 
-@export var sprite: Texture2D
+@export var image: Texture2D

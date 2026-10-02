@@ -31,11 +31,6 @@ show_percentage = false
 [node name="SubHealthBar" type="HBoxContainer" parent="MonsterData" unique_id=745248698]
 layout_mode = 2
 
-[node name="Health" type="Label" parent="MonsterData/SubHealthBar" unique_id=2041818636]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "23/23"
-
 [node name="Status" type="Label" parent="MonsterData/SubHealthBar" unique_id=173650029]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
