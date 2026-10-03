@@ -16,8 +16,9 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-GameManager="*uid://tbqneqrbl7oc"
 Events="*uid://b4w2tb8fq4iqk"
+GameRunner="*uid://bwqnai2jfiv6r"
+GameManager="*uid://tbqneqrbl7oc"
 
 [display]
 

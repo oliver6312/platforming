@@ -33,3 +33,6 @@ var sprite: Sprite2D
 func _ready() -> void:
 	# TODO: listen for events to connect and update the monster
 	return
+	
+func connect_events() -> void:
+	return

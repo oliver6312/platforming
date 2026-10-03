@@ -4,7 +4,7 @@ extends Node
 signal request_challenge_npc
 
 # Events sent from
-
+signal on_ui_ready
 
 # Events sent from
 

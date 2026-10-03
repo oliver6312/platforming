@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bm0vmvf5s6vkh"]
 
 [ext_resource type="Texture2D" uid="uid://diun05jwy2s4s" path="res://Sprites/Terrain/BattleScreenTemplate.jpg" id="1_eyne6"]
+[ext_resource type="Script" uid="uid://ch2635fj5vgps" path="res://Scripts/UI/battle_renderer.gd" id="2_c4sc8"]
 [ext_resource type="PackedScene" uid="uid://covm6wia1j0t3" path="res://Scenes/UI/MonsterRendererModule.tscn" id="2_i6dt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6dt6"]
@@ -12,11 +13,18 @@ size = Vector2(48, 48)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_eyne6")
 
-[node name="Control" type="Control" parent="." unique_id=225554839]
+[node name="Control" type="Control" parent="." unique_id=225554839 node_paths=PackedStringArray("player_monster_module1", "player_monster_module2", "player_monster_module3", "enemy_monster_module1", "enemy_monster_module2", "enemy_monster_module3")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_c4sc8")
+player_monster_module1 = NodePath("PlayerMonsterContainer/MonsterRendererModule1")
+player_monster_module2 = NodePath("PlayerMonsterContainer/MonsterRendererModule2")
+player_monster_module3 = NodePath("PlayerMonsterContainer/MonsterRendererModule3")
+enemy_monster_module1 = NodePath("EnemyMonsterContainer/MonsterRendererModule1")
+enemy_monster_module2 = NodePath("EnemyMonsterContainer/MonsterRendererModule2")
+enemy_monster_module3 = NodePath("EnemyMonsterContainer/MonsterRendererModule3")
 
 [node name="Panel" type="Panel" parent="Control" unique_id=1082182920]
 layout_mode = 0
@@ -122,18 +130,34 @@ position = Vector2(384, -48)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_i6dt6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=999260966]
+[node name="PlayerMonsterContainer" type="HBoxContainer" parent="Control" unique_id=999260966]
 layout_mode = 0
-offset_left = -479.0
-offset_top = 2.0
-offset_bottom = 99.0
+offset_left = -460.0
+offset_right = -44.0
+offset_bottom = 58.0
 theme_override_constants/separation = 16
 
-[node name="MonsterRendererModule" parent="Control/HBoxContainer" unique_id=1756774041 instance=ExtResource("2_i6dt6")]
+[node name="MonsterRendererModule3" parent="Control/PlayerMonsterContainer" unique_id=365926595 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
 
-[node name="MonsterRendererModule2" parent="Control/HBoxContainer" unique_id=922742264 instance=ExtResource("2_i6dt6")]
+[node name="MonsterRendererModule2" parent="Control/PlayerMonsterContainer" unique_id=922742264 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
 
-[node name="MonsterRendererModule3" parent="Control/HBoxContainer" unique_id=365926595 instance=ExtResource("2_i6dt6")]
+[node name="MonsterRendererModule1" parent="Control/PlayerMonsterContainer" unique_id=1756774041 instance=ExtResource("2_i6dt6")]
+layout_mode = 2
+
+[node name="EnemyMonsterContainer" type="HBoxContainer" parent="Control" unique_id=548833705]
+layout_mode = 0
+offset_left = 44.0
+offset_right = 460.0
+offset_bottom = 58.0
+theme_override_constants/separation = 16
+
+[node name="MonsterRendererModule1" parent="Control/EnemyMonsterContainer" unique_id=2038143612 instance=ExtResource("2_i6dt6")]
+layout_mode = 2
+
+[node name="MonsterRendererModule2" parent="Control/EnemyMonsterContainer" unique_id=1146640379 instance=ExtResource("2_i6dt6")]
+layout_mode = 2
+
+[node name="MonsterRendererModule3" parent="Control/EnemyMonsterContainer" unique_id=1907552703 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
