@@ -6,8 +6,8 @@ signal request_challenge_npc
 # Events sent from battle renderer
 signal on_ui_ready
 
-# Events sent from
-
+# Events sent from game runner
+signal on_new_game_state_created
 
 
 # Events sent from
