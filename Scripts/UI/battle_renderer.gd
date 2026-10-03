@@ -27,6 +27,3 @@ func render() -> void:
 	player_monster_module1.belongs_to_player = true
 	player_monster_module2.belongs_to_player = true
 	player_monster_module3.belongs_to_player = true
-	enemy_monster_module1.flip_h()
-	enemy_monster_module2.connect_events()
-	enemy_monster_module3.connect_events()

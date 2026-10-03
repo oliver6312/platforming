@@ -35,7 +35,11 @@ func _ready() -> void:
 	return
 	
 func connect_events() -> void:
+	Events.on_ui_ready.connect(if_monster_enemy)
 	return
 
-func flip_sprite() -> void:
-	return
+func if_monster_enemy() -> void:
+	print("Checking if monster is enemy")
+	if belongs_to_player:
+		return
+	sprite.flip_h = true
