@@ -3,11 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="1_qs3yr"]
 [ext_resource type="Script" uid="uid://ctcp6pmjxkqn5" path="res://Scripts/UI/monster_renderer_module.gd" id="1_roei1"]
 
-[node name="MonsterRendererModule" type="HBoxContainer" unique_id=1756774041 node_paths=PackedStringArray("frame", "sprite")]
+[node name="MonsterRendererModule" type="HBoxContainer" unique_id=1756774041 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_bar", "status_label", "sprite")]
 offset_right = 160.0
 offset_bottom = 129.0
 script = ExtResource("1_roei1")
 frame = NodePath("Frame")
+data_panel = NodePath("MonsterData")
+name_label = NodePath("MonsterData/Name")
+hp_bar = NodePath("MonsterData/HealthBar")
+status_label = NodePath("MonsterData/SubHealthBar/Status")
 sprite = NodePath("Frame/Sprite")
 
 [node name="Frame" type="Control" parent="." unique_id=1210884349]
