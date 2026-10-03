@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://dld50st7yb1ie"]
+
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_am04j"]
+[ext_resource type="Texture2D" uid="uid://cl4wucmn6riay" path="res://Sprites/Monster/Clouddog.png" id="1_xmyck"]
+
+[resource]
+script = ExtResource("1_am04j")
+name = "Clouddog"
+base_max_hp = 30
+base_speed = 10
+element_one = 1
+image = ExtResource("1_xmyck")
+metadata/_custom_type_script = "uid://cv3lai601u55n"
