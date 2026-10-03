@@ -36,3 +36,6 @@ func _ready() -> void:
 	
 func connect_events() -> void:
 	return
+
+func flip_sprite() -> void:
+	return

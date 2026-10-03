@@ -5,7 +5,7 @@ enum PHASE {AWAIT_INPUT, RESOLVE_ROUND, GAME_OVER}
 
 var current_phase: PHASE
 
-var game_manager: GameManager
+var battle_state: BattleState
 var rng: RandomNumberGenerator
 
 func _ready():
@@ -13,8 +13,7 @@ func _ready():
 	Events.on_ui_ready.connect(setup_model)
 	
 
-
 func setup_model():
-	game_manager = GameManager.new()
 	rng = RandomNumberGenerator.new()
+	battle_state = BattleState.new()
 #	Events.on_new_game_state_created.emit()
