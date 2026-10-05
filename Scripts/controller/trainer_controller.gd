@@ -20,5 +20,8 @@ func create_trainer(monsters: Array[Monster], is_player: bool) -> Trainer:
 	var trainer = Trainer.new()
 	trainer.is_player = is_player
 	trainer.monsters = monsters 
-	add_trainer_monster_to_battle(trainer, 0)
+	var index: int = -1
+	for i in monsters:
+		index += 1
+		add_trainer_monster_to_battle(trainer, index)
 	return trainer
