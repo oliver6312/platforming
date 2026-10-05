@@ -41,8 +41,8 @@ func maybe_update_monster(monster: Monster):
 	if monster == bound_monster:
 		update()
 
-func maybe_bind_monster(monster: Monster, is_player_monster: bool):
-	if belongs_to_player == is_player_monster:
+func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index: int):
+	if belongs_to_player == is_player_monster and monster_position == monster_index:
 		bound_monster = monster
 		move_child(frame, 0 if is_player_monster else 1)
 		update()

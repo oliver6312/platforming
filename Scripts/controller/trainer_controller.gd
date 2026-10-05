@@ -14,7 +14,7 @@ func add_trainer_monster_to_battle(trainer: Trainer, monster_index: int):
 	var monster = trainer.monsters[monster_index]
 	trainer.current_monster_index = monster_index
 
-	Events.on_monster_added_to_battle.emit(monster, trainer.is_player)
+	Events.on_monster_added_to_battle.emit(monster, trainer.is_player, monster_index)
 
 func create_trainer(monsters: Array[Monster], is_player: bool) -> Trainer:
 	var trainer = Trainer.new()

@@ -140,10 +140,12 @@ theme_override_constants/separation = 16
 
 [node name="MonsterRendererModule3" parent="Control/PlayerMonsterContainer" unique_id=365926595 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
+monster_position = 2
 belongs_to_player = true
 
 [node name="MonsterRendererModule2" parent="Control/PlayerMonsterContainer" unique_id=922742264 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
+monster_position = 1
 belongs_to_player = true
 
 [node name="MonsterRendererModule1" parent="Control/PlayerMonsterContainer" unique_id=1756774041 instance=ExtResource("2_i6dt6")]
@@ -162,6 +164,8 @@ layout_mode = 2
 
 [node name="MonsterRendererModule2" parent="Control/EnemyMonsterContainer" unique_id=1146640379 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
+monster_position = 1
 
 [node name="MonsterRendererModule3" parent="Control/EnemyMonsterContainer" unique_id=1907552703 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
+monster_position = 2
