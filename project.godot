@@ -20,6 +20,7 @@ Events="*uid://b4w2tb8fq4iqk"
 GameRunner="*uid://bwqnai2jfiv6r"
 GameManager="*uid://tbqneqrbl7oc"
 MonsterController="*uid://crynohul1ybah"
+TrainerController="*uid://dg44b17knlcv5"
 
 [display]
 

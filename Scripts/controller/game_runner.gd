@@ -21,10 +21,14 @@ func setup_model():
 	var species_clouddog = preload("res://content/species/Clouddog.tres")
 
 	var monster1 = MonsterController.create_monster(species_shadecry)
-	var monster2 = MonsterController.create_monster(species_clouddog, "Reggie")
-	var monster3 = MonsterController.create_monster(species_clouddog, "Steven")
+	var monster2 = MonsterController.create_monster(species_shadecry, "Reggie")
+	var monster3 = MonsterController.create_monster(species_shadecry, "Steven")
+	
+	var monster4 = MonsterController.create_monster(species_clouddog)
+	var monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
+	var monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
 
-#	game_state.player = TrainerController.create_trainer([monster1, monster3], true)
-#	game_state.opponent = TrainerController.create_trainer([monster2], false)
+	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
+	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
 
 	current_phase = PHASE.AWAIT_INPUT

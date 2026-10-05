@@ -1,7 +1,7 @@
 class_name BattleState
 
-#var player: Trainer
-#var opponent: Trainer
+var player: Trainer
+var opponent: Trainer
 var is_player_turn: bool
 
 #var player_monster: Monster:
