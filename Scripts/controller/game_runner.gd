@@ -11,6 +11,7 @@ var rng: RandomNumberGenerator
 func _ready():
 	# Connect signal listeners
 	Events.on_ui_ready.connect(setup_model)
+	Events.request_quit.connect(handle_quit)
 #	Events.monster_selected_by_player.connect(change_selected_monster)
 
 #func change_selected_monster(selected_monster: Monster):
@@ -37,3 +38,17 @@ func setup_model():
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
 
 	current_phase = PHASE.AWAIT_INPUT
+
+#func handle_run():
+#	if current_phase != PHASE.AWAIT_INPUT:
+#		return
+#	Events.request_log.emit("You ran away. Your cowardice will not be forgotten.")
+#	var timer = Timer.new()
+#	add_child(timer)
+#	timer.wait_time = 2.0
+#	timer.start()
+#	if timer.is_stopped():
+#		get_tree().quit()
+
+func handle_quit():
+	get_tree().quit()

@@ -5,6 +5,7 @@ signal request_challenge_npc
 
 # Events sent from battle renderer
 signal on_ui_ready
+signal request_quit
 # Module
 signal monster_selected_by_player
 
