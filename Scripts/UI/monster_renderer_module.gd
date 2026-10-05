@@ -50,6 +50,8 @@ func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index
 func update():
 	if bound_monster == null:
 		return
+	if !belongs_to_player:
+		sprite.flip_h = true
 
 	name_label.text = bound_monster.name.to_upper()
 	sprite.texture = bound_monster.image
@@ -59,9 +61,3 @@ func update():
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	
 	return
-
-func if_monster_enemy() -> void:
-	print("Checking if monster is enemy")
-	if belongs_to_player:
-		return
-	sprite.flip_h = true
