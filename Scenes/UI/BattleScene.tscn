@@ -28,7 +28,7 @@ enemy_monster_module1 = NodePath("EnemyMonsterContainer/MonsterRendererModule1")
 enemy_monster_module2 = NodePath("EnemyMonsterContainer/MonsterRendererModule2")
 enemy_monster_module3 = NodePath("EnemyMonsterContainer/MonsterRendererModule3")
 
-[node name="BattlePanel" type="Panel" parent="BattleRenderer" unique_id=1082182920]
+[node name="BattlePanel" type="Panel" parent="BattleRenderer" unique_id=1082182920 node_paths=PackedStringArray("monster_info")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -11.950001
@@ -41,6 +41,7 @@ offset_bottom = -7.0000305
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_4ty2g")
+monster_info = NodePath("HBoxContainer/MonsterInfo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BattleRenderer/BattlePanel" unique_id=145856737]
 layout_mode = 1
@@ -74,12 +75,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 4"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=972526037]
+[node name="MoveInfo" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=972526037]
 custom_minimum_size = Vector2(367, 0)
 layout_mode = 2
 text = "Move Information"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=483945707]
+[node name="MonsterInfo" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=483945707]
 custom_minimum_size = Vector2(369, 0)
 layout_mode = 2
 text = "Monster Information"

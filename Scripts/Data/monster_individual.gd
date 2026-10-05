@@ -19,7 +19,7 @@ var speed: int:
 var melee_damage: int:
 	get: return species.base_melee_damage
 var range_damage: int:
-	get: return species.range_damage
+	get: return species.base_range_damage
 
 var move_one: String
 var move_two: String
@@ -30,3 +30,15 @@ var move_three: String
 
 
 #	get: return Calculations.calculate_monster_stat(species.base_max_hp, hp_growth, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
+
+func dump_state():
+	return "Name: {name}\nHealth: ({current_hp}/{max_hp})\nMelee damage: {melee_damage}\nRanged damage: {range_damage}\nDefense: {defense}\nSpeed: {speed}"\
+	.format({
+		"name": name,
+		"current_hp": current_hp,
+		"max_hp": max_hp,
+		"melee_damage": melee_damage,
+		"range_damage": range_damage,
+		"defense": defense,
+		"speed": speed,
+	})
