@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="1_qs3yr"]
 [ext_resource type="Script" uid="uid://ctcp6pmjxkqn5" path="res://Scripts/UI/monster_renderer_module.gd" id="1_roei1"]
+[ext_resource type="Texture2D" uid="uid://bevbfyxpwoyqb" path="res://Sprites/Monster/MissingMonsterSquare.png" id="2_roei1"]
 
-[node name="MonsterRendererModule" type="HBoxContainer" unique_id=1756774041 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite")]
-offset_right = 160.0
-offset_bottom = 129.0
+[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(124, 58)
+offset_right = 124.0
+offset_bottom = 58.0
 script = ExtResource("1_roei1")
 frame = NodePath("Frame")
 data_panel = NodePath("MonsterData")
@@ -18,13 +21,17 @@ sprite = NodePath("Frame/Sprite")
 [node name="Frame" type="Control" parent="." unique_id=1210884349]
 layout_mode = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Frame" unique_id=1955508990]
+position = Vector2(62, -47)
+texture = ExtResource("2_roei1")
+
 [node name="Sprite" type="Sprite2D" parent="Frame" unique_id=979093336]
-position = Vector2(73, -72)
-scale = Vector2(3, 3)
+position = Vector2(62, -47)
 texture = ExtResource("1_qs3yr")
 
 [node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Name" type="Label" parent="MonsterData" unique_id=604795796]
 layout_mode = 2

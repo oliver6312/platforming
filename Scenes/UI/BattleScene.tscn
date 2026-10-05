@@ -14,6 +14,9 @@ visible = false
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_eyne6")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1475032078]
+zoom = Vector2(2, 2)
+
 [node name="Control" type="Control" parent="." unique_id=225554839 node_paths=PackedStringArray("player_monster_module1", "player_monster_module2", "player_monster_module3", "enemy_monster_module1", "enemy_monster_module2", "enemy_monster_module3")]
 layout_mode = 3
 anchors_preset = 0
@@ -36,28 +39,32 @@ offset_bottom = 244.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel" unique_id=145856737]
 layout_mode = 0
-offset_top = 1.0
 offset_right = 434.0
-offset_bottom = 102.0
+offset_bottom = 215.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/HBoxContainer" unique_id=2074282519]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Button" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=1705985846]
+[node name="MoveButton" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=1705985846]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "Move 1"
 
-[node name="Button2" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=162943910]
+[node name="MoveButton2" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=162943910]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 23
 text = "Move 2"
 
-[node name="Button3" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=858383797]
+[node name="MoveButton3" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=858383797]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Move 2"
+theme_override_font_sizes/font_size = 23
+text = "Move 3"
+
+[node name="MoveButton4" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer" unique_id=1141895657]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Move 4"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/HBoxContainer" unique_id=972526037]
 layout_mode = 2
@@ -77,9 +84,6 @@ layout_mode = 2
 
 [node name="Button3" type="Button" parent="Control/Panel/HBoxContainer/VBoxContainer2" unique_id=1598646581]
 layout_mode = 2
-
-[node name="Camera2D" type="Camera2D" parent="Control" unique_id=1475032078]
-zoom = Vector2(2, 2)
 
 [node name="RankA1" type="Area2D" parent="Control" unique_id=761454662]
 visible = false
@@ -136,7 +140,7 @@ layout_mode = 0
 offset_left = -460.0
 offset_right = -44.0
 offset_bottom = 58.0
-theme_override_constants/separation = 16
+theme_override_constants/separation = 21
 
 [node name="MonsterRendererModule3" parent="Control/PlayerMonsterContainer" unique_id=365926595 instance=ExtResource("2_i6dt6")]
 layout_mode = 2
