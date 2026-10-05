@@ -4,6 +4,10 @@ var player: Trainer
 var opponent: Trainer
 var is_player_turn: bool
 
+var current_selected_monster: Monster
+
+
+
 #var player_monster: Monster:
 #	get: return player.current_monster
 #var opponent_monster: Monster:

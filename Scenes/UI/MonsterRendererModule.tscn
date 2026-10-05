@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="1_qs3yr"]
 [ext_resource type="Script" uid="uid://ctcp6pmjxkqn5" path="res://Scripts/UI/monster_renderer_module.gd" id="1_roei1"]
+[ext_resource type="Texture2D" uid="uid://crfkjcwmgkd1o" path="res://Sprites/Monster/selection_area.png" id="2_3oein"]
 [ext_resource type="Texture2D" uid="uid://bevbfyxpwoyqb" path="res://Sprites/Monster/MissingMonsterSquare.png" id="2_roei1"]
 
-[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite")]
+[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "selection_symbol")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(124, 58)
 offset_right = 124.0
@@ -17,17 +18,31 @@ hp_label = NodePath("MonsterData/SubHealthBar/Hp")
 hp_bar = NodePath("MonsterData/HealthBar")
 status_label = NodePath("MonsterData/SubHealthBar/Status")
 sprite = NodePath("Frame/Sprite")
+selection_symbol = NodePath("Frame/Arrow")
 
 [node name="Frame" type="Control" parent="." unique_id=1210884349]
 layout_mode = 2
 
+[node name="Arrow" type="Sprite2D" parent="Frame" unique_id=399781418]
+visible = false
+position = Vector2(62, -120)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3oein")
+
 [node name="Sprite2D" type="Sprite2D" parent="Frame" unique_id=1955508990]
-position = Vector2(62, -47)
+position = Vector2(62, -45)
 texture = ExtResource("2_roei1")
 
 [node name="Sprite" type="Sprite2D" parent="Frame" unique_id=979093336]
 position = Vector2(62, -47)
 texture = ExtResource("1_qs3yr")
+
+[node name="Button" type="Button" parent="Frame" unique_id=899185369]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 17.0
+offset_top = -90.0
+offset_right = 107.0
 
 [node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
 layout_mode = 2
@@ -54,3 +69,5 @@ text = "10/20"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "PSO"
+
+[connection signal="pressed" from="Frame/Button" to="." method="_on_button_pressed"]

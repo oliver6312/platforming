@@ -11,6 +11,11 @@ var rng: RandomNumberGenerator
 func _ready():
 	# Connect signal listeners
 	Events.on_ui_ready.connect(setup_model)
+#	Events.monster_selected_by_player.connect(change_selected_monster)
+
+#func change_selected_monster(selected_monster: Monster):
+#	print(selected_monster.nickname)
+#	return selected_monster
 
 func setup_model():
 	rng = RandomNumberGenerator.new()

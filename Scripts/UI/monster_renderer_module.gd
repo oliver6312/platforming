@@ -30,16 +30,30 @@ var status_label: Label
 @export
 var sprite: Sprite2D
 
+@export
+var selection_symbol: Sprite2D
+
 var bound_monster: Monster
+
+var selected: bool
 
 func connect_events() -> void:
 	Events.on_monster_added_to_battle.connect(maybe_bind_monster)
 	Events.on_monster_updated.connect(maybe_update_monster)
+	Events.monster_selected_by_player.connect(check_monster_selected)
 	return
 
 func maybe_update_monster(monster: Monster):
 	if monster == bound_monster:
 		update()
+
+func check_monster_selected(selected_monster: Monster):
+	if selected_monster == bound_monster:
+		selected = true
+		selection_symbol.visible = true
+	else:
+		selected = false
+		selection_symbol.visible = false
 
 func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index: int):
 	if belongs_to_player == is_player_monster and monster_position == monster_index:
@@ -61,3 +75,8 @@ func update():
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	
 	return
+
+func _on_button_pressed() -> void:
+#	print(bound_monster.name)
+	var selected_monster = bound_monster
+	Events.monster_selected_by_player.emit(selected_monster)
