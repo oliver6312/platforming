@@ -51,26 +51,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=2074282519]
+[node name="MoveButtonOptions" type="VBoxContainer" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=2074282519]
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="MoveButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/VBoxContainer" unique_id=1705985846]
+[node name="MoveButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=1705985846]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 1"
 
-[node name="MoveButton2" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/VBoxContainer" unique_id=162943910]
+[node name="MoveButton2" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=162943910]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 2"
 
-[node name="MoveButton3" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/VBoxContainer" unique_id=858383797]
+[node name="MoveButton3" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=858383797]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 3"
 
-[node name="MoveButton4" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/VBoxContainer" unique_id=1141895657]
+[node name="MoveButton4" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=1141895657]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 4"
@@ -88,15 +88,17 @@ text = "Monster Information"
 [node name="RightButtonOptions" type="VBoxContainer" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=269271188]
 layout_mode = 2
 
+[node name="LogButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=716612721]
+custom_minimum_size = Vector2(101, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Log"
+
 [node name="LeaveButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=1757403519]
 custom_minimum_size = Vector2(101, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Leave"
-
-[node name="Button2" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=716612721]
-custom_minimum_size = Vector2(97, 0)
-layout_mode = 2
 
 [node name="Button3" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=1598646581]
 custom_minimum_size = Vector2(97, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MoveResource" format=3 uid="uid://cgenijyfskm6q"]
+
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_5j2mj"]
+
+[resource]
+script = ExtResource("1_5j2mj")
+name = "Frost Bite"
+melee = true
+rank = [true, true, false]
+target = [true, false, false]
+metadata/_custom_type_script = "uid://bsgae8faaj7p8"
