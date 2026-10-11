@@ -12,6 +12,7 @@ func _ready():
 	# Connect signal listeners
 	Events.on_ui_ready.connect(setup_model)
 	Events.request_quit.connect(handle_quit)
+	Events.request_log.connect(handle_log)
 #	Events.monster_selected_by_player.connect(change_selected_monster)
 
 #func change_selected_monster(selected_monster: Monster):
@@ -37,6 +38,11 @@ func setup_model():
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
 
+#	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)
+#	var all_combined_monsters
+#	all_combined_monsters = battle_state.all_opponent_monsters
+#	battle_state.all_opponent_monsters = all_combined_monsters
+
 	current_phase = PHASE.AWAIT_INPUT
 
 #func handle_run():
@@ -49,6 +55,11 @@ func setup_model():
 #	timer.start()
 #	if timer.is_stopped():
 #		get_tree().quit()
+
+func handle_log():
+#	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)
+	print(battle_state.all_opponent_monsters)
+#	print(battle_state.all_player_monsters)
 
 func handle_quit():
 	get_tree().quit()

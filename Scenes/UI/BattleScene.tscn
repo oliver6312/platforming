@@ -92,7 +92,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(101, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
-text = "Log"
+text = "Print"
 
 [node name="LeaveButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=1757403519]
 custom_minimum_size = Vector2(101, 0)
@@ -143,4 +143,5 @@ monster_position = 1
 layout_mode = 2
 monster_position = 2
 
+[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LogButton" to="BattleRenderer/BattlePanel" method="_on_log_button_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LeaveButton" to="BattleRenderer/BattlePanel" method="_on_leave_button_pressed"]

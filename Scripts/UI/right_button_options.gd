@@ -13,5 +13,8 @@ func _ready() -> void:
 func _on_leave_button_pressed() -> void:
 	Events.request_quit.emit()
 
+func _on_log_button_pressed() -> void:
+	Events.request_log.emit()
+
 func show_selected_monster_stats(selected_monster: Monster):
 	monster_info.text = selected_monster.dump_state()
