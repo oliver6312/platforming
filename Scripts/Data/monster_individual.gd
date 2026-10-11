@@ -21,6 +21,8 @@ var melee_damage: int:
 var range_damage: int:
 	get: return species.base_range_damage
 
+var priority
+
 var move_one: String
 var move_two: String
 var move_three: String

@@ -38,6 +38,7 @@ func setup_model():
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
 
+	Calculations.calculate_monster_turn_order(monster1, monster2, monster3, monster4, monster5, monster6)
 	battle_state.all_battle_monsters = [monster1, monster2, monster3, monster4, monster5, monster6]
 
 	current_phase = PHASE.AWAIT_INPUT
