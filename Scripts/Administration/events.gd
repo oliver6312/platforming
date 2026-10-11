@@ -12,6 +12,7 @@ signal monster_selected_by_player
 
 # Events sent from game runner
 signal on_new_game_state_created
+signal round_changed
 
 # Events sent from trainer controller
 signal on_monster_added_to_battle

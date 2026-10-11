@@ -34,6 +34,8 @@ func setup_model():
 	var monster4 = MonsterController.create_monster(species_clouddog)
 	var monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
 	var monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
+	
+	
 
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
@@ -56,10 +58,12 @@ func start_turn():
 	if battle_state.turn_index == battle_state.round_size:
 		battle_state.round += 1
 		battle_state.turn_index = 0
-		
+		Events.round_changed.emit(battle_state.round)
 		print("turn index = round size")
-	print(battle_state.turn_index)
-	print(battle_state.round)
+
+	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
+	print(battle_state.active_monster)
+
 	pass
 
 #func handle_run():
