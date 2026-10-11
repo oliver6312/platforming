@@ -40,8 +40,27 @@ func setup_model():
 
 	Calculations.calculate_monster_turn_order(monster1, monster2, monster3, monster4, monster5, monster6)
 	battle_state.all_battle_monsters = [monster1, monster2, monster3, monster4, monster5, monster6]
+	battle_state.all_battle_monsters.sort_custom(func(a, b): return a.priority > b.priority)
 
 	current_phase = PHASE.AWAIT_INPUT
+	print(battle_state.round_size)
+
+func end_turn():
+	print("turn ended")
+	start_turn()
+
+func start_turn():
+	print("turn started")
+	battle_state.round_size = battle_state.all_battle_monsters.size()
+	battle_state.turn_index += 1
+	if battle_state.turn_index == battle_state.round_size:
+		battle_state.round += 1
+		battle_state.turn_index = 0
+		
+		print("turn index = round size")
+	print(battle_state.turn_index)
+	print(battle_state.round)
+	pass
 
 #func handle_run():
 #	if current_phase != PHASE.AWAIT_INPUT:

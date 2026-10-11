@@ -18,3 +18,6 @@ func _on_log_button_pressed() -> void:
 
 func show_selected_monster_stats(selected_monster: Monster):
 	monster_info.text = selected_monster.dump_state()
+
+func _on_move_button_pressed() -> void:
+	GameRunner.end_turn()

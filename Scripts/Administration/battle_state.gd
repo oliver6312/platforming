@@ -1,9 +1,17 @@
 class_name BattleState
 
+#player stuff
 var player: Trainer
 var opponent: Trainer
 var is_player_turn: bool
 
+#gameplay flow (turn/order/round)
+var round: int = 1
+var round_size: int = 0
+#all_battle_monsters.size()
+var turn_index: int = 0
+
+#monster stuff
 var current_selected_monster: Monster
 
 var all_opponent_monsters: Array:
@@ -13,8 +21,3 @@ var all_player_monsters: Array:
 	get: return player.monsters
 
 var all_battle_monsters: Array
-
-var player_monster: Monster:
-	get: return player.current_monster
-var opponent_monster: Monster:
-	get: return opponent.current_monster
