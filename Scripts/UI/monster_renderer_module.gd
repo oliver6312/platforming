@@ -40,14 +40,14 @@ var selected: bool
 func connect_events() -> void:
 	Events.on_monster_added_to_battle.connect(maybe_bind_monster)
 	Events.on_monster_updated.connect(maybe_update_monster)
-	Events.monster_selected_by_player.connect(check_monster_selected)
+	Events.start_active_monster_turn.connect(check_active_monster)
 	return
 
 func maybe_update_monster(monster: Monster):
 	if monster == bound_monster:
 		update()
 
-func check_monster_selected(selected_monster: Monster):
+func check_active_monster(selected_monster: Monster):
 	if selected_monster == bound_monster:
 		selected = true
 		selection_symbol.visible = true
@@ -75,8 +75,3 @@ func update():
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	
 	return
-
-func _on_button_pressed() -> void:
-#	print(bound_monster.name)
-	var selected_monster = bound_monster
-	Events.monster_selected_by_player.emit(selected_monster)

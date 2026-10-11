@@ -13,7 +13,6 @@ func _ready():
 	Events.on_ui_ready.connect(setup_model)
 	Events.request_quit.connect(handle_quit)
 	Events.request_log.connect(handle_log)
-#	Events.monster_selected_by_player.connect(change_selected_monster)
 
 #func change_selected_monster(selected_monster: Monster):
 #	print(selected_monster.nickname)
@@ -48,11 +47,9 @@ func setup_model():
 	print(battle_state.round_size)
 
 func end_turn():
-	print("turn ended")
 	start_turn()
 
 func start_turn():
-	print("turn started")
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
 	if battle_state.turn_index == battle_state.round_size:
@@ -62,7 +59,8 @@ func start_turn():
 		print("turn index = round size")
 
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
-	print(battle_state.active_monster)
+	print(battle_state.active_monster.name)
+	Events.start_active_monster_turn.emit(battle_state.active_monster)
 
 	pass
 

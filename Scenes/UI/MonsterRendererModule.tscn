@@ -37,13 +37,6 @@ texture = ExtResource("2_roei1")
 position = Vector2(62, -47)
 texture = ExtResource("1_qs3yr")
 
-[node name="Button" type="Button" parent="Frame" unique_id=899185369]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 17.0
-offset_top = -90.0
-offset_right = 107.0
-
 [node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -69,5 +62,3 @@ text = "10/20"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "PSO"
-
-[connection signal="pressed" from="Frame/Button" to="." method="_on_button_pressed"]
