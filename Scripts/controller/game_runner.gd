@@ -38,10 +38,7 @@ func setup_model():
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
 
-#	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)
-#	var all_combined_monsters
-#	all_combined_monsters = battle_state.all_opponent_monsters
-#	battle_state.all_opponent_monsters = all_combined_monsters
+	battle_state.all_battle_monsters = [monster1, monster2, monster3, monster4, monster5, monster6]
 
 	current_phase = PHASE.AWAIT_INPUT
 
@@ -58,7 +55,7 @@ func setup_model():
 
 func handle_log():
 #	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)
-	print(battle_state.all_opponent_monsters)
+	print(battle_state.all_battle_monsters)
 #	print(battle_state.all_player_monsters)
 
 func handle_quit():

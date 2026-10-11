@@ -12,7 +12,7 @@ var all_opponent_monsters: Array:
 var all_player_monsters: Array:
 	get: return player.monsters
 
-var all_combined_monsters: Array
+var all_battle_monsters: Array
 
 var player_monster: Monster:
 	get: return player.current_monster
