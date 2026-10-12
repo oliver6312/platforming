@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://buwkdbv6gcs8a" path="res://Scripts/UI/bottom_panel.gd" id="3_4ty2g"]
 [ext_resource type="Script" uid="uid://bkc0pg0rh8gjx" path="res://Scripts/UI/top_panel.gd" id="3_1438b"]
 [ext_resource type="Script" uid="uid://7e7gusstj5a2" path="res://Scripts/UI/move_button_options.gd" id="5_48hph"]
+[ext_resource type="Texture2D" uid="uid://d2lnmp5743kb4" path="res://Sprites/MoveButtonSprite.png" id="6_16fdm"]
 
 [node name="BattleScene" type="Node2D" unique_id=352108084]
 
@@ -102,6 +103,10 @@ text = "Move 3"
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 4"
+
+[node name="Sprite2D" type="Sprite2D" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=1681488003]
+position = Vector2(50, 68.99999)
+texture = ExtResource("6_16fdm")
 
 [node name="MoveInfo" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=972526037]
 custom_minimum_size = Vector2(367, 0)
