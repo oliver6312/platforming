@@ -1,9 +1,6 @@
 extends Node
 
-enum INTERACTION_MODE {NONE, FIGHT, ITEM, MON}
-enum PHASE {AWAIT_INPUT, RESOLVE_ROUND, GAME_OVER}
-
-var current_phase: PHASE
+enum BATTLE_PICK_MODE {MOVE, RANK, TARGET}
 
 var battle_state: BattleState
 var rng: RandomNumberGenerator
@@ -33,8 +30,6 @@ func setup_model():
 	var monster4 = MonsterController.create_monster(species_clouddog)
 	var monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
 	var monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
-	
-	
 
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
@@ -43,7 +38,6 @@ func setup_model():
 	battle_state.all_battle_monsters = [monster1, monster2, monster3, monster4, monster5, monster6]
 	battle_state.all_battle_monsters.sort_custom(func(a, b): return a.priority > b.priority)
 
-	current_phase = PHASE.AWAIT_INPUT
 	print(battle_state.round_size)
 
 func end_turn():

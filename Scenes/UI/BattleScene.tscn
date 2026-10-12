@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://covm6wia1j0t3" path="res://Scenes/UI/MonsterRendererModule.tscn" id="2_i6dt6"]
 [ext_resource type="Script" uid="uid://buwkdbv6gcs8a" path="res://Scripts/UI/bottom_panel.gd" id="3_4ty2g"]
 [ext_resource type="Script" uid="uid://bkc0pg0rh8gjx" path="res://Scripts/UI/top_panel.gd" id="3_1438b"]
+[ext_resource type="Script" uid="uid://7e7gusstj5a2" path="res://Scripts/UI/move_button_options.gd" id="5_48hph"]
 
 [node name="BattleScene" type="Node2D" unique_id=352108084]
 
@@ -80,6 +81,7 @@ grow_vertical = 2
 [node name="MoveButtonOptions" type="VBoxContainer" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=2074282519]
 layout_mode = 2
 theme_override_constants/separation = 1
+script = ExtResource("5_48hph")
 
 [node name="MoveButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=1705985846]
 layout_mode = 2
