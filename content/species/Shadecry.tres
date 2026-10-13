@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_e0gpw"]
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="2_d78jy"]
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_ndoao"]
+[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/moves/frost_bite.tres" id="3_iacij"]
+[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/moves/vacuum_orb.tres" id="4_1pg04"]
+[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/moves/gust_of_wind.tres" id="5_naov7"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/moves/tranquil_song.tres" id="6_1dhke"]
 
 [resource]
 script = ExtResource("1_e0gpw")
 name = "Shadecry"
+learnable_moves = Array[ExtResource("2_ndoao")]([ExtResource("3_iacij"), ExtResource("4_1pg04"), ExtResource("5_naov7"), ExtResource("6_1dhke")])
 base_defense = 15
 base_speed = 25
 base_melee_damage = 10

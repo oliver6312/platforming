@@ -5,7 +5,7 @@ enum Element {NONE, AIR, EARTH, ICE, METAL, PLANT, SHADOW, SPARK, WATER}
 
 @export var name: String
 @export var description: String
-@export var learnable_moves: Array
+@export var learnable_moves: Array[MoveResource]
 #@export var minimal_height: int
 #@export var maximal_height: int
 #@export var minimal_weight: int

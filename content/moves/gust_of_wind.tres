@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MoveResource" format=3 uid="uid://ccosmkapn3kab"]
+
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_fehpo"]
+
+[resource]
+script = ExtResource("1_fehpo")
+name = "Gust of Wind"
+rank = [false, false, true]
+target = [true, true, false]
+metadata/_custom_type_script = "uid://bsgae8faaj7p8"

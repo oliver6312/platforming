@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MoveResource" format=3 uid="uid://4hss2wsjr3um"]
+
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_nak3d"]
+
+[resource]
+script = ExtResource("1_nak3d")
+name = "Tranquil Song"
+limited_usages = true
+usage_max = 2
+metadata/_custom_type_script = "uid://bsgae8faaj7p8"
