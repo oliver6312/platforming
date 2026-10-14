@@ -11,7 +11,7 @@
 [resource]
 script = ExtResource("1_e0gpw")
 name = "Shadecry"
-learnable_moves = Array[ExtResource("2_ndoao")]([ExtResource("3_iacij"), ExtResource("4_1pg04"), ExtResource("5_naov7"), ExtResource("6_1dhke")])
+starter_moves = Array[ExtResource("2_ndoao")]([ExtResource("6_1dhke"), ExtResource("5_naov7"), ExtResource("4_1pg04"), ExtResource("3_iacij")])
 base_defense = 15
 base_speed = 25
 base_melee_damage = 10

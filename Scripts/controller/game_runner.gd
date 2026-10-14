@@ -54,6 +54,7 @@ func start_turn():
 
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
 	print(battle_state.active_monster.name)
+	print(battle_state.active_monster.moves)
 	Events.start_active_monster_turn.emit(battle_state.active_monster)
 
 	pass

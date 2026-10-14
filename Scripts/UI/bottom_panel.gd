@@ -23,8 +23,7 @@ func _on_log_button_pressed() -> void:
 
 func handle_active_monster_ui(active_monster: Monster):
 	monster_info.text = active_monster.dump_state()
-	active_monster.move_one
-	
+
 
 func _on_move_button_pressed() -> void:
 	GameRunner.end_turn()
