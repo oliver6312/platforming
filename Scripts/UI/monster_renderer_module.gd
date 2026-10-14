@@ -46,6 +46,9 @@ func connect_events() -> void:
 func maybe_update_monster(monster: Monster):
 	if monster == bound_monster:
 		update()
+		monster.battle_position = monster_position
+		print(monster.name)
+		print(monster.battle_position + monster_position)
 
 func check_active_monster(selected_monster: Monster):
 	if selected_monster == bound_monster:
@@ -74,4 +77,9 @@ func update():
 	hp_bar.value = bound_monster.current_hp
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	
+	bound_monster.battle_position = monster_position
 	return
+	
+	
+	
+	

@@ -55,7 +55,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "Round: x"
 
-[node name="BattlePanel" type="Panel" parent="BattleRenderer" unique_id=1082182920 node_paths=PackedStringArray("monster_info")]
+[node name="BattlePanel" type="Panel" parent="BattleRenderer" unique_id=1082182920 node_paths=PackedStringArray("monster_info", "move_button_1", "move_button_2", "move_button_3", "move_button_4")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -11.950001
@@ -69,6 +69,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_4ty2g")
 monster_info = NodePath("HBoxContainer/MonsterInfo")
+move_button_1 = NodePath("HBoxContainer/MoveButtonOptions/MoveButton")
+move_button_2 = NodePath("HBoxContainer/MoveButtonOptions/MoveButton2")
+move_button_3 = NodePath("HBoxContainer/MoveButtonOptions/MoveButton3")
+move_button_4 = NodePath("HBoxContainer/MoveButtonOptions/MoveButton4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BattleRenderer/BattlePanel" unique_id=145856737]
 layout_mode = 1

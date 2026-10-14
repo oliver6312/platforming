@@ -8,6 +8,8 @@ var nickname: String
 var name: String:
 	get: return nickname if nickname else species.name
 
+var battle_position: int
+
 var max_hp: int:
 	get: return species.base_max_hp
 var current_hp: int
@@ -23,9 +25,7 @@ var range_damage: int:
 
 var priority
 
-var move_one: String
-var move_two: String
-var move_three: String
+var moves: Array[Move]
 
 #var type: MonsterType.Type:
 #	get: return species.type
