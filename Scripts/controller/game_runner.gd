@@ -39,6 +39,7 @@ func setup_model():
 	battle_state.all_battle_monsters.sort_custom(func(a, b): return a.priority > b.priority)
 
 	print(battle_state.round_size)
+	start_turn()
 
 func end_turn():
 	start_turn()

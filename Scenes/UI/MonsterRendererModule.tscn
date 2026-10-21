@@ -37,6 +37,7 @@ texture = ExtResource("2_roei1")
 
 [node name="Sprite" type="Sprite2D" parent="Frame" unique_id=979093336]
 position = Vector2(62, -45)
+scale = Vector2(2, 2)
 texture = ExtResource("4_d77mi")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=279721663]
