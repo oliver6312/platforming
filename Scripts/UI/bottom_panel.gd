@@ -23,6 +23,26 @@ func _on_log_button_pressed() -> void:
 
 func handle_active_monster_ui(active_monster: Monster):
 	monster_info.text = active_monster.dump_state()
+	move_button_1.hide()
+	move_button_2.hide()
+	move_button_3.hide()
+	move_button_4.hide()
+	if active_monster.moves.size() >= 1:
+		var move_1 = active_monster.moves[0]
+		move_button_1.visible = true
+		move_button_1.text = move_1.name
+	if active_monster.moves.size() >= 2:
+		var move_2 = active_monster.moves[1]
+		move_button_2.visible = true
+		move_button_2.text = move_2.name
+	if active_monster.moves.size() >= 3:
+		var move_3 = active_monster.moves[2]
+		move_button_3.visible = true
+		move_button_3.text = move_3.name
+	if active_monster.moves.size() >= 4:
+		var move_4 = active_monster.moves[3]
+		move_button_4.visible = true
+		move_button_4.text = move_4.name
 
 
 func _on_move_button_pressed() -> void:
