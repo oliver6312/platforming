@@ -7,6 +7,8 @@ signal request_challenge_npc
 signal on_ui_ready
 signal request_quit
 signal request_log
+signal request_move_by_index
+
 # Module
 signal monster_selected_by_player
 

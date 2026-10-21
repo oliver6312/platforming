@@ -10,6 +10,9 @@ func get_controller_components():
 	battle_state = GameRunner.battle_state
 	rng = GameRunner.rng
 
+func get_monster_move_at_index(monster: Monster, index: int) -> Move:
+	return monster.moves[index]
+
 func create_monster(species: SpeciesResource, nickname: String = "") -> Monster:
 	var monster = Monster.new()
 	monster.species = species

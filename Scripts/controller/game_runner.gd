@@ -10,6 +10,7 @@ func _ready():
 	Events.on_ui_ready.connect(setup_model)
 	Events.request_quit.connect(handle_quit)
 	Events.request_log.connect(handle_log)
+	Events.request_move_by_index.connect(handle_request_move_by_index)
 
 #func change_selected_monster(selected_monster: Monster):
 #	print(selected_monster.nickname)
@@ -61,16 +62,15 @@ func start_turn():
 
 	pass
 
-#func handle_run():
-#	if current_phase != PHASE.AWAIT_INPUT:
-#		return
-#	Events.request_log.emit("You ran away. Your cowardice will not be forgotten.")
-#	var timer = Timer.new()
-#	add_child(timer)
-#	timer.wait_time = 2.0
-#	timer.start()
-#	if timer.is_stopped():
-#		get_tree().quit()
+func resolve_turn():
+	#maybe a mistake
+	pass
+
+func handle_request_move_by_index(index: int):
+	print(index)
+	battle_state.player_monster.chosen_move =\
+	 MonsterController.get_monster_move_at_index(battle_state.active_monster, index)
+	#note that game_state.player.current_monster was switched to battle_state.active_monster
 
 func handle_log():
 #	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)
