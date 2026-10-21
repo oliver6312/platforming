@@ -45,5 +45,17 @@ func handle_active_monster_ui(active_monster: Monster):
 		move_button_4.text = move_4.name
 
 
-func _on_move_button_pressed() -> void:
+func _on_move_button_1_pressed() -> void:
+	GameRunner.end_turn()
+
+
+func _on_move_button_2_pressed() -> void:
+	GameRunner.end_turn()
+
+
+func _on_move_button_3_pressed() -> void:
+	GameRunner.end_turn()
+
+
+func _on_move_button_4_pressed() -> void:
 	GameRunner.end_turn()

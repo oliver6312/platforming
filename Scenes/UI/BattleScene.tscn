@@ -173,6 +173,9 @@ monster_position = 1
 layout_mode = 2
 monster_position = 2
 
-[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton1" to="BattleRenderer/BattlePanel" method="_on_move_button_pressed"]
+[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton1" to="BattleRenderer/BattlePanel" method="_on_move_button_1_pressed"]
+[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton2" to="BattleRenderer/BattlePanel" method="_on_move_button_2_pressed"]
+[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton3" to="BattleRenderer/BattlePanel" method="_on_move_button_3_pressed"]
+[connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton4" to="BattleRenderer/BattlePanel" method="_on_move_button_4_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LogButton" to="BattleRenderer/BattlePanel" method="_on_log_button_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LeaveButton" to="BattleRenderer/BattlePanel" method="_on_leave_button_pressed"]
