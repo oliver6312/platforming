@@ -68,8 +68,9 @@ func resolve_turn():
 
 func handle_request_move_by_index(index: int):
 	print(index)
-	battle_state.player_monster.chosen_move =\
-	 MonsterController.get_monster_move_at_index(battle_state.active_monster, index)
+	battle_state.active_monster.chosen_move =\
+	 MonsterController.do_monster_turn(battle_state.active_monster, index)
+	
 	#note that game_state.player.current_monster was switched to battle_state.active_monster
 
 func handle_log():

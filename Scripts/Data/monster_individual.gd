@@ -26,9 +26,10 @@ var range_damage: int:
 var priority
 
 var moves: Array[Move]
+var chosen_move
 
-#var type: MonsterType.Type:
-#	get: return species.type
+var type: MonsterType.Type:
+	get: return species.type
 
 
 #	get: return Calculations.calculate_monster_stat(species.base_max_hp, hp_growth, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)

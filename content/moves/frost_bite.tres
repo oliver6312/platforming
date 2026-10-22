@@ -1,11 +1,19 @@
 [gd_resource type="Resource" script_class="MoveResource" format=3 uid="uid://cgenijyfskm6q"]
 
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_5j2mj"]
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_55qgd"]
+[ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="3_cwidi"]
+
+[sub_resource type="Resource" id="Resource_xjtuc"]
+script = ExtResource("3_cwidi")
+base_damage = 10
+metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]
 script = ExtResource("1_5j2mj")
 name = "Frost Bite"
 melee = true
+use_effects = Array[ExtResource("2_55qgd")]([SubResource("Resource_xjtuc")])
 rank = [true, true, false]
 target = [true, false, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

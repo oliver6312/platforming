@@ -17,6 +17,7 @@ enum Element {NONE, AIR, EARTH, ICE, METAL, PLANT, SHADOW, SPARK, WATER}
 @export var base_melee_damage: int = 20
 @export var base_range_damage: int = 20
 
+@export var type: MonsterType.Type
 @export var element_one: Element
 @export var element_two: Element
 
