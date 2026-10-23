@@ -1,10 +1,19 @@
 [gd_resource type="Resource" script_class="MoveResource" format=3 uid="uid://du6414rxjact4"]
 
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_xhvgl"]
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_1nhfv"]
+[ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="3_e77lj"]
+
+[sub_resource type="Resource" id="Resource_qsr10"]
+script = ExtResource("3_e77lj")
+base_damage = 20
+target_self = true
+metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]
 script = ExtResource("1_xhvgl")
 name = "Vacuum Orb"
+use_effects = Array[ExtResource("2_1nhfv")]([SubResource("Resource_qsr10")])
 rank = [true, false, true]
 target = [true, true, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

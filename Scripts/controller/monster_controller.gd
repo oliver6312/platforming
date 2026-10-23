@@ -61,7 +61,7 @@ func adjust_monster_hitpoints(monster: Monster, amount: int):
 
 func get_monster_opponent(monster: Monster) -> Monster:
 	#must be fixed later to find the desired target
-	return battle_state.all_opponent_monsters[0]
+	return battle_state.all_battle_monsters[0]
 	return null
 
 func create_monster(species: SpeciesResource, nickname: String = "") -> Monster:

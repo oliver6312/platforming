@@ -6,7 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_xjtuc"]
 script = ExtResource("3_cwidi")
-base_damage = 10
+base_damage = 1
+melee = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]

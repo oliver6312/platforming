@@ -1,6 +1,7 @@
 class_name DoDamage extends TargetedEffect
 
 @export var base_damage: int
+@export var melee: bool
 @export var ignore_stats: bool
 @export var damage_log_string: String = "{doer_name} hits {target_name} for {amt} damage"
 @export var critical_hit_damage_coefficient = 2
@@ -10,7 +11,12 @@ func _do(doer: Monster, source: Object, battle_state: BattleState, crit: bool):
 	var type = source.get_type() if source.has_method("get_type") else MonsterType.Type.NORMAL
 
 	var type_advantage_coefficient = MonsterType.get_type_advantage_coefficient(type, target.type)
-	var stat_diff_coefficient = 0 if ignore_stats else doer.melee_damage - target.defense
+	var stat_diff_coefficient = doer.range_damage - target.defense
+	if melee:
+		stat_diff_coefficient = doer.melee_damage - target.defense
+	if ignore_stats:
+		stat_diff_coefficient = 0
+	
 	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
 
 	if crit:
