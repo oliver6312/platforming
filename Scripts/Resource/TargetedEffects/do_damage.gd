@@ -13,6 +13,8 @@ func _do(doer: Monster, source: Object, battle_state: BattleState, crit: bool):
 	var stat_diff_coefficient = 0 if ignore_stats else doer.melee_damage - target.defense
 	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
 
+	if crit:
+		print("get critted sucker")
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 	MonsterController.adjust_monster_hitpoints(target, -amt)
 	

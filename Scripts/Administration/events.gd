@@ -11,6 +11,7 @@ signal request_move_by_index
 
 # Module
 signal monster_selected_by_player
+signal update_all_monsters
 
 # Events sent from game runner
 signal on_new_game_state_created

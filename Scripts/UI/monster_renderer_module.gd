@@ -41,6 +41,7 @@ func connect_events() -> void:
 	Events.on_monster_added_to_battle.connect(maybe_bind_monster)
 	Events.on_monster_updated.connect(maybe_update_monster)
 	Events.start_active_monster_turn.connect(check_active_monster)
+	Events.update_all_monsters.connect(update)
 	return
 
 func maybe_update_monster(monster: Monster):
@@ -65,8 +66,8 @@ func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index
 		update()
 
 func update():
-	if bound_monster == null:
-		return
+#	if bound_monster == null:
+#		return
 	if !belongs_to_player:
 		sprite.flip_h = true
 
