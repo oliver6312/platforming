@@ -12,6 +12,8 @@ var name: String:
 var use_message: String:
 	get: return resource.use_message
 
+var target_area_of_effect: bool:
+	get: return resource.area_of_effect
 var target_self_only: bool:
 	get: return resource.target_self_only
 var target_ally: bool:

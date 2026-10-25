@@ -122,6 +122,22 @@ func check_available_target(pressed_move: Move):
 		else:
 			if belongs_to_player or !target[monster_position]:
 				disable_monster_button()
+	
+	if pressed_move.target_area_of_effect:
+		enable_monster_button()
+		if pressed_move.target_ally:
+			if battle_state.all_player_monsters.has(battle_state.active_monster):
+				if !belongs_to_player:
+					disable_monster_button()
+			else:
+				if belongs_to_player:
+					disable_monster_button()
+		if battle_state.all_player_monsters.has(battle_state.active_monster):
+			if belongs_to_player:
+					disable_monster_button()
+		else:
+			if !belongs_to_player:
+					disable_monster_button()
 
 func _on_button_pressed() -> void:
 	if GameRunner.target_selection_mode:
