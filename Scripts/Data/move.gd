@@ -12,6 +12,11 @@ var name: String:
 var use_message: String:
 	get: return resource.use_message
 
+var rank: Array:
+	get: return resource.rank
+var target: Array:
+	get: return resource.target
+
 #used for duck-typing in TargetedEffect
 #func get_type() -> MonsterType.Type:
 #	return type
