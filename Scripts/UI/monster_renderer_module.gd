@@ -110,6 +110,12 @@ func check_available_target(pressed_move: Move):
 		if belongs_to_player or !target[monster_position]:
 				target_sprite.visible = false
 				monster_button.disabled = true
+	if pressed_move.target_self_only and bound_monster != battle_state.active_monster:
+		target_sprite.visible = false
+		monster_button.disabled = true
+	if pressed_move.target_self_only and bound_monster == battle_state.active_monster:
+		target_sprite.visible = true
+		monster_button.disabled = false
 
 func _on_button_pressed() -> void:
 	if GameRunner.target_selection_mode:
