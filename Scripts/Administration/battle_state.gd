@@ -3,7 +3,7 @@ class_name BattleState
 #player stuff
 var player: Trainer
 var opponent: Trainer
-var is_player_turn: bool
+var is_player_turn: bool = true
 
 #gameplay flow (turn/order/round)
 var round: int = 1

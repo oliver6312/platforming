@@ -69,6 +69,10 @@ func check_active_monster(selected_monster: Monster):
 	if selected_monster == bound_monster:
 		selected = true
 		selection_symbol.visible = true
+		if belongs_to_player:
+			battle_state.is_player_turn = true
+		else:
+			battle_state.is_player_turn = false
 	else:
 		selected = false
 		selection_symbol.visible = false

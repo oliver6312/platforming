@@ -52,6 +52,7 @@ func end_turn():
 	start_turn()
 
 func start_turn():
+	
 #	current_mode = BATTLE_PICK_MODE.MOVE
 	target_selection_mode = false
 	battle_state.round_size = battle_state.all_battle_monsters.size()
