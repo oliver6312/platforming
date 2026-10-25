@@ -40,16 +40,23 @@ var monster_button: Button
 var selection_symbol: Sprite2D
 
 var bound_monster: Monster
-var available_target: bool
 var selected: bool
 
+var battle_state: BattleState
+var rng: RandomNumberGenerator
+
 func connect_events() -> void:
+	Events.on_new_game_state_created.connect(get_controller_components)
 	Events.on_monster_added_to_battle.connect(maybe_bind_monster)
 	Events.on_monster_updated.connect(maybe_update_monster)
 	Events.start_active_monster_turn.connect(check_active_monster)
 	Events.update_all_monsters.connect(update)
 	Events.chosen_move_target.connect(check_available_target)
 	return
+
+func get_controller_components():
+	battle_state = GameRunner.battle_state
+	rng = GameRunner.rng
 
 func maybe_update_monster(monster: Monster):
 	if monster == bound_monster:
@@ -94,13 +101,16 @@ func update():
 func check_available_target(target: Array):
 	target_sprite.visible = true
 	monster_button.disabled = false
-	if !target[bound_monster.battle_position]:
-		target_sprite.hide()
-		monster_button.disabled = true
+	if battle_state.all_opponent_monsters.has(battle_state.active_monster):
+		if !belongs_to_player or !target[bound_monster.battle_position]:
+				target_sprite.visible = false
+				monster_button.disabled = true
+	else:
+		if belongs_to_player or !target[bound_monster.battle_position]:
+				target_sprite.visible = false
+				monster_button.disabled = true
 
 func _on_button_pressed() -> void:
-	print("monster position")
-	print(bound_monster.battle_position)
 	if GameRunner.target_selection_mode:
 		Events.request_target_monster.emit(bound_monster)
 		GameRunner.end_turn()
