@@ -10,15 +10,15 @@ func get_controller_components():
 	battle_state = GameRunner.battle_state
 	rng = GameRunner.rng
 
-func do_monster_turn(monster: Monster, index: int) -> Move:
+func do_monster_turn(monster: Monster, target: Monster, index: int) -> Move:
 #	print("this is the index:")
 #	print(index)
 #	return monster.moves[index]
 	if monster.current_hp > 0:
-		use_monster_move(monster, monster.moves[index])
+		use_monster_move(monster, target, monster.moves[index])
 	return
 
-func use_monster_move(monster: Monster, move: Move):
+func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	if move.usages <= 0:
 #		return
 	
@@ -47,7 +47,7 @@ func use_monster_move(monster: Monster, move: Move):
 #		Events.request_log.emit("Critical hit!")
 	
 	for effect in move.resource.use_effects:
-		effect._do(monster, move, battle_state, crit)
+		effect._do(monster, target, move, battle_state, crit)
 #	GameRunner.on_turn_ended()
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):

@@ -80,7 +80,8 @@ func update():
 	
 	bound_monster.battle_position = monster_position
 	return
-	
-	
-	
-	
+
+func _on_button_pressed() -> void:
+	if GameRunner.target_selection_mode:
+		Events.request_target_monster.emit(bound_monster)
+		GameRunner.end_turn()

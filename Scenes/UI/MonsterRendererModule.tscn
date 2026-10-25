@@ -45,6 +45,12 @@ visible = false
 position = Vector2(62, -45)
 texture = ExtResource("4_3oein")
 
+[node name="Button" type="Button" parent="Frame" unique_id=223205320]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -90.0
+offset_right = 107.0
+
 [node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,3 +76,5 @@ text = "10/20"
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "PSO"
+
+[connection signal="pressed" from="Frame/Button" to="." method="_on_button_pressed"]

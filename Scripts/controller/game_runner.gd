@@ -7,12 +7,15 @@ var target_selection_mode: bool = false
 var battle_state: BattleState
 var rng: RandomNumberGenerator
 
+var chosen_move_index: int
+
 func _ready():
 	# Connect signal listeners
 	Events.on_ui_ready.connect(setup_model)
 	Events.request_quit.connect(handle_quit)
 	Events.request_log.connect(handle_log)
-	Events.request_move_by_index.connect(handle_request_move_by_index)
+#	Events.request_move_by_index.connect(handle_request_move_by_index)
+	Events.request_target_monster.connect(handle_target_monster)
 
 #func change_selected_monster(selected_monster: Monster):
 #	print(selected_monster.nickname)
@@ -71,11 +74,13 @@ func resolve_turn():
 	#maybe a mistake
 	pass
 
-func handle_request_move_by_index(index: int):
-	print(index)
+func handle_target_monster(target: Monster):
+	MonsterController.do_monster_turn(battle_state.active_monster, target ,chosen_move_index)
+
+#func handle_request_move_by_index(index: int):
 #	battle_state.active_monster.chosen_move =\
 #	 MonsterController.do_monster_turn(battle_state.active_monster, index)
-	MonsterController.do_monster_turn(battle_state.active_monster, index)
+#	MonsterController.do_monster_turn(battle_state.active_monster, index)
 	#note that game_state.player.current_monster was switched to battle_state.active_monster
 
 func handle_log():
