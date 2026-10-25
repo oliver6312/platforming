@@ -2,11 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_nak3d"]
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_wc7lj"]
+[ext_resource type="Script" uid="uid://nr33b14vsq80" path="res://Scripts/Resource/TargetedEffects/do_heal.gd" id="3_fj45q"]
+
+[sub_resource type="Resource" id="Resource_vscy3"]
+script = ExtResource("3_fj45q")
+base_heal = 10
+metadata/_custom_type_script = "uid://nr33b14vsq80"
 
 [resource]
 script = ExtResource("1_nak3d")
 name = "Tranquil Song"
 target_ally = true
+use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3")])
 limited_usages = true
 usage_max = 2
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"
