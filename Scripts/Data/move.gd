@@ -14,6 +14,8 @@ var use_message: String:
 
 var target_self_only: bool:
 	get: return resource.target_self_only
+var target_ally: bool:
+	get: return resource.target_ally
 
 var rank: Array:
 	get: return resource.rank

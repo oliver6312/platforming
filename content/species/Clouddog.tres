@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cl4wucmn6riay" path="res://Sprites/Monster/Clouddog.png" id="1_xmyck"]
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="3_srepd"]
 [ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/moves/frost_bite.tres" id="4_thmhh"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/moves/tranquil_song.tres" id="5_thmhh"]
 
 [resource]
 script = ExtResource("1_am04j")
 name = "Clouddog"
-starter_moves = Array[ExtResource("3_srepd")]([ExtResource("4_thmhh")])
+starter_moves = Array[ExtResource("3_srepd")]([ExtResource("4_thmhh"), ExtResource("5_thmhh")])
 base_max_hp = 30
 base_speed = 10
 element_one = 1

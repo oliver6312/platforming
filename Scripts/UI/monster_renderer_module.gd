@@ -99,25 +99,38 @@ func update():
 	return
 
 func check_available_target(pressed_move: Move):
-	target_sprite.visible = true
-	monster_button.disabled = false
+	enable_monster_button()
 	var target = pressed_move.target
-	if battle_state.all_opponent_monsters.has(battle_state.active_monster):
-		if !belongs_to_player or !target[monster_position]:
-				target_sprite.visible = false
-				monster_button.disabled = true
-	else:
+	if battle_state.all_player_monsters.has(battle_state.active_monster):
 		if belongs_to_player or !target[monster_position]:
-				target_sprite.visible = false
-				monster_button.disabled = true
+				disable_monster_button()
+	else:
+		if !belongs_to_player or !target[monster_position]:
+				disable_monster_button()
+	
 	if pressed_move.target_self_only and bound_monster != battle_state.active_monster:
-		target_sprite.visible = false
-		monster_button.disabled = true
+		disable_monster_button()
 	if pressed_move.target_self_only and bound_monster == battle_state.active_monster:
-		target_sprite.visible = true
-		monster_button.disabled = false
+		enable_monster_button()
+	
+	if pressed_move.target_ally:
+		print("targeting allies")
+		enable_monster_button()
+		if battle_state.all_player_monsters.has(battle_state.active_monster):
+			if !belongs_to_player or !target[monster_position]:
+				disable_monster_button()
+		else:
+			if belongs_to_player or !target[monster_position]:
+				disable_monster_button()
 
 func _on_button_pressed() -> void:
 	if GameRunner.target_selection_mode:
 		Events.request_target_monster.emit(bound_monster)
 		GameRunner.end_turn()
+
+func disable_monster_button():
+	target_sprite.visible = false
+	monster_button.disabled = true
+func enable_monster_button():
+	target_sprite.visible = true
+	monster_button.disabled = false
