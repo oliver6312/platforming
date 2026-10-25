@@ -48,7 +48,7 @@ func connect_events() -> void:
 	Events.on_monster_updated.connect(maybe_update_monster)
 	Events.start_active_monster_turn.connect(check_active_monster)
 	Events.update_all_monsters.connect(update)
-	
+	Events.chosen_move_target.connect(check_available_target)
 	return
 
 func maybe_update_monster(monster: Monster):
@@ -87,15 +87,16 @@ func update():
 	
 	bound_monster.battle_position = monster_position
 	
-#	target_sprite.hide()
-#	monster_button.disabled = true
+	target_sprite.visible = false
+	monster_button.disabled = false
 	return
 
-func check_available_target():
-	if bound_monster.moves[3].target[bound_monster.battle_position]:
-		pass
-	bound_monster.battle_position
-	bound_monster.moves[1]
+func check_available_target(target: Array):
+	target_sprite.visible = true
+	monster_button.disabled = false
+	if !target[bound_monster.battle_position]:
+		target_sprite.hide()
+		monster_button.disabled = true
 
 func _on_button_pressed() -> void:
 	print("monster position")

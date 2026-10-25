@@ -79,8 +79,10 @@ func handle_target_monster(target: Monster):
 	MonsterController.do_monster_turn(battle_state.active_monster, target, chosen_move_index)
 
 func handle_move_button_pressed(index: int):
-	GameRunner.chosen_move_index = index
-	GameRunner.target_selection_mode = true
+	chosen_move_index = index
+	target_selection_mode = true
+	Events.chosen_move_target.emit(battle_state.active_monster.moves[index].target)
+	print(battle_state.active_monster.moves[index].target)
 
 #func handle_request_move_by_index(index: int):
 #	battle_state.active_monster.chosen_move =\

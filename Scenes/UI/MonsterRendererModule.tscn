@@ -48,6 +48,7 @@ position = Vector2(62, -45)
 texture = ExtResource("4_3oein")
 
 [node name="MonsterButton" type="Button" parent="Frame" unique_id=223205320]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 17.0
 offset_top = -90.0

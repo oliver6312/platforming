@@ -19,6 +19,7 @@ signal request_target_monster
 signal on_new_game_state_created
 signal round_changed
 signal start_active_monster_turn
+signal chosen_move_target
 
 # Events sent from trainer controller
 signal on_monster_added_to_battle
