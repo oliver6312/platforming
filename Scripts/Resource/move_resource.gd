@@ -3,6 +3,7 @@ class_name MoveResource extends Resource
 @export var name: String
 @export var melee: bool
 @export var ally: bool
+@export var target_self_only: bool
 @export var area_of_effect: bool
 @export var use_effects: Array[TargetedEffect]
 @export var type: MonsterType.Type

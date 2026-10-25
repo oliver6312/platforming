@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 [resource]
 script = ExtResource("1_xhvgl")
 name = "Vacuum Orb"
+target_self_only = true
 use_effects = Array[ExtResource("2_1nhfv")]([SubResource("Resource_qsr10")])
 rank = [true, false, true]
 target = [true, true, false]

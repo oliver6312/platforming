@@ -12,6 +12,9 @@ var name: String:
 var use_message: String:
 	get: return resource.use_message
 
+var target_self_only: bool:
+	get: return resource.target_self_only
+
 var rank: Array:
 	get: return resource.rank
 var target: Array:

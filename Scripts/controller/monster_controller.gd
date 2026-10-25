@@ -42,7 +42,7 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	var hit = rng.randf() < move.base_accuracy
 #	if !hit:
 #		Events.request_log.emit("but it misses")
-	var crit = rng.randf() < 0.5
+	var crit = rng.randf() < 0.05
 #	if crit and hit:
 #		Events.request_log.emit("Critical hit!")
 	

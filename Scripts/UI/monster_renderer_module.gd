@@ -98,15 +98,16 @@ func update():
 	monster_button.disabled = false
 	return
 
-func check_available_target(target: Array):
+func check_available_target(pressed_move: Move):
 	target_sprite.visible = true
 	monster_button.disabled = false
+	var target = pressed_move.target
 	if battle_state.all_opponent_monsters.has(battle_state.active_monster):
-		if !belongs_to_player or !target[bound_monster.battle_position]:
+		if !belongs_to_player or !target[monster_position]:
 				target_sprite.visible = false
 				monster_button.disabled = true
 	else:
-		if belongs_to_player or !target[bound_monster.battle_position]:
+		if belongs_to_player or !target[monster_position]:
 				target_sprite.visible = false
 				monster_button.disabled = true
 
