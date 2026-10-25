@@ -1,6 +1,8 @@
 extends Node
 
-enum BATTLE_PICK_MODE {MOVE, RANK, TARGET}
+#enum BATTLE_PICK_MODE {MOVE, TARGET}
+#var current_mode: BATTLE_PICK_MODE
+var target_selection_mode: bool = false
 
 var battle_state: BattleState
 var rng: RandomNumberGenerator
@@ -46,6 +48,8 @@ func end_turn():
 	start_turn()
 
 func start_turn():
+#	current_mode = BATTLE_PICK_MODE.MOVE
+	target_selection_mode = false
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
 	if battle_state.turn_index == battle_state.round_size:
@@ -54,8 +58,6 @@ func start_turn():
 		Events.round_changed.emit(battle_state.round)
 		print("turn index = round size")
 		
-	
-
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
 	print(battle_state.active_monster.name)
 	print(battle_state.active_monster.moves)
@@ -71,9 +73,9 @@ func resolve_turn():
 
 func handle_request_move_by_index(index: int):
 	print(index)
-	battle_state.active_monster.chosen_move =\
-	 MonsterController.do_monster_turn(battle_state.active_monster, index)
-	
+#	battle_state.active_monster.chosen_move =\
+#	 MonsterController.do_monster_turn(battle_state.active_monster, index)
+	MonsterController.do_monster_turn(battle_state.active_monster, index)
 	#note that game_state.player.current_monster was switched to battle_state.active_monster
 
 func handle_log():

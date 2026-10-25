@@ -22,3 +22,5 @@ var all_battle_monsters: Array
 var active_monster: Monster
 
 var active_moves: Array[Move]
+
+var chosen_move

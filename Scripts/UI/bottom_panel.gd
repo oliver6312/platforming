@@ -47,19 +47,29 @@ func handle_active_monster_ui(active_monster: Monster):
 
 func _on_move_button_1_pressed() -> void:
 	Events.request_move_by_index.emit(0)
+	if GameRunner.target_selection_mode:
+		pass
+	else:
+		pass
 	GameRunner.end_turn()
 
 
 func _on_move_button_2_pressed() -> void:
 	Events.request_move_by_index.emit(1)
+	if GameRunner.target_selection_mode:
+		pass
 	GameRunner.end_turn()
 
 
 func _on_move_button_3_pressed() -> void:
 	Events.request_move_by_index.emit(2)
+	if GameRunner.target_selection_mode:
+		pass
 	GameRunner.end_turn()
 
 
 func _on_move_button_4_pressed() -> void:
 	Events.request_move_by_index.emit(3)
+	if GameRunner.target_selection_mode:
+		pass
 	GameRunner.end_turn()
