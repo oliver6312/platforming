@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3k1jrxt80cc3" path="res://Sprites/Monster/TargetSquare.png" id="4_3oein"]
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="4_d77mi"]
 
-[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "selection_symbol")]
+[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "target_sprite", "monster_button", "selection_symbol")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(124, 58)
 offset_right = 124.0
@@ -18,7 +18,9 @@ name_label = NodePath("MonsterData/Name")
 hp_label = NodePath("MonsterData/SubHealthBar/Hp")
 hp_bar = NodePath("MonsterData/HealthBar")
 status_label = NodePath("MonsterData/SubHealthBar/Status")
-sprite = NodePath("Frame/Sprite")
+sprite = NodePath("Frame/MonsterSprite")
+target_sprite = NodePath("Frame/TargetSprite")
+monster_button = NodePath("Frame/MonsterButton")
 selection_symbol = NodePath("Frame/Arrow")
 
 [node name="Frame" type="Control" parent="." unique_id=1210884349]
@@ -30,22 +32,22 @@ position = Vector2(62, -120)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3oein")
 
-[node name="Sprite2D" type="Sprite2D" parent="Frame" unique_id=1955508990]
+[node name="BoxBackground" type="Sprite2D" parent="Frame" unique_id=1955508990]
 visible = false
 position = Vector2(62, -45)
 texture = ExtResource("2_roei1")
 
-[node name="Sprite" type="Sprite2D" parent="Frame" unique_id=979093336]
+[node name="MonsterSprite" type="Sprite2D" parent="Frame" unique_id=979093336]
 position = Vector2(62, -45)
 scale = Vector2(2, 2)
 texture = ExtResource("4_d77mi")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=279721663]
+[node name="TargetSprite" type="Sprite2D" parent="Frame" unique_id=279721663]
 visible = false
 position = Vector2(62, -45)
 texture = ExtResource("4_3oein")
 
-[node name="Button" type="Button" parent="Frame" unique_id=223205320]
+[node name="MonsterButton" type="Button" parent="Frame" unique_id=223205320]
 layout_mode = 0
 offset_left = 17.0
 offset_top = -90.0
@@ -77,4 +79,4 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "PSO"
 
-[connection signal="pressed" from="Frame/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/MonsterButton" to="." method="_on_button_pressed"]

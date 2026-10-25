@@ -8,10 +8,12 @@ signal on_ui_ready
 signal request_quit
 signal request_log
 signal request_move_by_index
+signal move_button_pressed
 
 # Module
 signal update_all_monsters
 signal request_target_monster
+
 
 # Events sent from game runner
 signal on_new_game_state_created

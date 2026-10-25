@@ -15,6 +15,7 @@ func _ready():
 	Events.request_quit.connect(handle_quit)
 	Events.request_log.connect(handle_log)
 #	Events.request_move_by_index.connect(handle_request_move_by_index)
+	Events.move_button_pressed.connect(handle_move_button_pressed)
 	Events.request_target_monster.connect(handle_target_monster)
 
 #func change_selected_monster(selected_monster: Monster):
@@ -75,7 +76,11 @@ func resolve_turn():
 	pass
 
 func handle_target_monster(target: Monster):
-	MonsterController.do_monster_turn(battle_state.active_monster, target ,chosen_move_index)
+	MonsterController.do_monster_turn(battle_state.active_monster, target, chosen_move_index)
+
+func handle_move_button_pressed(index: int):
+	GameRunner.chosen_move_index = index
+	GameRunner.target_selection_mode = true
 
 #func handle_request_move_by_index(index: int):
 #	battle_state.active_monster.chosen_move =\

@@ -31,10 +31,16 @@ var status_label: Label
 var sprite: Sprite2D
 
 @export
+var target_sprite: Sprite2D
+
+@export
+var monster_button: Button
+
+@export
 var selection_symbol: Sprite2D
 
 var bound_monster: Monster
-
+var available_target: bool
 var selected: bool
 
 func connect_events() -> void:
@@ -42,6 +48,7 @@ func connect_events() -> void:
 	Events.on_monster_updated.connect(maybe_update_monster)
 	Events.start_active_monster_turn.connect(check_active_monster)
 	Events.update_all_monsters.connect(update)
+	
 	return
 
 func maybe_update_monster(monster: Monster):
@@ -79,7 +86,16 @@ func update():
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	
 	bound_monster.battle_position = monster_position
+	
+#	target_sprite.hide()
+#	monster_button.disabled = true
 	return
+
+func check_available_target():
+	if bound_monster.moves[3].target[bound_monster.battle_position]:
+		pass
+	bound_monster.battle_position
+	bound_monster.moves[1]
 
 func _on_button_pressed() -> void:
 	print("monster position")
