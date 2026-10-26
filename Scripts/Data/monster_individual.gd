@@ -3,12 +3,13 @@ class_name Monster
 var species: SpeciesResource
 var image: Texture2D:
 	get: return species.image
-	
+
 var nickname: String
 var name: String:
 	get: return nickname if nickname else species.name
 
 var battle_position: int
+var conditions: Array[Condition]
 
 var max_hp: int:
 	get: return species.base_max_hp

@@ -11,12 +11,23 @@ func get_controller_components():
 	rng = GameRunner.rng
 
 func do_monster_turn(monster: Monster, target: Monster, index: int) -> Move:
-#	print("this is the index:")
-#	print(index)
-#	return monster.moves[index]
+	
 	if monster.current_hp > 0:
+		on_turn_begun(monster)
 		use_monster_move(monster, target, monster.moves[index])
 	return
+
+func on_turn_begun(monster: Monster):
+	for condition in monster.conditions:
+		for effect in condition.resource.on_begin_turn_effects:
+			effect._do(monster, monster, condition, battle_state, false)
+		condition.duration_remaining -= 1
+		if condition.duration_remaining <= 0:
+			end_condition(monster, condition)
+
+func end_condition(monster: Monster, condition: Condition):
+	monster.conditions.remove_at(monster.conditions.find(condition))
+	Events.on_monster_updated.emit(monster)
 
 func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	if move.usages <= 0:
@@ -49,6 +60,20 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 	for effect in move.resource.use_effects:
 		effect._do(monster, target, move, battle_state, crit)
 #	GameRunner.on_turn_ended()
+
+func instantiate_condition_on_monster(monster: Monster, condition_resource: ConditionResource):
+	print(condition_resource.max_stack)
+	if monster.conditions\
+		.filter(func(condition): return condition.resource == condition_resource)\
+		.size() >= condition_resource.max_stack:
+			return
+	
+	var condition = Condition.new()
+	condition.resource = condition_resource
+	condition.duration_remaining = condition.resource.duration
+	monster.conditions.append(condition)
+	
+	Events.on_monster_updated.emit(monster)
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
