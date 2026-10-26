@@ -13,18 +13,17 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 
 	var element = source.get_element() if source.has_method("get_element") else MonsterElement.Element.NONE
 
+	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
+	if crit:
+		print("get crit, idiot!")
+
 	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element)
-	print("type_advantage_coefficient")
-	print(type_advantage_coefficient)
+
 	var stat_diff_coefficient = doer.range_damage - target.defense
 	if melee:
 		stat_diff_coefficient = doer.melee_damage - target.defense
 	if ignore_stats:
 		stat_diff_coefficient = 0
-	
-	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
-	if crit:
-		print("get crit, idiot!")
 
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 	print("amt")
@@ -55,8 +54,35 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 				target_1 = battle_state.all_opponent_monsters[1]
 				target_2 = battle_state.all_opponent_monsters[2]
 			print("target enemy area of effect")
+
+		type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target_0.element)
+		stat_diff_coefficient = doer.range_damage - target_0.defense
+		if melee:
+			stat_diff_coefficient = doer.melee_damage - target_0.defense
+		if ignore_stats:
+			stat_diff_coefficient = 0
+
+		amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 		MonsterController.adjust_monster_hitpoints(target_0, -amt)
+
+		type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target_1.element)
+		stat_diff_coefficient = doer.range_damage - target_1.defense
+		if melee:
+			stat_diff_coefficient = doer.melee_damage - target_1.defense
+		if ignore_stats:
+			stat_diff_coefficient = 0
+
+		amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 		MonsterController.adjust_monster_hitpoints(target_1, -amt)
+
+		type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target_2.element)
+		stat_diff_coefficient = doer.range_damage - target_2.defense
+		if melee:
+			stat_diff_coefficient = doer.melee_damage - target_2.defense
+		if ignore_stats:
+			stat_diff_coefficient = 0
+
+		amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 		MonsterController.adjust_monster_hitpoints(target_2, -amt)
 	
 #	var effectiveness = MonsterType.get_type_effectiveness(type, target.type)
