@@ -1,6 +1,7 @@
 class_name Monster
 
 var species: SpeciesResource
+var level: int = 1
 var image: Texture2D:
 	get: return species.image
 
@@ -12,17 +13,17 @@ var battle_position: int
 var conditions: Array[Condition]
 
 var max_hp: int:
-	get: return species.base_max_hp
+	get: return Calculations.calculate_monster_stat(species.base_max_hp, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
 var current_hp: int
 
 var defense: int:
-	get: return species.base_defense
+	get: return Calculations.calculate_monster_stat(species.base_defense, level, sum_condition_stats_for_code(Stat.Code.DEF), Stat.Code.DEF)
 var speed: int:
-	get: return species.base_speed
+	get: return Calculations.calculate_monster_stat(species.base_speed, level, sum_condition_stats_for_code(Stat.Code.SPD), Stat.Code.SPD)
 var melee_damage: int:
-	get: return species.base_melee_damage
+	get: return Calculations.calculate_monster_stat(species.base_melee_damage, level, sum_condition_stats_for_code(Stat.Code.MEL_ATK), Stat.Code.MEL_ATK)
 var range_damage: int:
-	get: return species.base_range_damage
+	get: return Calculations.calculate_monster_stat(species.base_range_damage, level, sum_condition_stats_for_code(Stat.Code.RAN_ATK), Stat.Code.RAN_ATK)
 
 var priority
 
@@ -34,6 +35,14 @@ var element: MonsterElement.Element:
 
 
 #	get: return Calculations.calculate_monster_stat(species.base_max_hp, hp_growth, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
+
+func sum_condition_stats_for_code(code: Stat.Code):
+	var sum = 0
+	for condition in conditions:
+		for stat_modifier in condition.resource.stat_modifiers:
+			if stat_modifier.stat == code:
+				sum += stat_modifier.modifier
+	return sum
 
 func dump_state():
 	return "Name: {name}\nHealth: ({current_hp}/{max_hp})\nMelee damage: {melee_damage}\nRanged damage: {range_damage}\nDefense: {defense}\nSpeed: {speed}"\

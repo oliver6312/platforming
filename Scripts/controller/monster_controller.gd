@@ -11,9 +11,7 @@ func get_controller_components():
 	rng = GameRunner.rng
 
 func do_monster_turn(monster: Monster, target: Monster, index: int) -> Move:
-	
 	if monster.current_hp > 0:
-		on_turn_begun(monster)
 		use_monster_move(monster, target, monster.moves[index])
 	return
 

@@ -54,6 +54,7 @@ func end_turn():
 func start_turn():
 	
 #	current_mode = BATTLE_PICK_MODE.MOVE
+	
 	target_selection_mode = false
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
@@ -64,6 +65,7 @@ func start_turn():
 		print("turn index = round size")
 		
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
+	MonsterController.on_turn_begun(battle_state.active_monster)
 	print(battle_state.active_monster.name)
 	Events.update_all_monsters.emit()
 	Events.start_active_monster_turn.emit(battle_state.active_monster)

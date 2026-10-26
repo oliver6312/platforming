@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConditionResource" format=3 uid="uid://dlpgj13i7lore"]
+
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="1_0o6di"]
+[ext_resource type="Script" uid="uid://x2s2xwhft1pa" path="res://Scripts/Resource/condition_resource.gd" id="2_i71il"]
+[ext_resource type="Script" uid="uid://dgc26v65rmebn" path="res://Scripts/Resource/stat_modifier.gd" id="3_i71il"]
+
+[sub_resource type="Resource" id="Resource_i71il"]
+script = ExtResource("3_i71il")
+stat = 2
+modifier = -100
+metadata/_custom_type_script = "uid://dgc26v65rmebn"
+
+[resource]
+script = ExtResource("2_i71il")
+name = "Enraged"
+stat_modifiers = Array[Resource]([SubResource("Resource_i71il")])
+duration = 5
+metadata/_custom_type_script = "uid://x2s2xwhft1pa"
