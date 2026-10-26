@@ -17,11 +17,17 @@ func do_monster_turn(monster: Monster, target: Monster, index: int) -> Move:
 
 func on_turn_begun(monster: Monster):
 	for condition in monster.conditions:
+		print("condition.name")
+		print(condition.name)
+		print("condition.duration_remaining")
+		print(condition.duration_remaining)
 		for effect in condition.resource.on_begin_turn_effects:
 			effect._do(monster, monster, condition, battle_state, false)
 		condition.duration_remaining -= 1
 		if condition.duration_remaining <= 0:
 			end_condition(monster, condition)
+		print(condition.name)
+		print(condition.duration_remaining)
 
 func end_condition(monster: Monster, condition: Condition):
 	monster.conditions.remove_at(monster.conditions.find(condition))
@@ -62,18 +68,23 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 func instantiate_condition_on_monster(monster: Monster, condition_resource: ConditionResource):
 
 	if monster.conditions.filter(func(condition): return condition.resource == condition_resource):
-		monster.conditions.filter(func(
-			condition): 
-				if condition.resource == condition_resource:
-					condition_resource.duration += 1)
-			return
+		monster.conditions.filter(func(condition): 
+				condition.duration_remaining += 2
+					)
+		return
 	
+	print("this is new")
+	print(condition_resource.name)
 	var condition = Condition.new()
 	condition.resource = condition_resource
 	condition.duration_remaining = condition.resource.duration
 	monster.conditions.append(condition)
 	
 	Events.on_monster_updated.emit(monster)
+
+func handle_preexistent_condition(monster: Monster ,condition: ConditionResource):
+	
+	pass
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)

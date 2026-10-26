@@ -45,7 +45,13 @@ func sum_condition_stats_for_code(code: Stat.Code):
 	return sum
 
 func dump_state():
-	return "Name: {name}\nHealth: ({current_hp}/{max_hp})\nMelee damage: {melee_damage}\nRanged damage: {range_damage}\nDefense: {defense}\nSpeed: {speed}"\
+	var condition_string = ""
+	
+	for condition in conditions:
+		condition_string += "{name} - ({remaining})\n".format({"name": condition.name, "remaining": condition.duration_remaining})
+
+
+	return "Name: {name}\nHealth: ({current_hp}/{max_hp})\nMelee damage: {melee_damage}\nRanged damage: {range_damage}\nDefense: {defense}\nSpeed: {speed}\nConditions: {conditions}"\
 	.format({
 		"name": name,
 		"current_hp": current_hp,
@@ -54,4 +60,5 @@ func dump_state():
 		"range_damage": range_damage,
 		"defense": defense,
 		"speed": speed,
+		"conditions": condition_string
 	})
