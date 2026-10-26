@@ -23,6 +23,8 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 		stat_diff_coefficient = 0
 	
 	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
+	if crit:
+		print("get crit, idiot!")
 
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
 	print("amt")

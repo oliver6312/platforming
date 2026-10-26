@@ -3,13 +3,18 @@ class_name DoHeal extends TargetedEffect
 @export var base_heal: int
 @export var melee: bool
 @export var damage_log_string: String = "{doer_name} heals {target_name} for {amt} health"
+@export var critical_hit_damage_coefficient = 2
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 #	var target = doer if target_self else MonsterController.get_monster_opponent(doer)
 	if target_self:
 		target = doer
 
-	var amt = clamp(base_heal, 0, 1000) 
+	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
+	if crit:
+		print("get crit, idiot!")
+
+	var amt = clamp(base_heal * critical_hit_damage_coefficient, 0, 1000) 
 	print(target.name)
 	if !area_of_effect:
 		MonsterController.adjust_monster_hitpoints(target, amt)
