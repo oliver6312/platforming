@@ -11,8 +11,9 @@ func get_controller_components():
 	rng = GameRunner.rng
 
 func do_monster_turn(monster: Monster, target: Monster, index: int) -> Move:
-	if monster.current_hp > 0:
-		use_monster_move(monster, target, monster.moves[index])
+	use_monster_move(monster, target, monster.moves[index])
+#	if monster.current_hp > 0:
+#		use_monster_move(monster, target, monster.moves[index])
 	return
 
 func on_turn_begun(monster: Monster):
@@ -66,13 +67,13 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	GameRunner.on_turn_ended()
 
 func instantiate_condition_on_monster(monster: Monster, condition_resource: ConditionResource):
-
 	if monster.conditions.filter(func(condition): return condition.resource == condition_resource):
 		monster.conditions.filter(func(condition): 
 				condition.duration_remaining += 2
+				return
 					)
 		return
-	
+
 	print("this is new")
 	print(condition_resource.name)
 	var condition = Condition.new()
@@ -82,13 +83,9 @@ func instantiate_condition_on_monster(monster: Monster, condition_resource: Cond
 	
 	Events.on_monster_updated.emit(monster)
 
-func handle_preexistent_condition(monster: Monster ,condition: ConditionResource):
-	
-	pass
-
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
-	monster.current_hp = clamp(monster.current_hp + amount, 0, monster.max_hp)
+	monster.current_hp = clamp(monster.current_hp + amount, 1, monster.max_hp)
 	print(monster.current_hp)
 
 #	if monster.hp == 0:
