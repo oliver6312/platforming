@@ -9,11 +9,8 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	if target_self:
 		target = doer
 
-	var type = source.get_type() if source.has_method("get_type") else MonsterType.Type.NORMAL
-
-	var type_advantage_coefficient = MonsterType.get_type_advantage_coefficient(type, target.type)
-
-	var amt = clamp((base_heal) * type_advantage_coefficient, 0, 1000) 
+	var amt = clamp(base_heal, 0, 1000) 
+	print(target.name)
 	if !area_of_effect:
 		MonsterController.adjust_monster_hitpoints(target, amt)
 	if area_of_effect:

@@ -11,10 +11,11 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	if target_self:
 		target = doer
 
+	var element = source.get_element() if source.has_method("get_element") else MonsterElement.Element.NONE
 
-	var type = source.get_type() if source.has_method("get_type") else MonsterType.Type.NORMAL
-
-	var type_advantage_coefficient = MonsterType.get_type_advantage_coefficient(type, target.type)
+	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element)
+	print("type_advantage_coefficient")
+	print(type_advantage_coefficient)
 	var stat_diff_coefficient = doer.range_damage - target.defense
 	if melee:
 		stat_diff_coefficient = doer.melee_damage - target.defense
@@ -24,6 +25,8 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
 
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
+	print("amt")
+	print(amt)
 	if !area_of_effect:
 		MonsterController.adjust_monster_hitpoints(target, -amt)
 	if area_of_effect:

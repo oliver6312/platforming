@@ -105,43 +105,59 @@ func update():
 func check_available_target(pressed_move: Move):
 	enable_monster_button()
 	var target = pressed_move.target
-	if battle_state.all_player_monsters.has(battle_state.active_monster):
+
+#checks for special cases first, one by one. 
+#Here it checks if its only self target
+	if pressed_move.target_self_only and bound_monster != battle_state.active_monster:
+		disable_monster_button()
+		return
+	if pressed_move.target_self_only and bound_monster == battle_state.active_monster:
+		enable_monster_button()
+		return
+
+#Here it checks if its an area of effect targeting move
+	if pressed_move.target_area_of_effect:
+		if pressed_move.target_ally:
+			if battle_state.is_player_turn:
+				if !belongs_to_player:
+					disable_monster_button()
+					print("does not belong to player")
+					return
+			else:
+					if belongs_to_player:
+						disable_monster_button()
+						print("does belong to player")
+						return
+			return
+		if battle_state.is_player_turn:
+			if belongs_to_player:
+					disable_monster_button()
+					return
+		else:
+			if !belongs_to_player:
+					disable_monster_button()
+					return
+		return
+
+#Here it checks if its an ally targeting move
+	if pressed_move.target_ally:
+		if battle_state.is_player_turn:
+			if !belongs_to_player or !target[monster_position]:
+				disable_monster_button()
+				return
+		else:
+			if belongs_to_player or !target[monster_position]:
+				disable_monster_button()
+				return
+		return
+
+#if it is not ally targeting, all targeting or self targeting then run genneric:
+	if battle_state.is_player_turn:
 		if belongs_to_player or !target[monster_position]:
 				disable_monster_button()
 	else:
 		if !belongs_to_player or !target[monster_position]:
 				disable_monster_button()
-	
-	if pressed_move.target_self_only and bound_monster != battle_state.active_monster:
-		disable_monster_button()
-	if pressed_move.target_self_only and bound_monster == battle_state.active_monster:
-		enable_monster_button()
-	
-	if pressed_move.target_ally:
-		print("targeting allies")
-		enable_monster_button()
-		if battle_state.all_player_monsters.has(battle_state.active_monster):
-			if !belongs_to_player or !target[monster_position]:
-				disable_monster_button()
-		else:
-			if belongs_to_player or !target[monster_position]:
-				disable_monster_button()
-	
-	if pressed_move.target_area_of_effect:
-		enable_monster_button()
-		if pressed_move.target_ally:
-			if battle_state.all_player_monsters.has(battle_state.active_monster):
-				if !belongs_to_player:
-					disable_monster_button()
-			else:
-				if belongs_to_player:
-					disable_monster_button()
-		if battle_state.all_player_monsters.has(battle_state.active_monster):
-			if belongs_to_player:
-					disable_monster_button()
-		else:
-			if !belongs_to_player:
-					disable_monster_button()
 
 func _on_button_pressed() -> void:
 	if GameRunner.target_selection_mode:

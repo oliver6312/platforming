@@ -16,6 +16,6 @@ base_defense = 15
 base_speed = 25
 base_melee_damage = 10
 base_range_damage = 30
-element_one = 6
+element_one = 5
 image = ExtResource("2_d78jy")
 metadata/_custom_type_script = "uid://cv3lai601u55n"

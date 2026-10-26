@@ -3,8 +3,8 @@ class_name Move
 var usages: int
 var resource: MoveResource
 
-#var type: MonsterType.Type:
-#	get: return resource.type
+var element: MonsterElement.Element:
+	get: return resource.element
 
 var name: String:
 	get: return resource.name
@@ -25,5 +25,5 @@ var target: Array:
 	get: return resource.target
 
 #used for duck-typing in TargetedEffect
-#func get_type() -> MonsterType.Type:
-#	return type
+func get_element() -> MonsterElement.Element:
+	return element

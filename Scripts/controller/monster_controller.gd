@@ -51,9 +51,10 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	GameRunner.on_turn_ended()
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
+	print(monster.current_hp)
 	monster.current_hp = clamp(monster.current_hp + amount, 0, monster.max_hp)
-	print("deals this much damage:")
-	print(amount)
+	print(monster.current_hp)
+
 #	if monster.hp == 0:
 #		faint_monster(monster)
 		

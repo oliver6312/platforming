@@ -14,6 +14,7 @@ script = ExtResource("1_nak3d")
 name = "Tranquil Song"
 target_ally = true
 use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3")])
+element = 5
 limited_usages = true
 usage_max = 2
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

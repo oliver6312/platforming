@@ -6,7 +6,7 @@ class_name MoveResource extends Resource
 @export var target_self_only: bool
 @export var area_of_effect: bool
 @export var use_effects: Array[TargetedEffect]
-@export var type: MonsterType.Type
+@export var element: MonsterElement.Element
 @export var use_message: String = "{user_name} uses {move_name}"
 
 @export var rank: Array = [true, true, true]
