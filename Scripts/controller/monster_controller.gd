@@ -60,10 +60,12 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	GameRunner.on_turn_ended()
 
 func instantiate_condition_on_monster(monster: Monster, condition_resource: ConditionResource):
-	print(condition_resource.max_stack)
-	if monster.conditions\
-		.filter(func(condition): return condition.resource == condition_resource)\
-		.size() >= condition_resource.max_stack:
+
+	if monster.conditions.filter(func(condition): return condition.resource == condition_resource):
+		monster.conditions.filter(func(
+			condition): 
+				if condition.resource == condition_resource:
+					condition_resource.duration += 1)
 			return
 	
 	var condition = Condition.new()
