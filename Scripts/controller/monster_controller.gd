@@ -83,6 +83,11 @@ func instantiate_condition_on_monster(monster: Monster, condition_resource: Cond
 	
 	Events.on_monster_updated.emit(monster)
 
+func remove_condition_on_monster(monster: Monster):
+	if monster.conditions:
+		monster.conditions.clear()
+	Events.on_monster_updated.emit(monster)
+
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
 	monster.current_hp = clamp(monster.current_hp + amount, 1, monster.max_hp)
