@@ -19,29 +19,37 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	if !area_of_effect:
 		MonsterController.adjust_monster_hitpoints(target, amt)
 	if area_of_effect:
-		var target_0: Monster
-		var target_1: Monster
-		var target_2: Monster
 		if source.target_ally:
 			print("target ally area of effect")
 			if battle_state.is_player_turn:
-				target_0 = battle_state.all_player_monsters[0]
-				target_1 = battle_state.all_player_monsters[1]
-				target_2 = battle_state.all_player_monsters[2]
+				all_player_target(battle_state, amt)
 			else:
-				target_0 = battle_state.all_opponent_monsters[0]
-				target_1 = battle_state.all_opponent_monsters[1]
-				target_2 = battle_state.all_opponent_monsters[2]
+				all_opponent_target(battle_state, amt)
 		else:
 			if !battle_state.is_player_turn:
-				target_0 = battle_state.all_player_monsters[0]
-				target_1 = battle_state.all_player_monsters[1]
-				target_2 = battle_state.all_player_monsters[2]
+				all_player_target(battle_state, amt)
 			else:
-				target_0 = battle_state.all_opponent_monsters[0]
-				target_1 = battle_state.all_opponent_monsters[1]
-				target_2 = battle_state.all_opponent_monsters[2]
+				all_opponent_target(battle_state, amt)
 			print("target enemy area of effect")
-		MonsterController.adjust_monster_hitpoints(target_0, amt)
-		MonsterController.adjust_monster_hitpoints(target_1, amt)
-		MonsterController.adjust_monster_hitpoints(target_2, amt)
+
+func all_opponent_target(battle_state: BattleState, amt):
+	var target_0: Monster
+	var target_1: Monster
+	var target_2: Monster
+	target_0 = battle_state.all_opponent_monsters[0]
+	target_1 = battle_state.all_opponent_monsters[1]
+	target_2 = battle_state.all_opponent_monsters[2]
+	MonsterController.adjust_monster_hitpoints(target_0, amt)
+	MonsterController.adjust_monster_hitpoints(target_1, amt)
+	MonsterController.adjust_monster_hitpoints(target_2, amt)
+
+func all_player_target(battle_state: BattleState, amt):
+	var target_0: Monster
+	var target_1: Monster
+	var target_2: Monster
+	target_0 = battle_state.all_player_monsters[0]
+	target_1 = battle_state.all_player_monsters[1]
+	target_2 = battle_state.all_player_monsters[2]
+	MonsterController.adjust_monster_hitpoints(target_0, amt)
+	MonsterController.adjust_monster_hitpoints(target_1, amt)
+	MonsterController.adjust_monster_hitpoints(target_2, amt)

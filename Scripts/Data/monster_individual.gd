@@ -13,17 +13,17 @@ var battle_position: int
 var conditions: Array[Condition]
 
 var max_hp: int:
-	get: return Calculations.calculate_monster_stat(species.base_max_hp, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
+	get: return Calculations.calculate_monster_stat(species.base_max_hp, level, sum_condition_stats_for_code(Stat.Code.MAX_HP))
 var current_hp: int
 
 var defense: int:
-	get: return Calculations.calculate_monster_stat(species.base_defense, level, sum_condition_stats_for_code(Stat.Code.DEF), Stat.Code.DEF)
+	get: return Calculations.calculate_monster_stat(species.base_defense, level, sum_condition_stats_for_code(Stat.Code.DEF))
 var speed: int:
-	get: return Calculations.calculate_monster_stat(species.base_speed, level, sum_condition_stats_for_code(Stat.Code.SPD), Stat.Code.SPD)
+	get: return Calculations.calculate_monster_stat(species.base_speed, level, sum_condition_stats_for_code(Stat.Code.SPD))
 var melee_damage: int:
-	get: return Calculations.calculate_monster_stat(species.base_melee_damage, level, sum_condition_stats_for_code(Stat.Code.MEL_ATK), Stat.Code.MEL_ATK)
+	get: return Calculations.calculate_monster_stat(species.base_melee_damage, level, sum_condition_stats_for_code(Stat.Code.MEL_ATK))
 var range_damage: int:
-	get: return Calculations.calculate_monster_stat(species.base_range_damage, level, sum_condition_stats_for_code(Stat.Code.RAN_ATK), Stat.Code.RAN_ATK)
+	get: return Calculations.calculate_monster_stat(species.base_range_damage, level, sum_condition_stats_for_code(Stat.Code.RAN_ATK))
 
 var priority
 
