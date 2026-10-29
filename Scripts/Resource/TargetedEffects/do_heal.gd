@@ -5,6 +5,9 @@ class_name DoHeal extends TargetedEffect
 @export var damage_log_string: String = "{doer_name} heals {target_name} for {amt} health"
 @export var critical_hit_damage_coefficient = 2
 
+
+
+
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 #	var target = doer if target_self else MonsterController.get_monster_opponent(doer)
 	if target_self:
@@ -33,23 +36,17 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 			print("target enemy area of effect")
 
 func all_opponent_target(battle_state: BattleState, amt):
-	var target_0: Monster
-	var target_1: Monster
-	var target_2: Monster
-	target_0 = battle_state.all_opponent_monsters[0]
-	target_1 = battle_state.all_opponent_monsters[1]
-	target_2 = battle_state.all_opponent_monsters[2]
+	var target_0: Monster = battle_state.all_opponent_monsters[0]
+	var target_1: Monster = battle_state.all_opponent_monsters[1]
+	var target_2: Monster = battle_state.all_opponent_monsters[2]
 	MonsterController.adjust_monster_hitpoints(target_0, amt)
 	MonsterController.adjust_monster_hitpoints(target_1, amt)
 	MonsterController.adjust_monster_hitpoints(target_2, amt)
 
 func all_player_target(battle_state: BattleState, amt):
-	var target_0: Monster
-	var target_1: Monster
-	var target_2: Monster
-	target_0 = battle_state.all_player_monsters[0]
-	target_1 = battle_state.all_player_monsters[1]
-	target_2 = battle_state.all_player_monsters[2]
+	var target_0: Monster = battle_state.all_player_monsters[0]
+	var target_1: Monster = battle_state.all_player_monsters[1]
+	var target_2: Monster = battle_state.all_player_monsters[2]
 	MonsterController.adjust_monster_hitpoints(target_0, amt)
 	MonsterController.adjust_monster_hitpoints(target_1, amt)
 	MonsterController.adjust_monster_hitpoints(target_2, amt)
