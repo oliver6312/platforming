@@ -18,10 +18,6 @@ func _ready():
 	Events.move_button_pressed.connect(handle_move_button_pressed)
 	Events.request_target_monster.connect(handle_target_monster)
 
-#func change_selected_monster(selected_monster: Monster):
-#	print(selected_monster.nickname)
-#	return selected_monster
-
 func setup_model():
 	rng = RandomNumberGenerator.new()
 	battle_state = BattleState.new()
@@ -52,9 +48,6 @@ func end_turn():
 	start_turn()
 
 func start_turn():
-	
-#	current_mode = BATTLE_PICK_MODE.MOVE
-	
 	target_selection_mode = false
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
@@ -71,10 +64,6 @@ func start_turn():
 	Events.start_active_monster_turn.emit(battle_state.active_monster)
 	
 
-	pass
-
-func resolve_turn():
-	#maybe a mistake
 	pass
 
 func handle_target_monster(target: Monster):

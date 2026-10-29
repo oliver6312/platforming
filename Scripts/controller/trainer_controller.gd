@@ -5,6 +5,7 @@ var rng: RandomNumberGenerator
 
 func _ready():
 	Events.on_new_game_state_created.connect(get_controller_components)
+#	Events.displace_monster.connect(add_trainer_monster_to_battle)
 
 func get_controller_components():
 	battle_state = GameRunner.battle_state

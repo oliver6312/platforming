@@ -90,7 +90,7 @@ func remove_condition_on_monster(monster: Monster):
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
-	monster.current_hp = clamp(monster.current_hp + amount, 1, monster.max_hp)
+	monster.current_hp = clamp(monster.current_hp + amount, 0, monster.max_hp)
 	print(monster.current_hp)
 
 #	if monster.hp == 0:
@@ -102,6 +102,9 @@ func get_monster_opponent(monster: Monster) -> Monster:
 	#must be fixed later to find the desired target
 	return battle_state.all_battle_monsters[0]
 
+func move_monster(monster: Monster):
+	
+	pass
 
 func create_monster(species: SpeciesResource, nickname: String = "") -> Monster:
 	var monster = Monster.new()
