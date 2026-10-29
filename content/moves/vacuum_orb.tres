@@ -9,15 +9,15 @@
 script = ExtResource("3_e77lj")
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
-[sub_resource type="Resource" id="Resource_qsr10"]
+[sub_resource type="Resource" id="Resource_e77lj"]
 script = ExtResource("4_e77lj")
-push = true
+pull = true
 metadata/_custom_type_script = "uid://cgqv0s1kwq1f5"
 
 [resource]
 script = ExtResource("1_xhvgl")
 name = "Vacuum Orb"
-use_effects = Array[ExtResource("2_1nhfv")]([SubResource("Resource_1nhfv"), SubResource("Resource_qsr10")])
+use_effects = Array[ExtResource("2_1nhfv")]([SubResource("Resource_1nhfv"), SubResource("Resource_e77lj")])
 element = 5
 target = [true, true, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

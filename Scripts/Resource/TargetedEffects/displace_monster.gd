@@ -1,20 +1,39 @@
 class_name DisplaceMonster extends TargetedEffect
 
-@export var push: bool
 @export var pull: bool
+@export var push: bool
 @export var shuffle: bool
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 	print(battle_state.opponent.monsters)
+	var friendly_fire: bool = false
+	if battle_state.all_player_monsters.has(doer) and battle_state.all_player_monsters.has(target) or\
+	 battle_state.all_opponent_monsters.has(doer) and battle_state.all_opponent_monsters.has(target):
+		friendly_fire = true
+	
+	if target_self:
+		target = doer
+
+	if pull:
+		if battle_state.all_opponent_monsters.has(target):
+			pull_opponent_monsters(battle_state, target)
+		else:
+			pull_player_monsters(battle_state, target)
+		return
+
+	if push:
+		if battle_state.all_opponent_monsters.has(target):
+			push_opponent_monsters(battle_state, target)
+		else:
+			push_player_monsters(battle_state, target)
+		return
+
 	if shuffle:
-#		if battle_state.player.monsters[doer]:
-#			pass
-		if battle_state.is_player_turn:
+		if battle_state.all_opponent_monsters.has(target):
 			shuffle_opponent_monsters(battle_state)
 		else:
 			shuffle_player_monsters(battle_state)
-	push_opponent_monsters(battle_state, target)
-	return
+		return
 
 func pull_opponent_monsters(battle_state: BattleState, target: Monster):
 	battle_state.opponent.monsters.erase(target)
