@@ -9,6 +9,11 @@
 [sub_resource type="Resource" id="Resource_d31y4"]
 script = ExtResource("3_p2ioq")
 base_damage = 5
+melee = null
+ignore_stats = null
+damage_log_string = null
+critical_hit_damage_coefficient = null
+target_self = null
 area_of_effect = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
