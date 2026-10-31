@@ -41,7 +41,6 @@ func use_monster_move(monster: Monster, target: Monster, move: Move):
 #	var use_string = move.use_message.format({"user_name": monster.name, "move_name": move.name})
 #	Events.request_log.emit(use_string)
 	
-	var opponent = get_monster_opponent(monster)
 #	if opponent.hp == 0:
 #		monster.move_blocked = false
 #		return
@@ -97,10 +96,6 @@ func adjust_monster_hitpoints(monster: Monster, amount: int):
 #		faint_monster(monster)
 		
 #	Events.on_monster_updated.emit(monster)
-
-func get_monster_opponent(monster: Monster) -> Monster:
-	#must be fixed later to find the desired target
-	return battle_state.all_battle_monsters[0]
 
 func move_monster(monster: Monster):
 	

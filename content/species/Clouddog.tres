@@ -12,7 +12,7 @@
 script = ExtResource("1_am04j")
 name = "Clouddog"
 starter_moves = Array[ExtResource("3_srepd")]([ExtResource("4_thmhh"), ExtResource("5_thmhh"), ExtResource("6_6pey6"), ExtResource("7_8r3dj")])
-base_max_hp = 30
+base_max_hp = 60
 base_speed = 10
 element_one = 1
 image = ExtResource("1_xmyck")

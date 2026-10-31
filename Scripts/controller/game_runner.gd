@@ -26,11 +26,11 @@ func setup_model():
 	var species_shadecry = preload("res://content/species/Shadecry.tres")
 	var species_clouddog = preload("res://content/species/Clouddog.tres")
 
-	var monster1 = MonsterController.create_monster(species_shadecry)
+	var monster1 = MonsterController.create_monster(species_clouddog)
 	var monster2 = MonsterController.create_monster(species_shadecry, "Reggie")
 	var monster3 = MonsterController.create_monster(species_shadecry, "Steven")
 	
-	var monster4 = MonsterController.create_monster(species_clouddog)
+	var monster4 = MonsterController.create_monster(species_shadecry)
 	var monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
 	var monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
 

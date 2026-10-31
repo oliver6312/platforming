@@ -6,6 +6,9 @@ class_name DoDamage extends TargetedEffect
 @export var damage_log_string: String = "{doer_name} hits {target_name} for {amt} damage"
 @export var critical_hit_damage_coefficient = 2
 
+@export var bonus_damage_condition: ConditionResource
+@export var bonus_damage_percentage: float = 1
+
 var target_0: Monster 
 var target_1: Monster 
 var target_2: Monster
@@ -66,14 +69,13 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 		print("target enemy area of effect")
 
 	
-	
-	
 	MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, crit))
 	MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, crit))
 	MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, crit))
 
 func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	var element = source.get_element() if source.has_method("get_element") else MonsterElement.Element.NONE
+	var bonus_damage_total: float = 1
 
 	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
 	if crit:
@@ -87,5 +89,17 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	if ignore_stats:
 		stat_diff_coefficient = 0
 
-	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient, 0, 1000) 
+	for condition in target.conditions:
+		if condition.resource == bonus_damage_condition:
+			bonus_damage_total = bonus_damage_percentage
+			print("bonus damage added")
+			print(bonus_damage_total)
+
+#	if target.conditions.filter(func(condition): 
+#		return condition.resource == bonus_damage_condition): 
+#			bonus_damage_total = bonus_damage_percentage
+#			print("bonus damage added")
+#			print(bonus_damage_total)
+
+	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient * bonus_damage_total, 0, 1000)
 	return amt
