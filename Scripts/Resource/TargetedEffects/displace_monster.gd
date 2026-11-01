@@ -13,6 +13,11 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	if target_self:
 		target = doer
 
+	if !source.target_area_of_effect:
+		for condition in target.conditions:
+			if condition.resource.restrained:
+				return
+
 	if pull:
 		if battle_state.all_opponent_monsters.has(target):
 			pull_opponent_monsters(battle_state, target)

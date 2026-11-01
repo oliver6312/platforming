@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 [resource]
 script = ExtResource("2_edy4h")
 name = "Burning"
+element = 7
 on_begin_turn_effects = Array[ExtResource("1_224ma")]([SubResource("Resource_qhv1i")])
 duration = 2
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"

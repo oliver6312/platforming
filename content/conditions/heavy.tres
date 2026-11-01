@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConditionResource" format=3 uid="uid://fdoxgmer1j6y"]
+
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="1_3kkx7"]
+[ext_resource type="Script" uid="uid://x2s2xwhft1pa" path="res://Scripts/Resource/condition_resource.gd" id="2_ub1cb"]
+[ext_resource type="Script" uid="uid://dgc26v65rmebn" path="res://Scripts/Resource/stat_modifier.gd" id="3_bcbk5"]
+
+[resource]
+script = ExtResource("2_ub1cb")
+name = "Heavy"
+duration = 20
+restrained = true
+metadata/_custom_type_script = "uid://x2s2xwhft1pa"

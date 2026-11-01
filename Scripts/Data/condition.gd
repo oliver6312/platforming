@@ -8,4 +8,4 @@ var name: String:
 
 #used for duck-typing in TargetedEffect
 func get_type() -> MonsterElement.Element:
-	return MonsterElement.Element.NONE
+	return resource.element

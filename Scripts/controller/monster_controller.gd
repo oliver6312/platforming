@@ -97,10 +97,6 @@ func adjust_monster_hitpoints(monster: Monster, amount: int):
 		
 #	Events.on_monster_updated.emit(monster)
 
-func move_monster(monster: Monster):
-	
-	pass
-
 func create_monster(species: SpeciesResource, nickname: String = "") -> Monster:
 	var monster = Monster.new()
 	monster.species = species

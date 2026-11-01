@@ -23,5 +23,4 @@ script = ExtResource("1_xhvgl")
 name = "Vacuum Orb"
 use_effects = Array[ExtResource("2_1nhfv")]([SubResource("Resource_1nhfv"), SubResource("Resource_e77lj")])
 element = 5
-target = [true, true, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"
