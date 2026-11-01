@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_nak3d"]
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_wc7lj"]
 [ext_resource type="Script" uid="uid://nr33b14vsq80" path="res://Scripts/Resource/TargetedEffects/do_heal.gd" id="3_fj45q"]
-[ext_resource type="Script" uid="uid://bjrafgmh878km" path="res://Scripts/Resource/TargetedEffects/cleanse_condition.gd" id="4_vscy3"]
 
 [sub_resource type="Resource" id="Resource_vscy3"]
 script = ExtResource("3_fj45q")
@@ -11,16 +10,17 @@ base_heal = 10
 area_of_effect = true
 metadata/_custom_type_script = "uid://nr33b14vsq80"
 
-[sub_resource type="Resource" id="Resource_or10s"]
-script = ExtResource("4_vscy3")
+[sub_resource type="Resource" id="Resource_fj45q"]
+script = ExtResource("3_fj45q")
+base_heal = 10
 area_of_effect = true
-metadata/_custom_type_script = "uid://bjrafgmh878km"
+metadata/_custom_type_script = "uid://nr33b14vsq80"
 
 [resource]
 script = ExtResource("1_nak3d")
 name = "Tranquil Song"
 target_ally = true
-use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3"), SubResource("Resource_or10s")])
+use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3"), SubResource("Resource_fj45q")])
 element = 5
 limited_usages = true
 usage_max = 2
