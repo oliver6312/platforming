@@ -151,7 +151,13 @@ func check_available_target(pressed_move: Move):
 				return
 		return
 
-#if it is not ally targeting, all targeting or self targeting then run genneric:
+#checks if conditon makes it untargetable
+	for condition in bound_monster.conditions:
+		if condition.resource.targetable:
+			disable_monster_button()
+			return
+
+#if it is not ally targeting, all targeting or self targeting then run generic:
 	if battle_state.is_player_turn:
 		if belongs_to_player or !target[monster_position]:
 				disable_monster_button()
