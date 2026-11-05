@@ -86,11 +86,13 @@ layout_mode = 2
 theme_override_constants/separation = 1
 
 [node name="MoveButton1" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=1705985846]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 1"
 
 [node name="MoveButton2" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions" unique_id=162943910]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Move 2"
@@ -106,12 +108,12 @@ theme_override_font_sizes/font_size = 27
 text = "Move 4"
 
 [node name="MoveInfo" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=972526037]
-custom_minimum_size = Vector2(367, 0)
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "Move Information"
 
 [node name="MonsterInfo" type="RichTextLabel" parent="BattleRenderer/BattlePanel/HBoxContainer" unique_id=483945707]
-custom_minimum_size = Vector2(369, 0)
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "Monster Information"
 
@@ -119,7 +121,7 @@ text = "Monster Information"
 layout_mode = 2
 
 [node name="LogButton" type="Button" parent="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions" unique_id=716612721]
-custom_minimum_size = Vector2(101, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "Print"
