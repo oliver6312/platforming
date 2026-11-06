@@ -102,4 +102,5 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 #			print(bonus_damage_total)
 
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient * bonus_damage_total, 0, 1000)
+	Events.on_monster_damaged.emit(target, -amt)
 	return amt

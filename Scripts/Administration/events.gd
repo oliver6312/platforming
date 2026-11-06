@@ -14,7 +14,6 @@ signal move_button_pressed
 signal update_all_monsters
 signal request_target_monster
 
-
 # Events sent from game runner
 signal on_new_game_state_created
 signal round_changed
@@ -24,3 +23,6 @@ signal chosen_move_target
 # Events sent from trainer controller
 signal on_monster_added_to_battle
 signal on_monster_updated
+
+# Events sent from monster controller
+signal on_monster_damaged

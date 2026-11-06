@@ -45,10 +45,13 @@ var selected: bool
 var battle_state: BattleState
 var rng: RandomNumberGenerator
 
+const DAMAGE_LABEL = preload("uid://3t3j40l1nvf2")
+
 func connect_events() -> void:
 	Events.on_new_game_state_created.connect(get_controller_components)
 	Events.on_monster_added_to_battle.connect(maybe_bind_monster)
 	Events.on_monster_updated.connect(maybe_update_monster)
+	Events.on_monster_damaged.connect(maybe_damage_monster)
 	Events.start_active_monster_turn.connect(check_active_monster)
 	Events.update_all_monsters.connect(update)
 	Events.chosen_move_target.connect(check_available_target)
@@ -64,6 +67,13 @@ func maybe_update_monster(monster: Monster):
 		monster.battle_position = monster_position
 		print(monster.name)
 		print(monster.battle_position + monster_position)
+
+func maybe_damage_monster(monster: Monster, damage: int):
+	if monster == bound_monster:
+		var new_damage_label = DAMAGE_LABEL.instantiate() as Label
+		new_damage_label.text = str(damage)
+		new_damage_label.global_position = global_position + Vector2(37, -98)
+		get_tree().current_scene.call_deferred("add_child", new_damage_label)
 
 func check_active_monster(selected_monster: Monster):
 	if selected_monster == bound_monster:

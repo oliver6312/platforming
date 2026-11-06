@@ -89,6 +89,7 @@ func remove_condition_on_monster(monster: Monster):
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
+	
 	monster.current_hp = clamp(monster.current_hp + amount, 0, monster.max_hp)
 	print(monster.current_hp)
 
