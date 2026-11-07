@@ -70,9 +70,12 @@ func maybe_update_monster(monster: Monster):
 
 func maybe_damage_monster(monster: Monster, damage: int):
 	if monster == bound_monster:
+		
+		
 		var new_damage_label = DAMAGE_LABEL.instantiate() as Label
+
 		new_damage_label.text = str(damage)
-		new_damage_label.global_position = global_position + Vector2(37, -98)
+		new_damage_label.global_position = global_position + Vector2(57, -107)
 		get_tree().current_scene.call_deferred("add_child", new_damage_label)
 
 func check_active_monster(selected_monster: Monster):
