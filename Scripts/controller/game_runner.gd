@@ -45,7 +45,7 @@ func setup_model():
 	start_turn()
 
 func end_turn():
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.45).timeout
 	start_turn()
 
 func start_turn():

@@ -35,7 +35,7 @@ func end_condition(monster: Monster, condition: Condition):
 	Events.on_monster_updated.emit(monster)
 
 func use_monster_move(monster: Monster, target: Monster, move: Move):
-	var crit_chance: float = 0.9
+	var crit_chance: float = 0.05
 #	if move.usages <= 0:
 #		return
 	
