@@ -102,6 +102,9 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 
 		var new_damage_label = DAMAGE_LABEL.instantiate() as Label
 
+		if damage >= 0:
+			new_damage_label.add_theme_color_override("font_color", Color(0, 1, 0, 1))
+
 		new_damage_label.text = str(damage)
 		new_damage_label.global_position = global_position + Vector2(57, -107)
 		get_tree().current_scene.call_deferred("add_child", new_damage_label)
