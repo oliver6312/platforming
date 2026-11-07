@@ -76,18 +76,21 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 				pass
 			0:
 				var new_element_label = DAMAGE_LABEL.instantiate() as Label
+				new_element_label.add_theme_color_override("font_color", Color(0.0, 0.6, 0.8, 1))
 				new_element_label.text = "IMMUNE"
 				new_element_label.global_position = global_position + Vector2(57, -107)
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
 				await get_tree().create_timer(0.2).timeout
 			0.5:
 				var new_element_label = DAMAGE_LABEL.instantiate() as Label
+				new_element_label.add_theme_color_override("font_color", Color(0.0, 0.4, 0.8, 1))
 				new_element_label.text = "WEAK"
 				new_element_label.global_position = global_position + Vector2(57, -107)
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
 				await get_tree().create_timer(0.2).timeout
 			2:
 				var new_element_label = DAMAGE_LABEL.instantiate() as Label
+				new_element_label.add_theme_color_override("font_color", Color(0.0, 0.4, 1, 1))
 				new_element_label.text = "STRONG"
 				new_element_label.global_position = global_position + Vector2(57, -107)
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
@@ -95,6 +98,7 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 		
 		if crit:
 			var new_crit_label = DAMAGE_LABEL.instantiate() as Label
+			new_crit_label.add_theme_color_override("font_color", Color(1, 0.5, 0, 1))
 			new_crit_label.text = "CRIT"
 			new_crit_label.global_position = global_position + Vector2(57, -107)
 			get_tree().current_scene.call_deferred("add_child", new_crit_label)
@@ -102,7 +106,7 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 
 		var new_damage_label = DAMAGE_LABEL.instantiate() as Label
 
-		if damage >= 0:
+		if damage >= 1:
 			new_damage_label.add_theme_color_override("font_color", Color(0, 1, 0, 1))
 
 		new_damage_label.text = str(damage)
