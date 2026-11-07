@@ -68,7 +68,6 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 			target_2 = battle_state.all_opponent_monsters[2]
 		print("target enemy area of effect")
 
-	
 	MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, crit))
 	MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, crit))
 	MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, crit))
@@ -77,7 +76,7 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	var element = source.get_element() if source.has_method("get_element") else MonsterElement.Element.NONE
 	var bonus_damage_total: float = 1
 
-	var crit_coefficient = critical_hit_damage_coefficient if crit else 1
+	var crit_coefficient = 2 if crit else 1
 	if crit:
 		print("get crit, idiot!")
 
@@ -102,5 +101,5 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 #			print(bonus_damage_total)
 
 	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient * bonus_damage_total, 0, 1000)
-	Events.on_monster_damaged.emit(target, -amt)
+	Events.on_monster_damaged.emit(target, -amt, crit, type_advantage_coefficient)
 	return amt
