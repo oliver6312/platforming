@@ -17,7 +17,7 @@ data_panel = NodePath("MonsterData")
 name_label = NodePath("MonsterData/Name")
 hp_label = NodePath("MonsterData/SubHealthBar/Hp")
 hp_bar = NodePath("MonsterData/HealthBar")
-status_label = NodePath("MonsterData/SubHealthBar/Status")
+status_label = NodePath("MonsterData/Status")
 sprite = NodePath("Frame/MonsterSprite")
 target_sprite = NodePath("Frame/TargetSprite")
 monster_button = NodePath("Frame/MonsterButton")
@@ -65,6 +65,7 @@ offset_top = -90.0
 offset_right = 107.0
 
 [node name="MonsterData" type="VBoxContainer" parent="." unique_id=128153527]
+custom_minimum_size = Vector2(124, 58)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -72,6 +73,12 @@ size_flags_horizontal = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "MONSTERNAME"
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="MonsterData" unique_id=173650029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "PSO"
 
 [node name="HealthBar" type="ProgressBar" parent="MonsterData" unique_id=1196824568]
 layout_mode = 2
@@ -85,9 +92,6 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "10/20"
 
-[node name="Status" type="Label" parent="MonsterData/SubHealthBar" unique_id=173650029]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "PSO"
-
+[connection signal="mouse_entered" from="Frame/MonsterButton" to="." method="_on_monster_button_mouse_entered"]
+[connection signal="mouse_exited" from="Frame/MonsterButton" to="." method="_on_monster_button_mouse_exited"]
 [connection signal="pressed" from="Frame/MonsterButton" to="." method="_on_button_pressed"]

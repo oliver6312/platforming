@@ -15,4 +15,5 @@ script = ExtResource("2_i71il")
 name = "Enraged"
 stat_modifiers = Array[ExtResource("3_i71il")]([SubResource("Resource_i71il")])
 duration = 2
+short_name = "NRG"
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"

@@ -9,4 +9,5 @@ script = ExtResource("2_ub1cb")
 name = "Heavy"
 duration = 20
 restrained = true
+short_name = "HVY"
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"

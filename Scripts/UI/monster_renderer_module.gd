@@ -143,6 +143,7 @@ func update():
 	hp_bar.max_value = bound_monster.max_hp
 	hp_bar.value = bound_monster.current_hp
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
+	status_label.text = bound_monster.get_condition_string()
 	
 	bound_monster.battle_position = monster_position
 	
@@ -224,3 +225,21 @@ func disable_monster_button():
 func enable_monster_button():
 	target_sprite.visible = true
 	monster_button.disabled = false
+
+func _on_monster_button_mouse_entered() -> void:
+	monster_data_visibility_switcheroo()
+#	for conditions in bound_monster.conditions:
+#		
+
+func _on_monster_button_mouse_exited() -> void:
+	monster_data_visibility_switcheroo()
+
+func monster_data_visibility_switcheroo():
+	if hp_bar.visible == true:
+		hp_bar.hide()
+		hp_label.hide()
+		status_label.show()
+	else:
+		hp_bar.show()
+		hp_label.show()
+		status_label.hide()

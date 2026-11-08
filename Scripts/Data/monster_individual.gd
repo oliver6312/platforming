@@ -44,6 +44,18 @@ func sum_condition_stats_for_code(code: Stat.Code):
 				sum += stat_modifier.modifier
 	return sum
 
+func get_condition_string():
+	var condition_string = ""
+	
+	for condition in conditions:
+		condition_string += "{name} - ({remaining})\n".format({"name": condition.name, "remaining": condition.duration_remaining})
+
+	if conditions.size() == 0:
+		return ""
+	else:
+		for condition in conditions:
+			return condition_string
+
 func dump_state():
 	var condition_string = ""
 	
