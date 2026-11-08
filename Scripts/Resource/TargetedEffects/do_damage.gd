@@ -19,7 +19,7 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 		target = doer
 
 	if !area_of_effect:
-		if MonsterController.check_for_evasion(target):
+		if MonsterController.check_for_evasion(target) or !condition_damage:
 			print("deals no damage because the monster evaded")
 			return
 		MonsterController.adjust_monster_hitpoints(target, -get_amount(doer, target, source, crit))
@@ -59,15 +59,15 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 			target_2 = battle_state.all_opponent_monsters[2]
 		print("target enemy area of effect")
 
-	if MonsterController.check_for_evasion(target_0):
+	if MonsterController.check_for_evasion(target_0) or !condition_damage:
 		print("deals no damage because the monster evaded")
 		return
 	MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, crit))
-	if MonsterController.check_for_evasion(target_1):
+	if MonsterController.check_for_evasion(target_1) or !condition_damage:
 		print("deals no damage because the monster evaded")
 		return
 	MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, crit))
-	if MonsterController.check_for_evasion(target_2):
+	if MonsterController.check_for_evasion(target_2) or !condition_damage:
 		print("deals no damage because the monster evaded")
 		return
 	MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, crit))
