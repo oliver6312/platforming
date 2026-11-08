@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="3_p2ioq"]
 [ext_resource type="Resource" uid="uid://by2ur0dgxy4uc" path="res://content/conditions/burning.tres" id="4_lnub0"]
 [ext_resource type="Script" uid="uid://bii8d8hi5bdwr" path="res://Scripts/Resource/TargetedEffects/add_condition.gd" id="5_sv8jn"]
+[ext_resource type="Resource" uid="uid://cerityx328csp" path="res://content/conditions/stealth.tres" id="6_sv8jn"]
 
 [sub_resource type="Resource" id="Resource_d31y4"]
 script = ExtResource("3_p2ioq")
@@ -23,11 +24,17 @@ condition_resource = ExtResource("4_lnub0")
 area_of_effect = true
 metadata/_custom_type_script = "uid://bii8d8hi5bdwr"
 
+[sub_resource type="Resource" id="Resource_8cluu"]
+script = ExtResource("5_sv8jn")
+condition_resource = ExtResource("6_sv8jn")
+area_of_effect = true
+metadata/_custom_type_script = "uid://bii8d8hi5bdwr"
+
 [resource]
 script = ExtResource("1_fehpo")
 name = "Gust of Wind"
 area_of_effect = true
-use_effects = Array[ExtResource("2_d31y4")]([SubResource("Resource_d31y4"), SubResource("Resource_i15jn")])
+use_effects = Array[ExtResource("2_d31y4")]([SubResource("Resource_d31y4"), SubResource("Resource_i15jn"), SubResource("Resource_8cluu")])
 element = 1
 rank = [false, true, true]
 target = [false, false, false]

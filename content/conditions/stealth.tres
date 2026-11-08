@@ -8,6 +8,6 @@
 script = ExtResource("2_xig8w")
 name = "Stealth"
 duration = 20
-targetable = true
+untargetable = true
 short_name = "STL"
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"

@@ -144,6 +144,7 @@ func update():
 	hp_bar.value = bound_monster.current_hp
 	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	status_label.text = bound_monster.get_condition_string()
+	status_label.hide()
 	
 	bound_monster.battle_position = monster_position
 	
@@ -202,7 +203,7 @@ func check_available_target(pressed_move: Move):
 
 #checks if conditon makes it untargetable
 	for condition in bound_monster.conditions:
-		if condition.resource.targetable:
+		if condition.resource.untargetable:
 			disable_monster_button()
 			return
 

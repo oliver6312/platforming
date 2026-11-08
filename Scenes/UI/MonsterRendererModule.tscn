@@ -15,7 +15,7 @@ script = ExtResource("1_roei1")
 frame = NodePath("Frame")
 data_panel = NodePath("MonsterData")
 name_label = NodePath("MonsterData/Name")
-hp_label = NodePath("MonsterData/SubHealthBar/Hp")
+hp_label = NodePath("MonsterData/Hp")
 hp_bar = NodePath("MonsterData/HealthBar")
 status_label = NodePath("MonsterData/Status")
 sprite = NodePath("Frame/MonsterSprite")
@@ -75,22 +75,19 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "MONSTERNAME"
 horizontal_alignment = 1
 
-[node name="Status" type="Label" parent="MonsterData" unique_id=173650029]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "PSO"
-
 [node name="HealthBar" type="ProgressBar" parent="MonsterData" unique_id=1196824568]
 layout_mode = 2
 show_percentage = false
 
-[node name="SubHealthBar" type="HBoxContainer" parent="MonsterData" unique_id=745248698]
-layout_mode = 2
-
-[node name="Hp" type="Label" parent="MonsterData/SubHealthBar" unique_id=1766514750]
+[node name="Hp" type="Label" parent="MonsterData" unique_id=1766514750]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "10/20"
+
+[node name="Status" type="Label" parent="MonsterData" unique_id=173650029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CND"
 
 [connection signal="mouse_entered" from="Frame/MonsterButton" to="." method="_on_monster_button_mouse_entered"]
 [connection signal="mouse_exited" from="Frame/MonsterButton" to="." method="_on_monster_button_mouse_exited"]
