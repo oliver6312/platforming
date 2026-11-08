@@ -80,7 +80,9 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	if crit:
 		print("get crit, idiot!")
 
-	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element)
+	var type_advantage_coefficient_one = MonsterElement.get_element_advantage_coefficient(element, target.element_one)
+	var type_advantage_coefficient_two = MonsterElement.get_element_advantage_coefficient(element, target.element_two)
+	var type_advantage_coefficient_total = type_advantage_coefficient_one * type_advantage_coefficient_two
 
 	var stat_diff_coefficient = doer.range_damage - target.defense
 	if melee:
@@ -100,6 +102,6 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 #			print("bonus damage added")
 #			print(bonus_damage_total)
 
-	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient * crit_coefficient * bonus_damage_total, 0, 1000)
-	Events.on_monster_damaged.emit(target, -amt, crit, type_advantage_coefficient)
+	var amt = clamp((base_damage + stat_diff_coefficient) * type_advantage_coefficient_total * crit_coefficient * bonus_damage_total, 0, 1000)
+	Events.on_monster_damaged.emit(target, -amt, crit, type_advantage_coefficient_total)
 	return amt

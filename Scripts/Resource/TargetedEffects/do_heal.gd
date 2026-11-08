@@ -74,7 +74,7 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	if crit:
 		print("get crit, idiot!")
 
-	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element)
+	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element_one)
 
 	for condition in target.conditions:
 		if condition.resource == bonus_damage_condition:

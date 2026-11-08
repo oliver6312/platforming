@@ -30,8 +30,10 @@ var priority
 var moves: Array[Move]
 var chosen_move
 
-var element: MonsterElement.Element:
+var element_one: MonsterElement.Element:
 	get: return species.element_one
+var element_two: MonsterElement.Element:
+	get: return species.element_two
 
 #	get: return Calculations.calculate_monster_stat(species.base_max_hp, hp_growth, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
 

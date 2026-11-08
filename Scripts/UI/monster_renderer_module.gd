@@ -73,12 +73,17 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 	
 	if monster == bound_monster:
 		match type_advantage_coefficient:
-			1:
-				pass
 			0.0:
 				var new_element_label = DAMAGE_LABEL.instantiate() as Label
 				new_element_label.add_theme_color_override("font_color", Color.DIM_GRAY)
 				new_element_label.text = "IMMUNE"
+				new_element_label.global_position = global_position + label_start_position
+				get_tree().current_scene.call_deferred("add_child", new_element_label)
+				await get_tree().create_timer(0.2).timeout
+			0.25:
+				var new_element_label = DAMAGE_LABEL.instantiate() as Label
+				new_element_label.add_theme_color_override("font_color", Color.WHITE_SMOKE)
+				new_element_label.text = "SUPER WEAK"
 				new_element_label.global_position = global_position + label_start_position
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
 				await get_tree().create_timer(0.2).timeout
@@ -89,13 +94,21 @@ func maybe_damage_monster(monster: Monster, damage: int, crit: bool, type_advant
 				new_element_label.global_position = global_position + label_start_position
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
 				await get_tree().create_timer(0.2).timeout
-			2:
+			2.0:
 				var new_element_label = DAMAGE_LABEL.instantiate() as Label
 				new_element_label.add_theme_color_override("font_color", Color.DARK_BLUE)
 				new_element_label.text = "STRONG"
 				new_element_label.global_position = global_position + label_start_position
 				get_tree().current_scene.call_deferred("add_child", new_element_label)
 				await get_tree().create_timer(0.2).timeout
+			4.0:
+				var new_element_label = DAMAGE_LABEL.instantiate() as Label
+				new_element_label.add_theme_color_override("font_color", Color.REBECCA_PURPLE)
+				new_element_label.text = "SUPER STRONG"
+				new_element_label.global_position = global_position + label_start_position
+				get_tree().current_scene.call_deferred("add_child", new_element_label)
+				await get_tree().create_timer(0.2).timeout
+
 		if crit:
 			var new_crit_label = DAMAGE_LABEL.instantiate() as Label
 			new_crit_label.add_theme_color_override("font_color", Color(1, 0.5, 0, 1))
