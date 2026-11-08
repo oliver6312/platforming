@@ -33,7 +33,6 @@ var chosen_move
 var element: MonsterElement.Element:
 	get: return species.element_one
 
-
 #	get: return Calculations.calculate_monster_stat(species.base_max_hp, hp_growth, level, sum_condition_stats_for_code(Stat.Code.MAX_HP), Stat.Code.MAX_HP)
 
 func sum_condition_stats_for_code(code: Stat.Code):

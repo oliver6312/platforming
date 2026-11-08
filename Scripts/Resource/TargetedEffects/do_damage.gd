@@ -5,6 +5,7 @@ class_name DoDamage extends TargetedEffect
 @export var ignore_stats: bool
 @export var damage_log_string: String = "{doer_name} hits {target_name} for {amt} damage"
 @export var critical_hit_damage_coefficient = 2
+@export var condition_damage: bool = false
 
 @export var bonus_damage_condition: ConditionResource
 @export var bonus_damage_percentage: float = 1
@@ -18,22 +19,12 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 		target = doer
 
 	if !area_of_effect:
+		if MonsterController.check_for_evasion(target):
+			print("deals no damage because the monster evaded")
+			return
 		MonsterController.adjust_monster_hitpoints(target, -get_amount(doer, target, source, crit))
 		return
 
-#	if area_of_effect:
-#		if source.target_ally:
-#			print("target ally area of effect")
-#			if battle_state.is_player_turn:
-#				all_player_target(battle_state)
-#			else:
-#				all_opponent_target(battle_state)
-#		else:
-#			if !battle_state.is_player_turn:
-#				all_player_target(battle_state)
-#			else:
-#				all_opponent_target(battle_state)
-#			print("target enemy area of effect")
 	make_monster_controller_adjust(doer, source, battle_state, crit)
 
 func all_opponent_target(battle_state: BattleState):
@@ -68,8 +59,17 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 			target_2 = battle_state.all_opponent_monsters[2]
 		print("target enemy area of effect")
 
+	if MonsterController.check_for_evasion(target_0):
+		print("deals no damage because the monster evaded")
+		return
 	MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, crit))
+	if MonsterController.check_for_evasion(target_1):
+		print("deals no damage because the monster evaded")
+		return
 	MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, crit))
+	if MonsterController.check_for_evasion(target_2):
+		print("deals no damage because the monster evaded")
+		return
 	MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, crit))
 
 func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):

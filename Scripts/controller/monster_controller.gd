@@ -88,6 +88,19 @@ func remove_condition_on_monster(monster: Monster):
 		monster.conditions.clear()
 	Events.on_monster_updated.emit(monster)
 
+func check_for_evasion(monster: Monster) -> bool:
+	var i: int = 0
+	for condition in monster.conditions:
+		if condition.resource.evasion == true:
+			print("has evasion")
+			monster.conditions.remove_at(i)
+			return true
+		else:
+			i += 1
+			print("has no evasion")
+	return false
+
+
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
 	

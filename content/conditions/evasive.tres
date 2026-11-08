@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConditionResource" format=3 uid="uid://bku5m4st780uw"]
+
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="1_j16ho"]
+[ext_resource type="Script" uid="uid://x2s2xwhft1pa" path="res://Scripts/Resource/condition_resource.gd" id="2_kgim8"]
+[ext_resource type="Script" uid="uid://dgc26v65rmebn" path="res://Scripts/Resource/stat_modifier.gd" id="3_p0u0n"]
+
+[resource]
+script = ExtResource("2_kgim8")
+name = "Evasive"
+duration = 20
+evasion = true
+short_name = "EVS"
+metadata/_custom_type_script = "uid://x2s2xwhft1pa"
