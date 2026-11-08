@@ -88,7 +88,9 @@ func remove_condition_on_monster(monster: Monster):
 		monster.conditions.clear()
 	Events.on_monster_updated.emit(monster)
 
-func check_for_evasion(monster: Monster) -> bool:
+func check_for_evasion(monster: Monster, condition_damage: bool) -> bool:
+	if condition_damage:
+		return false
 	var i: int = 0
 	for condition in monster.conditions:
 		if condition.resource.evasion == true:

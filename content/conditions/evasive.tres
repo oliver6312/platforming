@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_kgim8")
-name = "Evasive"
+name = "evasive"
 duration = 20
 evasion = true
 short_name = "EVS"
