@@ -111,6 +111,7 @@ func check_defeated_monster():
 			battle_state.all_battle_monsters.remove_at(i)
 			print(monster)
 			print("has been defeated")
+			i -= 1
 		i += 1
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
