@@ -102,6 +102,16 @@ func check_for_evasion(monster: Monster, condition_damage: bool) -> bool:
 			print("has no evasion")
 	return false
 
+func check_defeated_monster():
+	var i = 0
+	var monster: Monster
+	for monsters in battle_state.all_battle_monsters:
+		monster = battle_state.all_battle_monsters[i]
+		if monster.current_hp == 0:
+			battle_state.all_battle_monsters.remove_at(i)
+			print(monster)
+			print("has been defeated")
+		i += 1
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)
