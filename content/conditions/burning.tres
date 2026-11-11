@@ -9,6 +9,7 @@
 script = ExtResource("2_5v3rh")
 base_damage = 20
 condition_damage = true
+target_self = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]

@@ -46,17 +46,23 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 			target_2 = battle_state.all_opponent_monsters[2]
 		print("target enemy area of effect")
 
-	MonsterController.adjust_monster_hitpoints(target_0, get_amount(doer, target_0, source, crit))
-	MonsterController.adjust_monster_hitpoints(target_1, get_amount(doer, target_1, source, crit))
-	MonsterController.adjust_monster_hitpoints(target_2, get_amount(doer, target_2, source, crit))
+	if !target_0.current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_0, get_amount(doer, target_0, source, crit))
+	if !target_1.current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_1, get_amount(doer, target_1, source, crit))
+	if !target_2.current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_2, get_amount(doer, target_2, source, crit))
 
 func all_opponent_target(battle_state: BattleState, amt):
 	var target_0: Monster = battle_state.all_opponent_monsters[0]
 	var target_1: Monster = battle_state.all_opponent_monsters[1]
 	var target_2: Monster = battle_state.all_opponent_monsters[2]
-	MonsterController.adjust_monster_hitpoints(target_0, amt)
-	MonsterController.adjust_monster_hitpoints(target_1, amt)
-	MonsterController.adjust_monster_hitpoints(target_2, amt)
+	if !battle_state.all_opponent_monsters[0].current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_0, amt)
+	if !battle_state.all_opponent_monsters[1].current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_1, amt)
+	if !battle_state.all_opponent_monsters[2].current_hp == 0:
+		MonsterController.adjust_monster_hitpoints(target_2, amt)
 
 func all_player_target(battle_state: BattleState, amt):
 	var target_0: Monster = battle_state.all_player_monsters[0]

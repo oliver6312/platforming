@@ -170,6 +170,11 @@ func check_available_target(pressed_move: Move):
 	var target = pressed_move.target
 
 #checks for special cases first, one by one. 
+#here it checks if the monster is defeated
+	if !battle_state.all_battle_monsters.has(bound_monster):
+		disable_monster_button()
+		return
+
 #Here it checks if its only self target
 	if pressed_move.target_self_only and bound_monster != battle_state.active_monster:
 		disable_monster_button()
