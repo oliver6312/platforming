@@ -109,8 +109,6 @@ func check_defeated_monster():
 		monster = battle_state.all_battle_monsters[i]
 		if monster.current_hp == 0:
 			battle_state.all_battle_monsters.remove_at(i)
-			print(monster)
-			print("has been defeated")
 			i -= 1
 		i += 1
 

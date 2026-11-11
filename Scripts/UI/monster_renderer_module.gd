@@ -147,6 +147,8 @@ func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index
 func update():
 #	if bound_monster == null:
 #		return
+	if bound_monster.current_hp == 0:
+		sprite.hide()
 	if !belongs_to_player:
 		sprite.flip_h = true
 
