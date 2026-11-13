@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_p2ioq"]
 script = ExtResource("3_d31y4")
-base_damage = 20
+base_damage = 600
 area_of_effect = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 

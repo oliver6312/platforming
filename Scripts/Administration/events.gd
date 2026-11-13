@@ -9,6 +9,7 @@ signal request_quit
 signal request_log
 signal request_move_by_index
 signal move_button_pressed
+signal request_end_battle
 
 # Module
 signal update_all_monsters
@@ -19,6 +20,7 @@ signal on_new_game_state_created
 signal round_changed
 signal start_active_monster_turn
 signal chosen_move_target
+signal game_over
 
 # Events sent from trainer controller
 signal on_monster_added_to_battle

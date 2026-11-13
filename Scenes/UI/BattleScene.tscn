@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://covm6wia1j0t3" path="res://Scenes/UI/MonsterRendererModule.tscn" id="2_i6dt6"]
 [ext_resource type="Script" uid="uid://buwkdbv6gcs8a" path="res://Scripts/UI/bottom_panel.gd" id="3_4ty2g"]
 [ext_resource type="Script" uid="uid://bkc0pg0rh8gjx" path="res://Scripts/UI/top_panel.gd" id="3_1438b"]
+[ext_resource type="Script" uid="uid://d3tu38tvrymdu" path="res://Scripts/UI/game_over_panel.gd" id="6_48hph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1438b"]
+bg_color = Color(0.09239706, 0.09239707, 0.092397, 1)
 
 [node name="BattleScene" type="Node2D" unique_id=352108084]
 
@@ -175,9 +179,42 @@ monster_position = 1
 layout_mode = 2
 monster_position = 2
 
+[node name="GameOverPanel" type="Panel" parent="BattleRenderer" unique_id=944790054]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -444.0
+offset_top = -238.0
+offset_right = 412.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_48hph")
+
+[node name="Label" type="Label" parent="BattleRenderer/GameOverPanel" unique_id=1389760494]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 184.0
+offset_right = 521.0
+offset_bottom = 239.0
+theme_override_font_sizes/font_size = 40
+text = "Game Over"
+
+[node name="Button" type="Button" parent="BattleRenderer/GameOverPanel" unique_id=121120047]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 239.0
+offset_right = 521.0
+offset_bottom = 263.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1438b")
+text = "Continue"
+
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton1" to="BattleRenderer/BattlePanel" method="_on_move_button_1_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton2" to="BattleRenderer/BattlePanel" method="_on_move_button_2_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton3" to="BattleRenderer/BattlePanel" method="_on_move_button_3_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/MoveButtonOptions/MoveButton4" to="BattleRenderer/BattlePanel" method="_on_move_button_4_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LogButton" to="BattleRenderer/BattlePanel" method="_on_log_button_pressed"]
 [connection signal="pressed" from="BattleRenderer/BattlePanel/HBoxContainer/RightButtonOptions/LeaveButton" to="BattleRenderer/BattlePanel" method="_on_leave_button_pressed"]
+[connection signal="pressed" from="BattleRenderer/GameOverPanel/Button" to="BattleRenderer/GameOverPanel" method="_on_button_pressed"]

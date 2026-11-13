@@ -50,25 +50,22 @@ func end_turn():
 
 func start_turn():
 	target_selection_mode = false
-	
 	MonsterController.check_defeated_monster()
-	
+	if check_game_end():
+		return
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
 	if battle_state.turn_index == battle_state.round_size:
 		battle_state.round += 1
 		battle_state.turn_index = 0
 		Events.round_changed.emit(battle_state.round)
-		print("turn index = round size")
 
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
 	MonsterController.on_turn_begun(battle_state.active_monster)
-	print(battle_state.active_monster.name)
+
 	Events.update_all_monsters.emit()
 	Events.start_active_monster_turn.emit(battle_state.active_monster)
-	
-	print("battle monsters")
-	print( battle_state.all_battle_monsters)
+	print("new turn finished")
 
 	pass
 
@@ -89,6 +86,28 @@ func handle_move_button_pressed(index: int):
 #	 MonsterController.do_monster_turn(battle_state.active_monster, index)
 #	MonsterController.do_monster_turn(battle_state.active_monster, index)
 	#note that game_state.player.current_monster was switched to battle_state.active_monster
+
+func check_game_end():
+	var opponent_monsters_remaining: bool = battle_state.all_opponent_monsters.any(
+		func(monster): return battle_state.all_battle_monsters.has(monster)
+	)
+	var player_monsters_remaining: bool = battle_state.all_player_monsters.any(
+		func(monster): return battle_state.all_battle_monsters.has(monster)
+	)
+	
+	if !opponent_monsters_remaining:
+		print("win game")
+		Events.game_over.emit(true)
+		return true
+	
+	if !player_monsters_remaining:
+		print("win game")
+		Events.game_over.emit(false)
+		return true
+	print(battle_state.all_opponent_monsters)
+	print(battle_state.all_battle_monsters)
+	print(battle_state.all_battle_monsters.has(battle_state.all_opponent_monsters[0]))
+	return false
 
 func handle_log():
 #	battle_state.all_opponent_monsters.append_array(battle_state.all_player_monsters)

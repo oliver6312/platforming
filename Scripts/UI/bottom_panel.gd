@@ -13,6 +13,7 @@ func _ready() -> void:
 	# TODO: listen for events to connect and update the monster
 
 	Events.start_active_monster_turn.connect(handle_active_monster_ui)
+	Events.game_over.connect(handle_game_over)
 	return
 
 func _on_leave_button_pressed() -> void:
@@ -20,6 +21,12 @@ func _on_leave_button_pressed() -> void:
 
 func _on_log_button_pressed() -> void:
 	Events.request_log.emit()
+
+func handle_game_over(win: bool):
+	move_button_1.disabled = true
+	move_button_2.disabled = true
+	move_button_3.disabled = true
+	move_button_4.disabled = true
 
 func handle_active_monster_ui(active_monster: Monster):
 	monster_info.text = active_monster.dump_state()

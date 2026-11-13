@@ -103,14 +103,12 @@ func check_for_evasion(monster: Monster, condition_damage: bool) -> bool:
 	return false
 
 func check_defeated_monster():
-	var i = 0
-	var monster: Monster
-	for monsters in battle_state.all_battle_monsters:
-		monster = battle_state.all_battle_monsters[i]
+	var all_battle_monsters_before_defeat_check: Array = battle_state.all_battle_monsters.duplicate()
+	
+	for monster in all_battle_monsters_before_defeat_check:
 		if monster.current_hp == 0:
-			battle_state.all_battle_monsters.remove_at(i)
-			i -= 1
-		i += 1
+			battle_state.all_battle_monsters.erase(monster)
+
 
 func adjust_monster_hitpoints(monster: Monster, amount: int):
 	print(monster.current_hp)

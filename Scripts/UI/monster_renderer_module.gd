@@ -55,6 +55,7 @@ func connect_events() -> void:
 	Events.start_active_monster_turn.connect(check_active_monster)
 	Events.update_all_monsters.connect(update)
 	Events.chosen_move_target.connect(check_available_target)
+	Events.game_over.connect(handle_game_over)
 	return
 
 func get_controller_components():
@@ -234,6 +235,11 @@ func check_available_target(pressed_move: Move):
 	else:
 		if !belongs_to_player or !target[monster_position]:
 				disable_monster_button()
+
+func handle_game_over(win: bool):
+	selection_symbol.hide()
+	disable_monster_button()
+	pass
 
 func _on_button_pressed() -> void:
 	if GameRunner.target_selection_mode:

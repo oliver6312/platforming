@@ -63,7 +63,6 @@ func dump_state():
 	for condition in conditions:
 		condition_string += "{name} - ({remaining})\n".format({"name": condition.name, "remaining": condition.duration_remaining})
 
-
 	return "Name: {name}\nHealth: ({current_hp}/{max_hp})\nMelee damage: {melee_damage}\nRanged damage: {range_damage}\nDefense: {defense}\nSpeed: {speed}\nConditions: {conditions}"\
 	.format({
 		"name": name,
