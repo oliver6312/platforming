@@ -76,6 +76,8 @@ func _ready() -> void:
 	weapon_hitbox_down.body_entered.connect(_on_weapon_down_hitbox_body_entered)
 	weapon_hitbox_side.body_entered.connect(_on_weapon_hitbox_body_entered)
 
+	Events.request_challenge_npc.connect(send_game_manager_position)
+
 	disable_all_right_hitbox()
 	disable_all_left_hitbox()
 
@@ -402,3 +404,6 @@ func _on_animation_finished() -> void:
 		weapon_hitbox_up.monitoring = false
 		weapon_hitbox_side.monitoring = false
 		weapon_hitbox_down.monitoring = false
+
+func send_game_manager_position():
+	GameManager.player_position = self.position

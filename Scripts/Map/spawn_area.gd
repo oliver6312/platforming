@@ -6,6 +6,10 @@ func _ready() -> void:
 	var entrance = GameManager.entrance
 	print("get entrance")
 	var start_position: Vector2
+	if GameManager.battle_return:
+		player_character.position = GameManager.player_position
+		GameManager.battle_return = false
+		return
 	match entrance:
 		1:
 			var entrance_1: CollisionShape2D = %Entrance1
