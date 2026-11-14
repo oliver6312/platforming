@@ -4,7 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://crfkjcwmgkd1o" path="res://Sprites/Monster/selection_area.png" id="2_3oein"]
 [ext_resource type="Texture2D" uid="uid://bevbfyxpwoyqb" path="res://Sprites/Monster/MissingMonsterSquare.png" id="2_roei1"]
 [ext_resource type="Texture2D" uid="uid://c3k1jrxt80cc3" path="res://Sprites/Monster/TargetSquare.png" id="4_3oein"]
+[ext_resource type="Shader" uid="uid://n5n7oohgxb6w" path="res://Shaders/greyscale.gdshader" id="4_3phhv"]
 [ext_resource type="Texture2D" uid="uid://ckswih0h3wnf1" path="res://Sprites/Monster/Shadecry.png" id="4_d77mi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc10i"]
+shader = ExtResource("4_3phhv")
+shader_parameter/active = false
 
 [node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "target_sprite", "monster_button", "selection_symbol")]
 self_modulate = Color(1, 1, 1, 0)
@@ -48,6 +53,7 @@ position = Vector2(62, -45)
 texture = ExtResource("2_roei1")
 
 [node name="MonsterSprite" type="Sprite2D" parent="Frame" unique_id=979093336]
+material = SubResource("ShaderMaterial_yc10i")
 position = Vector2(62, -45)
 scale = Vector2(2, 2)
 texture = ExtResource("4_d77mi")
