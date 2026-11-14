@@ -228,6 +228,12 @@ func check_available_target(pressed_move: Move):
 				return
 		return
 
+#checks if conditon makes it always targetable or protecteting
+	for condition in bound_monster.conditions:
+		if condition.resource.always_targetable:
+			return
+
+
 #checks if conditon makes it untargetable
 	for condition in bound_monster.conditions:
 		if condition.resource.untargetable:

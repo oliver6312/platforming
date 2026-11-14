@@ -8,4 +8,5 @@ class_name ConditionResource extends Resource
 @export var untargetable: bool
 @export var restrained: bool
 @export var evasion: bool
+@export var always_targetable: bool
 @export var short_name: String
