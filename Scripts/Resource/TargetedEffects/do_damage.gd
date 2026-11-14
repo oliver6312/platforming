@@ -9,7 +9,7 @@ class_name DoDamage extends TargetedEffect
 @export var bonus_damage_condition: ConditionResource
 @export var bonus_damage_percentage: float = 1
 
-var damage_log_string: String = "Deals %s base damage" % [str(base_damage)]
+var description: String = "Deals %s base damage" % [str(base_damage)]
 
 var target_0: Monster 
 var target_1: Monster 

@@ -58,10 +58,7 @@ func get_condition_string():
 
 func dump_state():
 	var condition_string = ""
-	print("elements:")
-	print(element_one)
-	print(MonsterElement.Element)
-	
+
 	var element_one_dump: String = ""
 	var element_two_dump: String = ""
 	match element_one:

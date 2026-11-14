@@ -31,8 +31,22 @@ func get_element() -> MonsterElement.Element:
 func dump_state():
 	var effect_string = ""
 
-#	for effect in resource.use_effects:
-#		effect_string += "{name} - ({remaining})\n".format({"name": effect.name, "remaining": condition.duration_remaining})
+	for effect in resource.use_effects:
+		if effect is AddCondition:
+			effect_string += "Add %s condition\n" %[effect.condition_resource.name]
+		if effect is CleanseCondition:
+			effect_string += "Remove all conditions\n"
+		if effect is DisplaceMonster:
+			if effect.pull:
+				effect_string += "Pull target forward\n"
+			if effect.push:
+				effect_string += "Push target backwards\n"
+			if effect.shuffle:
+				effect_string += "Randomly shuffle position\n"
+		if effect is DoDamage:
+			effect_string += "Deal %s damage\n" %[effect.base_damage]
+		if effect is DoHeal:
+			effect_string += "Heal %s hit points\n" %[effect.base_heal]
 
 	var element_dump: String = ""
 	match element:
@@ -55,7 +69,7 @@ func dump_state():
 		MonsterElement.Element.WATER:
 			element_dump = "Water"
 
-	return "Name: {name}\nElement: {element}\nRank: {rank}\nTarget: {target}\nTarget Self: {target_self}\nTarget Ally: {target_ally}\nArea of Effect: {area_of_effect}"\
+	return "Name: {name}\nElement: {element}\nRank: {rank}\nTarget: {target}\n{effect}\nTarget Self: {target_self}\nTarget Ally: {target_ally}\nArea of Effect: {area_of_effect}"\
 	.format({
 		"name": name,
 		"element": element_dump,
@@ -63,5 +77,6 @@ func dump_state():
 		"target_self": target_self_only,
 		"target_ally": target_ally,
 		"rank": rank,
-		"target": target
+		"target": target,
+		"effect": effect_string
 	})
