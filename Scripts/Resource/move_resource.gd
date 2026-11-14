@@ -12,5 +12,4 @@ class_name MoveResource extends Resource
 @export var rank: Array = [true, true, true]
 @export var target: Array = [true, true, true]
 
-@export var limited_usages: bool = false
-@export var usage_max: int
+@export var single_use: bool = false

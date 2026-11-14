@@ -1,6 +1,6 @@
 class_name Move
 
-var usages: int
+var usages: int = 1
 var resource: MoveResource
 
 var element: MonsterElement.Element:
@@ -44,7 +44,10 @@ func dump_state():
 			if effect.shuffle:
 				effect_string += "Randomly shuffle position\n"
 		if effect is DoDamage:
-			effect_string += "Deal %s damage\n" %[effect.base_damage]
+			if effect.melee:
+				effect_string += "Deal %s base melee damage\n" %[effect.base_damage]
+			else:
+				effect_string += "Deal %s base range damage\n" %[effect.base_damage]
 		if effect is DoHeal:
 			effect_string += "Heal %s hit points\n" %[effect.base_heal]
 
@@ -69,13 +72,10 @@ func dump_state():
 		MonsterElement.Element.WATER:
 			element_dump = "Water"
 
-	return "Name: {name}\nElement: {element}\nRank: {rank}\nTarget: {target}\n{effect}\nTarget Self: {target_self}\nTarget Ally: {target_ally}\nArea of Effect: {area_of_effect}"\
+	return "Name: {name}\nElement: {element}\nRank: {rank}\nTarget: {target}\n{effect}"\
 	.format({
 		"name": name,
 		"element": element_dump,
-		"area_of_effect": target_area_of_effect,
-		"target_self": target_self_only,
-		"target_ally": target_ally,
 		"rank": rank,
 		"target": target,
 		"effect": effect_string

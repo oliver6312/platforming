@@ -48,28 +48,28 @@ func handle_active_monster_ui(active_monster: Monster):
 		var move_1 = active_monster.moves[0]
 		move_button_1.visible = true
 		move_button_1.text = move_1.name
-		if !active_monster.moves[0].rank[active_monster.battle_position]:
+		if !active_monster.moves[0].rank[active_monster.battle_position] or active_monster.moves[0].usages == 0:
 			move_button_1.disabled = true
 
 	if active_monster.moves.size() >= 2:
 		var move_2 = active_monster.moves[1]
 		move_button_2.visible = true
 		move_button_2.text = move_2.name
-		if !active_monster.moves[1].rank[active_monster.battle_position]:
+		if !active_monster.moves[1].rank[active_monster.battle_position] or active_monster.moves[1].usages == 0:
 			move_button_2.disabled = true
 
 	if active_monster.moves.size() >= 3:
 		var move_3 = active_monster.moves[2]
 		move_button_3.visible = true
 		move_button_3.text = move_3.name
-		if !active_monster.moves[2].rank[active_monster.battle_position]:
+		if !active_monster.moves[2].rank[active_monster.battle_position] or active_monster.moves[2].usages == 0:
 			move_button_3.disabled = true
 
 	if active_monster.moves.size() >= 4:
 		var move_4 = active_monster.moves[3]
 		move_button_4.visible = true
 		move_button_4.text = move_4.name
-		if !active_monster.moves[3].rank[active_monster.battle_position]:
+		if !active_monster.moves[3].rank[active_monster.battle_position] or active_monster.moves[3].usages == 0:
 			move_button_4.disabled = true
 
 func _on_move_button_1_pressed() -> void:

@@ -36,35 +36,12 @@ func end_condition(monster: Monster, condition: Condition):
 
 func use_monster_move(monster: Monster, target: Monster, move: Move):
 	var crit_chance: float = 0.05
-#	if move.usages <= 0:
-#		return
-	
-#	var use_string = move.use_message.format({"user_name": monster.name, "move_name": move.name})
-#	Events.request_log.emit(use_string)
-	
-#	if opponent.hp == 0:
-#		monster.move_blocked = false
-#		return
-	
-#	if monster.move_blocked:
-#		Events.request_log.emit("But they can't move!")
-#		monster.move_blocked = false
-#		print("attack did not go through")
-#		GameRunner.on_turn_ended()
-#		return
-#	move.usages -= 1
-#	print("attack went through")
-
-#	var hit = rng.randf() < move.base_accuracy
-#	if !hit:
-#		Events.request_log.emit("but it misses")
+	if move.resource.single_use:
+			move.usages -= 1
 	var crit = rng.randf() < crit_chance
-#	if crit and hit:
-#		Events.request_log.emit("Critical hit!")
-	
+
 	for effect in move.resource.use_effects:
 		effect._do(monster, target, move, battle_state, crit)
-#	GameRunner.on_turn_ended()
 
 func instantiate_condition_on_monster(monster: Monster, condition_resource: ConditionResource):
 	if monster.conditions.filter(func(condition): return condition.resource == condition_resource):
