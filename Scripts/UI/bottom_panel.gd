@@ -1,5 +1,6 @@
 class_name BattlePanel extends Control
 
+@export var move_info: RichTextLabel
 @export var monster_info: RichTextLabel
 
 @export var move_button_1: Button
@@ -7,7 +8,7 @@ class_name BattlePanel extends Control
 @export var move_button_3: Button
 @export var move_button_4: Button
 
-var active_monster: Monster
+var non_local_active_monster: Monster
 
 func _ready() -> void:
 	# TODO: listen for events to connect and update the monster
@@ -28,7 +29,11 @@ func handle_game_over(win: bool):
 	move_button_3.disabled = true
 	move_button_4.disabled = true
 
+func handle_chosen_move_ui(chose_move_index: int):
+	move_info.text = non_local_active_monster.moves[chose_move_index].dump_state()
+
 func handle_active_monster_ui(active_monster: Monster):
+	non_local_active_monster = active_monster
 	monster_info.text = active_monster.dump_state()
 	move_button_1.disabled = false 
 	move_button_2.disabled = false 
@@ -68,15 +73,19 @@ func handle_active_monster_ui(active_monster: Monster):
 
 func _on_move_button_1_pressed() -> void:
 	Events.move_button_pressed.emit(0)
+	handle_chosen_move_ui(0)
 
 func _on_move_button_2_pressed() -> void:
 	Events.move_button_pressed.emit(1)
+	handle_chosen_move_ui(1)
 
 func _on_move_button_3_pressed() -> void:
 	Events.move_button_pressed.emit(2)
+	handle_chosen_move_ui(2)
 
 func _on_move_button_4_pressed() -> void:
 	Events.move_button_pressed.emit(3)
+	handle_chosen_move_ui(3)
 #	Events.request_move_by_index.emit(3)
 #	if GameRunner.target_selection_mode:
 #		pass

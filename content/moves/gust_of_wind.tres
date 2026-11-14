@@ -17,5 +17,4 @@ area_of_effect = true
 use_effects = Array[ExtResource("2_d31y4")]([SubResource("Resource_p2ioq")])
 element = 1
 rank = [false, true, true]
-target = [false, false, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

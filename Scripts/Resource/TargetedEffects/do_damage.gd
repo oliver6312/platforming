@@ -3,12 +3,13 @@ class_name DoDamage extends TargetedEffect
 @export var base_damage: int
 @export var melee: bool
 @export var ignore_stats: bool
-@export var damage_log_string: String = "{doer_name} hits {target_name} for {amt} damage"
 @export var critical_hit_damage_coefficient = 2
 @export var condition_damage: bool = false
 
 @export var bonus_damage_condition: ConditionResource
 @export var bonus_damage_percentage: float = 1
+
+var damage_log_string: String = "Deals %s base damage" % [str(base_damage)]
 
 var target_0: Monster 
 var target_1: Monster 

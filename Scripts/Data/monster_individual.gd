@@ -28,7 +28,6 @@ var range_damage: int:
 var priority
 
 var moves: Array[Move]
-var chosen_move
 
 var element_one: MonsterElement.Element:
 	get: return species.element_one
