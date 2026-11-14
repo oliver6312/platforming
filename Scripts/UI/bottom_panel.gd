@@ -33,6 +33,7 @@ func handle_chosen_move_ui(chose_move_index: int):
 	move_info.text = non_local_active_monster.moves[chose_move_index].dump_state()
 
 func handle_active_monster_ui(active_monster: Monster):
+	move_info.text = ""
 	non_local_active_monster = active_monster
 	monster_info.text = active_monster.dump_state()
 	move_button_1.disabled = false 
