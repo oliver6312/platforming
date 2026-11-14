@@ -31,6 +31,9 @@ var status_label: Label
 var sprite: Sprite2D
 
 @export
+var grey_sprite: Sprite2D
+
+@export
 var target_sprite: Sprite2D
 
 @export
@@ -148,17 +151,20 @@ func maybe_bind_monster(monster: Monster, is_player_monster: bool, monster_index
 func update():
 #	if bound_monster == null:
 #		return
+	grey_sprite.hide()
 	if bound_monster.current_hp == 0:
-		sprite.hide()
+		grey_sprite.show()
 	if !belongs_to_player:
 		sprite.flip_h = true
+		grey_sprite.flip_h = true
 
 	name_label.text = bound_monster.name.to_upper()
 	sprite.texture = bound_monster.image
+	grey_sprite.texture = bound_monster.image
 #	status_label.text = bound_monster.get_condition_string()
 	hp_bar.max_value = bound_monster.max_hp
 	hp_bar.value = bound_monster.current_hp
-	hp_label.text = "{hp}\\{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
+	hp_label.text = "{hp}/{max_hp}".format({"hp": bound_monster.current_hp, "max_hp": bound_monster.species.base_max_hp})
 	status_label.text = bound_monster.get_condition_string()
 	status_label.hide()
 	

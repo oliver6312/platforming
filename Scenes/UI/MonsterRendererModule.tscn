@@ -9,9 +9,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc10i"]
 shader = ExtResource("4_3phhv")
-shader_parameter/active = false
 
-[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "target_sprite", "monster_button", "selection_symbol")]
+[node name="MonsterRendererModule" type="PanelContainer" unique_id=1148585137 node_paths=PackedStringArray("frame", "data_panel", "name_label", "hp_label", "hp_bar", "status_label", "sprite", "grey_sprite", "target_sprite", "monster_button", "selection_symbol")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(124, 58)
 offset_right = 124.0
@@ -24,6 +23,7 @@ hp_label = NodePath("MonsterData/Hp")
 hp_bar = NodePath("MonsterData/HealthBar")
 status_label = NodePath("MonsterData/Status")
 sprite = NodePath("Frame/MonsterSprite")
+grey_sprite = NodePath("Frame/MonsterSpriteGrey")
 target_sprite = NodePath("Frame/TargetSprite")
 monster_button = NodePath("Frame/MonsterButton")
 selection_symbol = NodePath("Frame/Arrow")
@@ -53,6 +53,11 @@ position = Vector2(62, -45)
 texture = ExtResource("2_roei1")
 
 [node name="MonsterSprite" type="Sprite2D" parent="Frame" unique_id=979093336]
+position = Vector2(62, -45)
+scale = Vector2(2, 2)
+texture = ExtResource("4_d77mi")
+
+[node name="MonsterSpriteGrey" type="Sprite2D" parent="Frame" unique_id=1764912943]
 material = SubResource("ShaderMaterial_yc10i")
 position = Vector2(62, -45)
 scale = Vector2(2, 2)
