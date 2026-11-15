@@ -1,6 +1,15 @@
 class_name CleanseCondition extends TargetedEffect
 
-func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
+@export var terrain_element_requirement: MonsterElement.Element
+
+func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, _crit: bool):
+	if !terrain_element_requirement == MonsterElement.Element.NONE:
+		if !battle_state.active_terrain == null:
+			if !battle_state.active_terrain.resource.element == terrain_element_requirement:
+				return
+		else:
+			return
+
 	if target_self:
 		target = doer
 

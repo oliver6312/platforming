@@ -11,6 +11,7 @@ class_name DoDamage extends TargetedEffect
 
 @export var bonus_damage_terrain: MonsterElement.Element
 @export var bonus_damage_terrain_percentage: float = 1
+@export var terrain_element_requirement: MonsterElement.Element
 
 var description: String = "Deals %s base damage" % [str(base_damage)]
 
@@ -19,6 +20,12 @@ var target_1: Monster
 var target_2: Monster
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
+	if !terrain_element_requirement == MonsterElement.Element.NONE:
+		if !battle_state.active_terrain == null:
+			if !battle_state.active_terrain.resource.element == terrain_element_requirement:
+				return
+		else:
+			return
 	if target_self:
 		target = doer
 
