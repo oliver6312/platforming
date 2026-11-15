@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TerrainResource" format=3 uid="uid://cybjvcxj86reo"]
+
+[ext_resource type="Script" uid="uid://brkt2a4wwje8x" path="res://Scripts/Resource/terrain_resource.gd" id="1_12ysg"]
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_ya0dk"]
+
+[resource]
+script = ExtResource("1_12ysg")
+name = "Frigid"
+element = 6
+metadata/_custom_type_script = "uid://brkt2a4wwje8x"

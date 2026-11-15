@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://bku5m4st780uw" path="res://content/conditions/evasive.tres" id="4_or10s"]
 [ext_resource type="Script" uid="uid://bii8d8hi5bdwr" path="res://Scripts/Resource/TargetedEffects/add_condition.gd" id="5_rsx2g"]
 [ext_resource type="Script" uid="uid://bflqwr3faiduo" path="res://Scripts/Resource/TargetedEffects/add_terrain.gd" id="6_xlave"]
-[ext_resource type="Resource" uid="uid://d1dqheogpsj3i" path="res://content/Terrains/Overgrown.tres" id="7_81ljq"]
+[ext_resource type="Resource" uid="uid://d1dqheogpsj3i" path="res://content/Terrains/overgrown.tres" id="7_81ljq"]
 
 [sub_resource type="Resource" id="Resource_vscy3"]
 script = ExtResource("3_fj45q")

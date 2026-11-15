@@ -22,4 +22,4 @@ var all_battle_monsters: Array
 var active_monster: Monster
 
 #enviorment/terrain stuff
-var active_terrain: Terrain
+var active_terrain: Terrain = null
