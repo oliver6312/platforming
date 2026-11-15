@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_fehpo"]
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_d31y4"]
+[ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="3_d31y4"]
+
+[sub_resource type="Resource" id="Resource_p2ioq"]
+script = ExtResource("3_d31y4")
+base_damage = 100
+area_of_effect = true
+metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]
 script = ExtResource("1_fehpo")
 name = "Gust of Wind"
 area_of_effect = true
+use_effects = Array[ExtResource("2_d31y4")]([SubResource("Resource_p2ioq")])
 element = 1
 rank = [false, true, true]
-limited_usages = true
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

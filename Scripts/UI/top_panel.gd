@@ -1,6 +1,7 @@
 class_name TopPanel extends Control
 
 @export var round_label: Label
+@export var terrain_label: Label
 
 func _ready() -> void:
 	# TODO: listen for events to connect and update the monster
@@ -9,5 +10,8 @@ func _ready() -> void:
 	update_round_label(1)
 	return
 
-func update_round_label(round: int):
-	round_label.text = "round:" + str(round)
+func update_round_label(r: int):
+	round_label.text = "round:" + str(r)
+
+func update_terrain_label():
+	pass

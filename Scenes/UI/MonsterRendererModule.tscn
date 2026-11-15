@@ -58,6 +58,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_d77mi")
 
 [node name="MonsterSpriteGrey" type="Sprite2D" parent="Frame" unique_id=1764912943]
+visible = false
 material = SubResource("ShaderMaterial_yc10i")
 position = Vector2(62, -45)
 scale = Vector2(2, 2)

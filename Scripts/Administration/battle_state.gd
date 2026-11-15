@@ -20,5 +20,3 @@ var all_player_monsters: Array:
 var all_battle_monsters: Array
 
 var active_monster: Monster
-
-var active_moves: Array[Move]

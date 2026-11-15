@@ -51,8 +51,7 @@ func end_turn():
 func start_turn():
 	target_selection_mode = false
 	MonsterController.check_defeated_monster()
-	if check_game_end():
-		return
+
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
 	if battle_state.turn_index == battle_state.round_size:
@@ -64,6 +63,8 @@ func start_turn():
 	MonsterController.on_turn_begun(battle_state.active_monster)
 
 	Events.update_all_monsters.emit()
+	if check_game_end():
+		return
 	Events.start_active_monster_turn.emit(battle_state.active_monster)
 	print("new turn finished")
 
