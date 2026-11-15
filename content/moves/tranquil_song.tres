@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_wc7lj"]
 [ext_resource type="Script" uid="uid://nr33b14vsq80" path="res://Scripts/Resource/TargetedEffects/do_heal.gd" id="3_fj45q"]
 [ext_resource type="Resource" uid="uid://bku5m4st780uw" path="res://content/conditions/evasive.tres" id="4_or10s"]
+[ext_resource type="Resource" uid="uid://d1dqheogpsj3i" path="res://content/Terrains/overgrown.tres" id="5_or10s"]
 [ext_resource type="Script" uid="uid://bii8d8hi5bdwr" path="res://Scripts/Resource/TargetedEffects/add_condition.gd" id="5_rsx2g"]
 [ext_resource type="Script" uid="uid://bflqwr3faiduo" path="res://Scripts/Resource/TargetedEffects/add_terrain.gd" id="6_xlave"]
-[ext_resource type="Resource" uid="uid://d1dqheogpsj3i" path="res://content/Terrains/overgrown.tres" id="7_81ljq"]
 
 [sub_resource type="Resource" id="Resource_vscy3"]
 script = ExtResource("3_fj45q")
@@ -20,21 +20,21 @@ base_heal = 10
 area_of_effect = true
 metadata/_custom_type_script = "uid://nr33b14vsq80"
 
+[sub_resource type="Resource" id="Resource_w8vnx"]
+script = ExtResource("6_xlave")
+terrain_resource = ExtResource("5_or10s")
+metadata/_custom_type_script = "uid://bflqwr3faiduo"
+
 [sub_resource type="Resource" id="Resource_xlave"]
 script = ExtResource("5_rsx2g")
 condition_resource = ExtResource("4_or10s")
 area_of_effect = true
 metadata/_custom_type_script = "uid://bii8d8hi5bdwr"
 
-[sub_resource type="Resource" id="Resource_w8vnx"]
-script = ExtResource("6_xlave")
-terrain_resource = ExtResource("7_81ljq")
-metadata/_custom_type_script = "uid://bflqwr3faiduo"
-
 [resource]
 script = ExtResource("1_nak3d")
 name = "Tranquil Song"
 target_ally = true
-use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3"), SubResource("Resource_fj45q"), SubResource("Resource_xlave"), SubResource("Resource_w8vnx")])
+use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3"), SubResource("Resource_fj45q"), SubResource("Resource_w8vnx"), SubResource("Resource_xlave")])
 element = 5
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

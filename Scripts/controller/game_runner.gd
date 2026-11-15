@@ -55,9 +55,7 @@ func start_turn():
 	battle_state.round_size = battle_state.all_battle_monsters.size()
 	battle_state.turn_index += 1
 	if battle_state.turn_index == battle_state.round_size:
-		battle_state.round += 1
-		battle_state.turn_index = 0
-		Events.round_changed.emit(battle_state.round)
+		end_round()
 
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
 	MonsterController.on_turn_begun(battle_state.active_monster)
@@ -69,6 +67,19 @@ func start_turn():
 	print("new turn finished")
 
 	pass
+
+func end_round():
+	battle_state.round += 1
+	battle_state.turn_index = 0
+	Events.round_changed.emit(battle_state.round)
+	var i: int = 0
+	for effect in battle_state.active_terrain.resource.use_effects:
+		for monster in battle_state.all_battle_monsters:
+			if i == battle_state.all_battle_monsters.size():
+				i = 0
+			print(i)
+			effect._do(battle_state.all_battle_monsters[i], battle_state.all_battle_monsters[i], Terrain, battle_state, false)
+			i += 1
 
 func handle_target_monster(target: Monster):
 	MonsterController.do_monster_turn(battle_state.active_monster, target, chosen_move_index)

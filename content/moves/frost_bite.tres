@@ -22,6 +22,4 @@ name = "Frost Bite"
 melee = true
 use_effects = Array[ExtResource("2_55qgd")]([SubResource("Resource_cwidi"), SubResource("Resource_dsmjr")])
 element = 6
-rank = [false, false, true]
-target = [true, true, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"
