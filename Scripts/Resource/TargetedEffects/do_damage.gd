@@ -97,10 +97,9 @@ func get_amount(doer: Monster, target: Monster, source: Object, battle_state: Ba
 			bonus_damage_condition_total = bonus_damage_condition_percentage
 
 	if !battle_state.active_terrain == null:
-		print("not null")
 		if battle_state.active_terrain.resource.element == bonus_damage_terrain:
 			bonus_damage_terrain_total = bonus_damage_terrain_percentage
-			print("it worked")
+
 
 	var amt = clamp(stat_diff_coefficient * type_advantage_coefficient_total * crit_coefficient * bonus_damage_condition_total * bonus_damage_terrain_total, 0, 1000)
 	Events.on_monster_damaged.emit(target, -amt, crit, type_advantage_coefficient_total)
