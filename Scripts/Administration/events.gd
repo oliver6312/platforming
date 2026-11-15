@@ -28,3 +28,6 @@ signal on_monster_updated
 
 # Events sent from monster controller
 signal on_monster_damaged
+
+# Events sent from 
+signal on_terrain_updated

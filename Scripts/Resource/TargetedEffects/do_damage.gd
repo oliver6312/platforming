@@ -82,9 +82,9 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	var type_advantage_coefficient_total = type_advantage_coefficient_one * type_advantage_coefficient_two
 
 	var defense: float = float(target.defense)
-	var stat_diff_coefficient = (doer.range_damage + base_damage) * (defense / (defense + 1))
+	var stat_diff_coefficient = (doer.range_damage + base_damage) / (defense / (defense + 1))
 	if melee:
-		stat_diff_coefficient = (doer.melee_damage + base_damage) * (defense / (defense + 1))
+		stat_diff_coefficient = (doer.melee_damage + base_damage) / (defense / (defense + 1))
 	if ignore_stats:
 		stat_diff_coefficient = base_damage
 

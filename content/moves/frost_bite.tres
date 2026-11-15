@@ -6,7 +6,6 @@
 
 [sub_resource type="Resource" id="Resource_cwidi"]
 script = ExtResource("3_cwidi")
-base_damage = 10
 melee = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
@@ -16,6 +15,6 @@ name = "Frost Bite"
 melee = true
 use_effects = Array[ExtResource("2_55qgd")]([SubResource("Resource_cwidi")])
 element = 6
-rank = [true, true, false]
+rank = [false, false, true]
 target = [true, true, false]
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

@@ -20,3 +20,6 @@ var all_player_monsters: Array:
 var all_battle_monsters: Array
 
 var active_monster: Monster
+
+#enviorment/terrain stuff
+var active_terrain: Terrain

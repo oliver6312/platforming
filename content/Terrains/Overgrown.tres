@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TerrainResource" format=3 uid="uid://d1dqheogpsj3i"]
+
+[ext_resource type="Script" uid="uid://brkt2a4wwje8x" path="res://Scripts/Resource/terrain_resource.gd" id="1_qeoyo"]
+[ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_ued4n"]
+
+[resource]
+script = ExtResource("1_qeoyo")
+name = "Overgrown"
+element = 4
+metadata/_custom_type_script = "uid://brkt2a4wwje8x"

@@ -1,7 +1,6 @@
 class_name AddCondition extends TargetedEffect
 
 @export var condition_resource: ConditionResource
-@export var chance_to_apply: float = 1.0
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 	if target_self:
