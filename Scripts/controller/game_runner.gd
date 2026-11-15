@@ -58,7 +58,7 @@ func start_turn():
 	battle_state.turn_index += 1
 	print("battle_state.turn_index")
 	print(battle_state.turn_index)
-	if battle_state.turn_index == battle_state.round_size:
+	if battle_state.turn_index >= battle_state.round_size or battle_state.turn_index == battle_state.round_size:
 		end_round()
 
 	print("battle_state.round_size")
@@ -66,8 +66,9 @@ func start_turn():
 	print("battle_state.turn_index")
 	print(battle_state.turn_index)
 
-	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index - 1]
-	MonsterController.on_turn_begun(battle_state.active_monster)
+	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
+	if !battle_state.active_monster.current_hp == 0:
+		MonsterController.on_turn_begun(battle_state.active_monster)
 
 	Events.update_all_monsters.emit()
 	if check_game_end():
@@ -82,13 +83,14 @@ func end_round():
 	battle_state.turn_index = 0
 	Events.round_changed.emit(battle_state.round)
 	var i: int = 0
-	for effect in battle_state.active_terrain.resource.use_effects:
-		for monster in battle_state.all_battle_monsters:
-			if i == battle_state.all_battle_monsters.size():
-				i = 0
-			print(i)
-			effect._do(battle_state.all_battle_monsters[i], battle_state.all_battle_monsters[i], Terrain, battle_state, false)
-			i += 1
+	if !battle_state.active_terrain == null:
+		for effect in battle_state.active_terrain.resource.use_effects:
+			for monster in battle_state.all_battle_monsters:
+				if i == battle_state.all_battle_monsters.size():
+					i = 0
+				print(i)
+				effect._do(battle_state.all_battle_monsters[i], battle_state.all_battle_monsters[i], Terrain, battle_state, false)
+				i += 1
 
 func handle_target_monster(target: Monster):
 	MonsterController.do_monster_turn(battle_state.active_monster, target, chosen_move_index)
