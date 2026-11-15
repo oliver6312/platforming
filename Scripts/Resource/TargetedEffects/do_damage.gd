@@ -11,7 +11,10 @@ class_name DoDamage extends TargetedEffect
 
 @export var bonus_damage_terrain: MonsterElement.Element
 @export var bonus_damage_terrain_percentage: float = 1
+
 @export var terrain_element_requirement: MonsterElement.Element
+@export var target_condition_requirement: ConditionResource
+@export var doer_condition_requirement: ConditionResource
 
 var description: String = "Deals %s base damage" % [str(base_damage)]
 
@@ -26,6 +29,22 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 				return
 		else:
 			return
+
+	var matching_condition: bool = false
+	for condition in target.conditions:
+		if condition.resource == target_condition_requirement:
+			matching_condition = true
+	if target_condition_requirement:
+		if matching_condition == false:
+			return
+	for condition in doer.conditions:
+		if condition.resource == doer_condition_requirement:
+			matching_condition = true
+	if doer_condition_requirement:
+		if matching_condition == false:
+			return
+
+
 	if target_self:
 		target = doer
 

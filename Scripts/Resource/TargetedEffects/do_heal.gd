@@ -10,7 +10,10 @@ class_name DoHeal extends TargetedEffect
 
 @export var bonus_heal_terrain_element: MonsterElement.Element
 @export var bonus_heal_terrain_percentage: float = 1.0
+
 @export var terrain_element_requirement: MonsterElement.Element
+@export var target_condition_requirement: ConditionResource
+@export var doer_condition_requirement: ConditionResource
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 	if !terrain_element_requirement == MonsterElement.Element.NONE:
@@ -19,6 +22,21 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 				return
 		else:
 			return
+
+	var matching_condition: bool = false
+	for condition in target.conditions:
+		if condition.resource == target_condition_requirement:
+			matching_condition = true
+	if target_condition_requirement:
+		if matching_condition == false:
+			return
+	for condition in doer.conditions:
+		if condition.resource == doer_condition_requirement:
+			matching_condition = true
+	if doer_condition_requirement:
+		if matching_condition == false:
+			return
+
 	if target_self:
 		target = doer
 

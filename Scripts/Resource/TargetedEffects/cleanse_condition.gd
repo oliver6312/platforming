@@ -1,6 +1,8 @@
 class_name CleanseCondition extends TargetedEffect
 
 @export var terrain_element_requirement: MonsterElement.Element
+@export var target_condition_requirement: ConditionResource
+@export var doer_condition_requirement: ConditionResource
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, _crit: bool):
 	if !terrain_element_requirement == MonsterElement.Element.NONE:
@@ -8,6 +10,20 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 			if !battle_state.active_terrain.resource.element == terrain_element_requirement:
 				return
 		else:
+			return
+
+	var matching_condition: bool = false
+	for condition in target.conditions:
+		if condition.resource == target_condition_requirement:
+			matching_condition = true
+	if target_condition_requirement:
+		if matching_condition == false:
+			return
+	for condition in doer.conditions:
+		if condition.resource == doer_condition_requirement:
+			matching_condition = true
+	if doer_condition_requirement:
+		if matching_condition == false:
 			return
 
 	if target_self:
