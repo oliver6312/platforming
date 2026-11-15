@@ -7,4 +7,4 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 	terrain.resource = terrain_resource
 	terrain.element = terrain_resource.element
 	battle_state.active_terrain = terrain
-	Events.on_terrain_updated.emit()
+	Events.on_terrain_updated.emit(battle_state.active_terrain.resource.name)

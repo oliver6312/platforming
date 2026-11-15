@@ -14,5 +14,5 @@ func _ready() -> void:
 func update_round_label(r: int):
 	round_label.text = "round:" + str(r)
 
-func update_terrain_label():
-	terrain_label.text = "Terrain" + "Overgrown"
+func update_terrain_label(name: String):
+	terrain_label.text = "Terrain " + name
