@@ -5,8 +5,8 @@ class_name DoHeal extends TargetedEffect
 @export var damage_log_string: String = "{doer_name} heals {target_name} for {amt} health"
 @export var critical_hit_damage_coefficient = 2
 
-@export var bonus_damage_condition: ConditionResource
-@export var bonus_damage_percentage: float = 1
+@export var bonus_heal_condition: ConditionResource
+@export var bonus_heal_condition_percentage: float = 1
 
 func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 #	var target = doer if target_self else MonsterController.get_monster_opponent(doer)
@@ -83,8 +83,8 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 	var type_advantage_coefficient = MonsterElement.get_element_advantage_coefficient(element, target.element_one)
 
 	for condition in target.conditions:
-		if condition.resource == bonus_damage_condition:
-			bonus_damage_total = bonus_damage_percentage
+		if condition.resource == bonus_heal_condition:
+			bonus_damage_total = bonus_heal_condition_percentage
 			print("bonus healing added")
 			print(bonus_damage_total)
 

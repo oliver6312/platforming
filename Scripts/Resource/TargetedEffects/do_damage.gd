@@ -7,7 +7,10 @@ class_name DoDamage extends TargetedEffect
 @export var condition_damage: bool = false
 
 @export var bonus_damage_condition: ConditionResource
-@export var bonus_damage_percentage: float = 1
+@export var bonus_damage_condition_percentage: float = 1
+
+@export var bonus_damage_terrain: MonsterElement.Element
+@export var bonus_damage_terrain_percentage: float = 1
 
 var description: String = "Deals %s base damage" % [str(base_damage)]
 
@@ -23,7 +26,7 @@ func _do(doer: Monster, target: Monster, source: Object, battle_state: BattleSta
 		if MonsterController.check_for_evasion(target, condition_damage):
 			print("deals no damage because the monster evaded")
 			return
-		MonsterController.adjust_monster_hitpoints(target, -get_amount(doer, target, source, crit))
+		MonsterController.adjust_monster_hitpoints(target, -get_amount(doer, target, source, battle_state, crit))
 		return
 
 	make_monster_controller_adjust(doer, source, battle_state, crit)
@@ -61,17 +64,18 @@ func make_monster_controller_adjust(doer: Monster, source: Object, battle_state:
 		print("target enemy area of effect")
 
 	if !MonsterController.check_for_evasion(target_0, condition_damage) or !target_0.current_hp == 0:
-		MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, crit))
+		MonsterController.adjust_monster_hitpoints(target_0, -get_amount(doer, target_0, source, battle_state, crit))
 
 	if MonsterController.check_for_evasion(target_1, condition_damage) or !target_1.current_hp == 0:
-		MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, crit))
+		MonsterController.adjust_monster_hitpoints(target_1, -get_amount(doer, target_1, source, battle_state, crit))
 		
 	if MonsterController.check_for_evasion(target_2, condition_damage) or !target_2.current_hp == 0:
-		MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, crit))
+		MonsterController.adjust_monster_hitpoints(target_2, -get_amount(doer, target_2, source, battle_state, crit))
 
-func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
+func get_amount(doer: Monster, target: Monster, source: Object, battle_state: BattleState, crit: bool):
 	var element = source.get_element() if source.has_method("get_element") else MonsterElement.Element.NONE
-	var bonus_damage_total: float = 1
+	var bonus_damage_condition_total: float = 1.0
+	var bonus_damage_terrain_total: float = 1.0
 
 	var crit_coefficient = 2 if crit else 1
 	if crit:
@@ -90,16 +94,14 @@ func get_amount(doer: Monster, target: Monster, source: Object, crit: bool):
 
 	for condition in target.conditions:
 		if condition.resource == bonus_damage_condition:
-			bonus_damage_total = bonus_damage_percentage
-			print("bonus damage added")
-			print(bonus_damage_total)
+			bonus_damage_condition_total = bonus_damage_condition_percentage
 
-#	if target.conditions.filter(func(condition): 
-#		return condition.resource == bonus_damage_condition): 
-#			bonus_damage_total = bonus_damage_percentage
-#			print("bonus damage added")
-#			print(bonus_damage_total)
+	if !battle_state.active_terrain == null:
+		print("not null")
+		if battle_state.active_terrain.resource.element == bonus_damage_terrain:
+			bonus_damage_terrain_total = bonus_damage_terrain_percentage
+			print("it worked")
 
-	var amt = clamp(stat_diff_coefficient * type_advantage_coefficient_total * crit_coefficient * bonus_damage_total, 0, 1000)
+	var amt = clamp(stat_diff_coefficient * type_advantage_coefficient_total * crit_coefficient * bonus_damage_condition_total * bonus_damage_terrain_total, 0, 1000)
 	Events.on_monster_damaged.emit(target, -amt, crit, type_advantage_coefficient_total)
 	return amt

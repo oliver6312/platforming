@@ -9,9 +9,11 @@
 [sub_resource type="Resource" id="Resource_cwidi"]
 script = ExtResource("3_cwidi")
 melee = true
+bonus_damage_terrain = 6
+bonus_damage_terrain_percentage = 0.0
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
-[sub_resource type="Resource" id="Resource_dsmjr"]
+[sub_resource type="Resource" id="Resource_4obir"]
 script = ExtResource("4_4obir")
 terrain_resource = ExtResource("5_d215e")
 metadata/_custom_type_script = "uid://bflqwr3faiduo"
@@ -20,6 +22,6 @@ metadata/_custom_type_script = "uid://bflqwr3faiduo"
 script = ExtResource("1_5j2mj")
 name = "Frost Bite"
 melee = true
-use_effects = Array[ExtResource("2_55qgd")]([SubResource("Resource_cwidi"), SubResource("Resource_dsmjr")])
+use_effects = Array[ExtResource("2_55qgd")]([SubResource("Resource_cwidi"), SubResource("Resource_4obir")])
 element = 6
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"
