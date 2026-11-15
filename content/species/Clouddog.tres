@@ -1,20 +1,18 @@
 [gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://dld50st7yb1ie"]
 
-[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_am04j"]
-[ext_resource type="Texture2D" uid="uid://cl4wucmn6riay" path="res://Sprites/Monster/Clouddog.png" id="1_xmyck"]
-[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="3_srepd"]
-[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/moves/frost_bite.tres" id="4_thmhh"]
-[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/moves/tranquil_song.tres" id="5_thmhh"]
-[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/moves/gust_of_wind.tres" id="6_6pey6"]
-[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/moves/vacuum_orb.tres" id="7_8r3dj"]
+[ext_resource type="Texture2D" uid="uid://cl4wucmn6riay" path="res://Sprites/Monster/Clouddog.png" id="1_hvmre"]
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="2_6auql"]
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="3_h4ix2"]
+[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/Moves/frost_bite.tres" id="4_3db6s"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/Moves/tranquil_song.tres" id="5_1vysb"]
+[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/Moves/gust_of_wind.tres" id="6_1qcpk"]
+[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/Moves/vacuum_orb.tres" id="7_plug7"]
 
 [resource]
-script = ExtResource("1_am04j")
+script = ExtResource("2_6auql")
 name = "Clouddog"
-starter_moves = Array[ExtResource("3_srepd")]([ExtResource("4_thmhh"), ExtResource("5_thmhh"), ExtResource("6_6pey6"), ExtResource("7_8r3dj")])
+starter_moves = Array[ExtResource("3_h4ix2")]([ExtResource("4_3db6s"), ExtResource("5_1vysb"), ExtResource("6_1qcpk"), ExtResource("7_plug7")])
 base_max_hp = 60
 base_speed = 100
-element_one = 4
-element_two = 3
-image = ExtResource("1_xmyck")
+image = ExtResource("1_hvmre")
 metadata/_custom_type_script = "uid://cv3lai601u55n"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://drsglnek0vvvs"]
+
+[ext_resource type="Texture2D" uid="uid://coqml8qtxj6fp" path="res://Sprites/Monster/4.png" id="1_1vftd"]
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_3p6xc"]
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_1vftd"]
+
+[resource]
+script = ExtResource("1_3p6xc")
+name = "Uppik"
+base_max_hp = 35
+base_defense = 10
+base_speed = 30
+base_melee_damage = 5
+base_range_damage = 40
+element_one = 6
+image = ExtResource("1_1vftd")
+metadata/_custom_type_script = "uid://cv3lai601u55n"

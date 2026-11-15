@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brkt2a4wwje8x" path="res://Scripts/Resource/terrain_resource.gd" id="1_ovi7g"]
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_ety02"]
-[ext_resource type="Resource" uid="uid://dlpgj13i7lore" path="res://content/conditions/enraged.tres" id="3_eb33h"]
+[ext_resource type="Resource" uid="uid://dlpgj13i7lore" path="res://content/Conditions/enraged.tres" id="3_eb33h"]
 [ext_resource type="Script" uid="uid://bii8d8hi5bdwr" path="res://Scripts/Resource/TargetedEffects/add_condition.gd" id="4_84s5k"]
 
 [sub_resource type="Resource" id="Resource_8oyuc"]

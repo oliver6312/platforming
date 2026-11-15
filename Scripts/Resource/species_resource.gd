@@ -9,7 +9,7 @@ class_name SpeciesResource
 #@export var minimal_weight: int
 #@export var maximal_weight: int
 
-@export var base_max_hp: int = 20
+@export var base_max_hp: int = 40
 @export var base_defense: int = 20
 @export var base_speed: int = 20
 @export var base_melee_damage: int = 20

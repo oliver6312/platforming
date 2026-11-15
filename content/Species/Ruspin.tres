@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://k5u44ch6fxpd"]
+
+[ext_resource type="Texture2D" uid="uid://bmabxtukom7an" path="res://Sprites/Monster/7.png" id="1_rnkie"]
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_ub4il"]
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_rnkie"]
+
+[resource]
+script = ExtResource("1_ub4il")
+name = "Ruspin"
+base_max_hp = 35
+base_defense = 25
+base_speed = 15
+base_melee_damage = 30
+base_range_damage = 15
+element_one = 3
+element_two = 2
+image = ExtResource("1_rnkie")
+metadata/_custom_type_script = "uid://cv3lai601u55n"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SpeciesResource" format=3 uid="uid://dam6wsu4uenh0"]
+
+[ext_resource type="Texture2D" uid="uid://bef7sd4ub3w1m" path="res://Sprites/Monster/3.png" id="1_7nef8"]
+[ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_b7cs1"]
+[ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_7nef8"]
+
+[resource]
+script = ExtResource("1_b7cs1")
+name = "Ritari"
+base_max_hp = 40
+base_defense = 40
+base_speed = 5
+base_melee_damage = 30
+base_range_damage = 5
+element_one = 3
+image = ExtResource("1_7nef8")
+metadata/_custom_type_script = "uid://cv3lai601u55n"
