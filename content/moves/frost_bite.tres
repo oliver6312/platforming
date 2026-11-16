@@ -3,16 +3,22 @@
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="1_ji6fd"]
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="2_fjx84"]
 [ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="3_o8kwy"]
+[ext_resource type="Resource" uid="uid://by2ur0dgxy4uc" path="res://content/conditions/burning.tres" id="4_o8kwy"]
+[ext_resource type="Script" uid="uid://bii8d8hi5bdwr" path="res://Scripts/Resource/TargetedEffects/add_condition.gd" id="5_c6ecj"]
 
-[sub_resource type="Resource" id="Resource_cwidi"]
+[sub_resource type="Resource" id="Resource_ji6fd"]
 script = ExtResource("3_o8kwy")
-melee = true
 metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
+
+[sub_resource type="Resource" id="Resource_nwp7m"]
+script = ExtResource("5_c6ecj")
+condition_resource = ExtResource("4_o8kwy")
+metadata/_custom_type_script = "uid://bii8d8hi5bdwr"
 
 [resource]
 script = ExtResource("1_ji6fd")
 name = "Frost Bite"
 melee = true
-use_effects = Array[ExtResource("2_fjx84")]([SubResource("Resource_cwidi")])
+use_effects = Array[ExtResource("2_fjx84")]([SubResource("Resource_ji6fd"), SubResource("Resource_nwp7m")])
 element = 6
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"
