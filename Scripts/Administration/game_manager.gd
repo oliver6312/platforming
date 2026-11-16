@@ -10,10 +10,29 @@ var dash_unlock: bool = false
 var double_jump_unlock: bool = false
 var wall_jump_unlock: bool = false
 
-#
+var monster1: Monster
+var monster2: Monster
+var monster3: Monster
+
+var monster4: Monster
+var monster5: Monster
+var monster6: Monster
+
 func _ready():
 	Events.request_challenge_npc.connect(_start_challenge)
 	Events.request_end_battle.connect(handle_end_battle)
+
+	var species_shadecry = preload("res://content/species/Shadecry.tres")
+	var species_clouddog = preload("res://content/species/Clouddog.tres")
+
+	monster1 = MonsterController.create_monster(species_clouddog)
+	monster2 = MonsterController.create_monster(species_shadecry, "Reggie")
+	monster3 = MonsterController.create_monster(species_shadecry, "Steven")
+
+	monster4 = MonsterController.create_monster(species_shadecry)
+	monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
+	monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
+
 
 func _start_challenge():
 	print("challenge started")

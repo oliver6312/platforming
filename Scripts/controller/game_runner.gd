@@ -23,16 +23,13 @@ func setup_model():
 	battle_state = BattleState.new()
 	Events.on_new_game_state_created.emit()
 
-	var species_shadecry = preload("res://content/species/Shadecry.tres")
-	var species_clouddog = preload("res://content/species/Clouddog.tres")
+	var monster1: Monster = GameManager.monster1
+	var monster2: Monster = GameManager.monster2
+	var monster3: Monster = GameManager.monster3
 
-	var monster1 = MonsterController.create_monster(species_clouddog)
-	var monster2 = MonsterController.create_monster(species_shadecry, "Reggie")
-	var monster3 = MonsterController.create_monster(species_shadecry, "Steven")
-
-	var monster4 = MonsterController.create_monster(species_shadecry)
-	var monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
-	var monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
+	var monster4: Monster = GameManager.monster4
+	var monster5: Monster = GameManager.monster5
+	var monster6: Monster = GameManager.monster6
 
 	battle_state.player = TrainerController.create_trainer([monster1, monster2, monster3], true)
 	battle_state.opponent = TrainerController.create_trainer([monster4, monster5, monster6], false)
