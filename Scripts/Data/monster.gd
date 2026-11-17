@@ -56,6 +56,21 @@ func get_condition_string():
 		for condition in conditions:
 			return condition_string
 
+func to_save_data() -> Dictionary:
+	return{
+		"monster_name": name,
+		"species": species,
+		"current_hp": current_hp
+	}
+
+static func from_save_data(data: Dictionary) -> Monster:
+	var monster = Monster.new()
+	
+	monster.name = data.get("monster_name", "") 
+	monster.species = data.get("species", SpeciesResource) 
+	monster.current_hp = data.get("current_hp", 0) 
+	return monster
+
 func dump_state():
 	var condition_string = ""
 

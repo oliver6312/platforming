@@ -13,4 +13,5 @@ func handle_game_over(win: bool):
 	self.show()
 
 func _on_button_pressed() -> void:
+	SaveManager.save_game()
 	Events.request_end_battle.emit()

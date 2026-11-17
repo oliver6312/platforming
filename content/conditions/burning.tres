@@ -1,19 +1,21 @@
 [gd_resource type="Resource" script_class="ConditionResource" format=3 uid="uid://by2ur0dgxy4uc"]
 
 [ext_resource type="Script" uid="uid://lt41n0imqqrp" path="res://Scripts/Resource/TargetedEffects/targeted_effect.gd" id="1_coy70"]
+[ext_resource type="Script" uid="uid://byrxcxi8a7u4b" path="res://Scripts/Resource/TargetedEffects/do_damage.gd" id="2_coy70"]
 [ext_resource type="Script" uid="uid://x2s2xwhft1pa" path="res://Scripts/Resource/condition_resource.gd" id="3_be78v"]
 [ext_resource type="Script" uid="uid://dgc26v65rmebn" path="res://Scripts/Resource/stat_modifier.gd" id="4_l535w"]
 
-[sub_resource type="Resource" id="Resource_rockm"]
-script = ExtResource("4_l535w")
-stat = 4
-modifier = 0.5
-metadata/_custom_type_script = "uid://dgc26v65rmebn"
+[sub_resource type="Resource" id="Resource_l8xd0"]
+script = ExtResource("2_coy70")
+base_damage = 5
+ignore_stats = true
+condition_damage = true
+metadata/_custom_type_script = "uid://byrxcxi8a7u4b"
 
 [resource]
 script = ExtResource("3_be78v")
 name = "Burning"
 element = 7
-stat_modifiers = Array[ExtResource("4_l535w")]([SubResource("Resource_rockm")])
+on_begin_turn_effects = Array[ExtResource("1_coy70")]([SubResource("Resource_l8xd0")])
 short_name = "BRN"
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"
