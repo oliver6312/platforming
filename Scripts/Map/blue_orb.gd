@@ -25,9 +25,9 @@ func _on_body_entered(body: Node2D) -> void:
 		print("player exits room")
 		match unlocks:
 				"dash":
-					GameManager.dash_unlock = true
+					GameManager.unlocked_abilities[0] = true
 				"double jump":
-					GameManager.double_jump_unlock = true
+					GameManager.unlocked_abilities[1] = true
 				"wall jump":
-					GameManager.wall_jump_unlock = true
+					GameManager.unlocked_abilities[2] = true
 		self.queue_free()
