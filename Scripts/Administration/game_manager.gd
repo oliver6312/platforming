@@ -33,9 +33,10 @@ func _ready():
 	monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
 	monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("option_menu"):
 		Events.request_open_option_menu.emit()
+		Events.request_quit.emit()
 		print("request_open_option_menu")
 
 func _start_challenge():

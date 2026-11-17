@@ -6,10 +6,16 @@ extends Area2D
 func _ready() -> void:
 	match unlocks:
 				"dash":
+					if GameManager.dash_unlock:
+						queue_free()
 					sprite_2d.texture = load("res://Sprites/Orb/OrangeMatOrb.png")
 				"double jump":
+					if GameManager.double_jump_unlock:
+						queue_free()
 					sprite_2d.texture = load("res://Sprites/Orb/GreenMatOrb.png")
 				"wall jump":
+					if GameManager.wall_jump_unlock:
+						queue_free()
 					sprite_2d.texture = load("res://Sprites/Orb/BlueMatOrb.png")
 	pass
 	
