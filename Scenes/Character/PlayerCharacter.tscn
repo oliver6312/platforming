@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c326rhh6do3xr" path="res://Sprites/Characters/PlayerCharacter/proto_attack_frame_down.png" id="2_r4x55"]
 [ext_resource type="Texture2D" uid="uid://difk02cietw6q" path="res://Sprites/Characters/PlayerCharacter/proto_attack_frame_up.png" id="3_id6tp"]
 [ext_resource type="Texture2D" uid="uid://bwn7mfj2hqi3o" path="res://Sprites/Characters/PlayerCharacter/proto_attack_frame_forward.png" id="4_wnmxb"]
+[ext_resource type="PackedScene" uid="uid://cxvnd5jkvqxrb" path="res://Scenes/UI/OptionMenu.tscn" id="6_uvr1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftush"]
 atlas = ExtResource("2_r4x55")
@@ -928,3 +929,9 @@ position = Vector2(-17, -1)
 shape = SubResource("CircleShape2D_k5f8r")
 disabled = true
 debug_color = Color(0.9343123, 0.23511404, 0.27600113, 0.41960785)
+
+[node name="OptionMenu" parent="." unique_id=389163998 instance=ExtResource("6_uvr1q")]
+offset_left = -2.0
+offset_top = -278.0
+offset_right = -2.0
+offset_bottom = -278.0
