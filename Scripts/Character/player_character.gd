@@ -49,12 +49,9 @@ var movement_locked := false
 var animation_locked := false
 var direction_locked := false
 
-##new shit
+##slippery
 const SLIPPERY_lAYER = 1 << 1
 var touching_slippery_wall = false
-
-###new shit (start position)
-
 
 @onready var weapon_hitbox_up: Area2D = %WeaponHitboxUp
 @onready var right_up_weapon: CollisionShape2D = %RightUpWeapon
@@ -77,6 +74,7 @@ func _ready() -> void:
 	weapon_hitbox_side.body_entered.connect(_on_weapon_hitbox_body_entered)
 
 	Events.request_challenge_npc.connect(send_game_manager_position)
+	Events.request_save_game.connect(send_game_manager_position)
 
 	disable_all_right_hitbox()
 	disable_all_left_hitbox()
@@ -406,4 +404,4 @@ func _on_animation_finished() -> void:
 		weapon_hitbox_down.monitoring = false
 
 func send_game_manager_position():
-	GameManager.player_position = self.position
+	GameManager.player_location["player_position"] = self.position

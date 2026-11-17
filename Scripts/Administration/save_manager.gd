@@ -5,7 +5,8 @@ const SAVE_PATH = "user://undergrowthsavegame.json"
 
 func save_game():
 	var save_data = {
-		"unlocked_abilities": GameManager.unlocked_abilities
+		"unlocked_abilities": GameManager.unlocked_abilities,
+		"player_location": GameManager.player_location
 	}
 	var file = FileAccess.open(
 		SAVE_PATH,
@@ -29,6 +30,10 @@ func load_data():
 		GameManager.unlocked_abilities = save_data.get(
 			"unlocked_abilities",
 			GameManager.unlocked_abilities
+		)
+		GameManager.player_location = save_data.get(
+			"player_location",
+			GameManager.player_location
 		)
 
 	else:

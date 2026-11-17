@@ -3,11 +3,11 @@ extends Area2D
 @onready var player_character: CharacterBody2D = $"../PlayerCharacter"
 
 func _ready() -> void:
-	var entrance = GameManager.entrance
+	var entrance = GameManager.player_location["entrance"]
 	print("get entrance")
 	var start_position: Vector2
 	if GameManager.battle_return:
-		player_character.position = GameManager.player_position
+		player_character.position = GameManager.player_location["player_position"]
 		GameManager.battle_return = false
 		return
 	match entrance:

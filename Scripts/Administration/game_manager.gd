@@ -1,8 +1,12 @@
 extends Node
 
 ###player position
-var entrance: int
-var player_position: Vector2
+var player_location: Dictionary = {
+	"entrance": 0,
+	"player_room": "HomeRoom",
+	"player_position": Vector2(3,16)
+}
+
 var battle_return: bool
 
 ###player unlocks
@@ -11,10 +15,6 @@ var unlocked_abilities: Dictionary = {
 	"wall_jump": false,
 	"double_jump": false
 }
-
-var dash_unlock: bool = false
-var double_jump_unlock: bool = false
-var wall_jump_unlock: bool = false
 
 var monster1: Monster
 var monster2: Monster

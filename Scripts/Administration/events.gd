@@ -32,5 +32,6 @@ signal on_monster_damaged
 # Events sent from 
 signal on_terrain_updated
 
-# Events from game runner
+# Events from game manager
+signal request_save_game
 signal request_open_option_menu
