@@ -7,9 +7,9 @@ var battle_return: bool
 
 ###player unlocks
 var unlocked_abilities: Dictionary = {
-	"wall_jump": false,
-	"double_jump": false,
 	"dash": false,
+	"wall_jump": false,
+	"double_jump": false
 }
 
 var dash_unlock: bool = false
@@ -25,6 +25,7 @@ var monster5: Monster
 var monster6: Monster
 
 func _ready():
+	SaveManager.load_data()
 	Events.request_challenge_npc.connect(_start_challenge)
 	Events.request_end_battle.connect(handle_end_battle)
 
@@ -42,6 +43,7 @@ func _ready():
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("option_menu"):
 		Events.request_open_option_menu.emit()
+		SaveManager.save_game()
 		Events.request_quit.emit()
 		print("request_open_option_menu")
 

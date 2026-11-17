@@ -137,17 +137,17 @@ func _physics_process(delta: float) -> void:
 func update_timers(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = coyote_time
-		if GameManager.double_jump_unlock:
+		if GameManager.unlocked_abilities["double_jump"]:
 			can_double_jump = true
-		if GameManager.dash_unlock:
+		if GameManager.unlocked_abilities["dash"]:
 			can_dash = true
 	else:
 		coyote_timer -= delta
 
 	if is_on_wall() and not is_on_floor():
-		if GameManager.double_jump_unlock:
+		if GameManager.unlocked_abilities["double_jump"]:
 			can_double_jump = true
-		if GameManager.dash_unlock:
+		if GameManager.unlocked_abilities["dash"]:
 			can_dash = true
 		wall_coyote_timer = wall_coyote_time
 	else:
@@ -229,7 +229,7 @@ func can_wall_slide() -> bool:
 				print("is touching slippery")
 				wall_coyote_timer = 0
 				return false
-	if GameManager.wall_jump_unlock == false:
+	if GameManager.unlocked_abilities["wall_jump"] == false:
 		wall_coyote_timer = 0
 		return false
 
@@ -356,7 +356,7 @@ func _on_weapon_up_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
+		if GameManager.unlocked_abilities["double_jump"]:
 			can_double_jump = true
 
 		velocity.y = weapon_recoil_force
@@ -370,7 +370,7 @@ func _on_weapon_down_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
+		if GameManager.unlocked_abilities["double_jump"]:
 			can_double_jump = true
 
 
@@ -388,7 +388,7 @@ func _on_weapon_hitbox_body_entered(body: Node2D) -> void:
 
 	if body.is_in_group("weapon_recoil"):
 		attack_has_recoiled = true
-		if GameManager.double_jump_unlock:
+		if GameManager.unlocked_abilities["double_jump"]:
 			can_double_jump = true
 
 		var recoil_direction := -facing
