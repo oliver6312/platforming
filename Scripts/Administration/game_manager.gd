@@ -16,7 +16,7 @@ var unlocked_abilities: Dictionary = {
 	"double_jump": false
 }
 
-var monster1: Monster
+var monster1: Monster 
 var monster2: Monster
 var monster3: Monster
 
@@ -32,32 +32,34 @@ var monster6: Monster
 
 func _ready():
 	SaveManager.load_data()
+	print("typeof(player_monsters[player_monster_1])")
+	print(typeof(player_monsters["player_monster_1"]))
+	print(player_monsters["player_monster_1"] is Monster)
+	print("player_monsters[player_monster_1]")
+	print(player_monsters["player_monster_1"])
+	
+	if player_monsters["player_monster_1"] == null:
+		set_player_monster()
+	
 	Events.request_challenge_npc.connect(_start_challenge)
 	Events.request_end_battle.connect(handle_end_battle)
 
-	var species_intaxilote = preload("res://content/species/Intaxilote.tres")
+#	var species_intaxilote = preload("res://content/species/Intaxilote.tres")
 	var species_umimmak = preload("res://content/species/Umimmak.tres")
-	var species_stjerne = preload("res://content/species/Stjerne.tres")
+#	var species_stjerne = preload("res://content/species/Stjerne.tres")
 	var species_uppik = preload("res://content/species/Uppik.tres")
-	var species_ritari = preload("res://content/species/Ritari.tres")
+#	var species_ritari = preload("res://content/species/Ritari.tres")
 	var species_natseq = preload("res://content/Species/Natseq.tres")
 
 	print_machine()
 
-#	if player_monsters["player_monster_1"] == null:
-#		print("they are null")
-#		monster1 = MonsterController.create_monster(species_shadecry)
-#		monster2 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
-#		monster3 = MonsterController.create_monster(species_clouddog, "Evil Steven")
-#	else:
-#		print("they are not null")
-#		monster1 = player_monsters["player_monster_1"]
-#		monster2 = player_monsters["player_monster_1"]
-#		monster3 = player_monsters["player_monster_1"]
+	monster1 = player_monsters["player_monster_1"]
+	monster2 = player_monsters["player_monster_2"]
+	monster3 = player_monsters["player_monster_3"]
 
-	monster1 = MonsterController.create_monster(species_ritari, "Our Lord and Savior")
-	monster2 = MonsterController.create_monster(species_stjerne, "Sinless Steve")
-	monster3 = MonsterController.create_monster(species_intaxilote, "Evil Steven")
+#	monster1 = MonsterController.create_monster(species_ritari, "Our Lord and Savior")
+#	monster2 = MonsterController.create_monster(species_stjerne, "Sinless Steve")
+#	monster3 = MonsterController.create_monster(species_intaxilote, "Evil Steven")
 
 	monster4 = MonsterController.create_monster(species_umimmak, "non-evil Steven")
 	monster5 = MonsterController.create_monster(species_natseq, "Fat bastard")
@@ -105,8 +107,10 @@ func get_monster_save_data() -> Dictionary:
 	return data
 
 func load_monster_save_data(data: Dictionary):
+	print("loaded monster from save data")
 	for key in data:
 		if data[key] != null:
 			player_monsters[key] = Monster.from_save_data(data[key])
+			print(Monster.from_save_data(data[key]))
 		else:
 			player_monsters[key] = null

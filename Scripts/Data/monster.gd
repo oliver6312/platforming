@@ -3,7 +3,10 @@ class_name Monster
 var species: SpeciesResource
 var level: int = 1
 var image: Texture2D:
-	get: return species.image
+	get:
+		if species == null:
+			return null
+		return species.image
 
 var nickname: String
 var name: String:
@@ -58,17 +61,25 @@ func get_condition_string():
 
 func to_save_data() -> Dictionary:
 	return{
-		"monster_name": name,
-		"species": species,
+		"monster_name": nickname,
+		"species": species.resource_path,
 		"current_hp": current_hp
 	}
 
 static func from_save_data(data: Dictionary) -> Monster:
 	var monster = Monster.new()
 	
-	monster.name = data.get("monster_name", "") 
-	monster.species = data.get("species", SpeciesResource) 
+	monster.nickname = data.get("monster_name", "") 
 	monster.current_hp = data.get("current_hp", 0) 
+	
+	var species_path = data.get("species", "")
+	print("Loading species: ", species_path)
+	if species_path != "":
+		monster.species = load(species_path) as SpeciesResource
+	if monster.species == null:
+		push_error("Species failed to load: " + species_path)
+		return null
+
 	return monster
 
 func dump_state():

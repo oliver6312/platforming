@@ -39,7 +39,6 @@ func load_data():
 		"player_location",
 		GameManager.player_location
 	)
-	GameManager.player_monsters = save_data.get(
-		"player_monsters",
-		GameManager.player_monsters
+	GameManager.load_monster_save_data(
+		save_data.get("player_monsters", {})
 	)
