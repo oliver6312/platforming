@@ -60,10 +60,21 @@ func get_condition_string():
 			return condition_string
 
 func to_save_data() -> Dictionary:
+	var move_paths: Array[String] = []
+	
+	for move in moves:
+		print("for move in moves")
+		if move != null and move.resource != null:
+			print("appended move resource")
+			move_paths.append(move.resource.resource_path)
+
+	print("move_paths")
+	print(move_paths)
 	return{
 		"monster_name": nickname,
 		"species": species.resource_path,
-		"current_hp": current_hp
+		"current_hp": current_hp,
+		"move": move_paths
 	}
 
 static func from_save_data(data: Dictionary) -> Monster:
@@ -79,6 +90,18 @@ static func from_save_data(data: Dictionary) -> Monster:
 	if monster.species == null:
 		push_error("Species failed to load: " + species_path)
 		return null
+	
+	var move_paths = data.get("move", [])
+	print("look here idiot")
+	print(move_paths)
+	
+	for path in move_paths:
+		var move_resource = load(path) as MoveResource
+		if move_resource != null:
+			print("loaded move resource")
+			var move := Move.new()
+			move.resource = move_resource
+			monster.moves.append(move)
 
 	return monster
 

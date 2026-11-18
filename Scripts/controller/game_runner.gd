@@ -50,18 +50,11 @@ func start_turn():
 	MonsterController.check_defeated_monster()
 
 	battle_state.round_size = battle_state.all_battle_monsters.size()
-	print("battle_state.round_size")
-	print(battle_state.round_size)
+
 	battle_state.turn_index += 1
-	print("battle_state.turn_index")
-	print(battle_state.turn_index)
+
 	if battle_state.turn_index >= battle_state.round_size or battle_state.turn_index == battle_state.round_size:
 		end_round()
-
-	print("battle_state.round_size")
-	print(battle_state.round_size)
-	print("battle_state.turn_index")
-	print(battle_state.turn_index)
 
 	battle_state.active_monster = battle_state.all_battle_monsters[battle_state.turn_index]
 	if !battle_state.active_monster.current_hp == 0:

@@ -32,13 +32,13 @@ var monster6: Monster
 
 func _ready():
 	SaveManager.load_data()
-	print(player_monsters)
+#	print(player_monsters)
 	
-	print("typeof(player_monsters[player_monster_1])")
-	print(typeof(player_monsters["player_monster_1"]))
-	print(player_monsters["player_monster_1"] is Monster)
-	print("player_monsters[player_monster_1]")
-	print(player_monsters["player_monster_1"])
+#	print("typeof(player_monsters[player_monster_1])")
+#	print(typeof(player_monsters["player_monster_1"]))
+#	print(player_monsters["player_monster_1"] is Monster)
+#	print("player_monsters[player_monster_1]")
+#	print(player_monsters["player_monster_1"])
 	
 	if player_monsters["player_monster_1"] == null:
 		set_player_monster()
@@ -68,11 +68,19 @@ func _ready():
 	monster6 = MonsterController.create_monster(species_uppik, "Sinful Steve")
 
 func set_player_monster():
+	print("set player monsters")
 	var species_shadecry = preload("res://content/species/Shadecry.tres")
 	var species_clouddog = preload("res://content/species/Clouddog.tres")
+	print(player_monsters)
 	player_monsters["player_monster_1"] = MonsterController.create_monster(species_shadecry)
-	player_monsters["player_monster_2"] = MonsterController.create_monster(species_clouddog, "Evil Reggie")
-	player_monsters["player_monster_3"] = MonsterController.create_monster(species_clouddog, "Evil Steven")
+	player_monsters["player_monster_2"] = MonsterController.create_monster(species_clouddog)
+	player_monsters["player_monster_3"] = MonsterController.create_monster(species_clouddog)
+	monster1 = player_monsters["player_monster_1"]
+	monster2 = player_monsters["player_monster_2"]
+	monster3 = player_monsters["player_monster_3"]
+	
+	
+	print(player_monsters)
 
 func heal_player_monster():
 	print("full party heal")
@@ -121,6 +129,6 @@ func load_monster_save_data(data: Dictionary):
 	for key in data:
 		if data[key] != null:
 			player_monsters[key] = Monster.from_save_data(data[key])
-			print(Monster.from_save_data(data[key]))
+
 		else:
 			player_monsters[key] = null
