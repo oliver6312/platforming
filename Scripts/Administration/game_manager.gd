@@ -32,6 +32,8 @@ var monster6: Monster
 
 func _ready():
 	SaveManager.load_data()
+	print(player_monsters)
+	
 	print("typeof(player_monsters[player_monster_1])")
 	print(typeof(player_monsters["player_monster_1"]))
 	print(player_monsters["player_monster_1"] is Monster)
@@ -72,6 +74,12 @@ func set_player_monster():
 	player_monsters["player_monster_2"] = MonsterController.create_monster(species_clouddog, "Evil Reggie")
 	player_monsters["player_monster_3"] = MonsterController.create_monster(species_clouddog, "Evil Steven")
 
+func heal_player_monster():
+	print("full party heal")
+	player_monsters["player_monster_1"].current_hp = player_monsters["player_monster_1"].max_hp
+	player_monsters["player_monster_2"].current_hp = player_monsters["player_monster_2"].max_hp
+	player_monsters["player_monster_3"].current_hp = player_monsters["player_monster_3"].max_hp
+
 func print_machine():
 	print(player_location)
 	print(player_monsters)
@@ -84,6 +92,8 @@ func _process(_delta: float) -> void:
 		SaveManager.save_game()
 		print("request_open_option_menu")
 		Events.request_quit.emit()
+	if Input.is_action_just_pressed("heal"):
+		heal_player_monster()
 
 func _start_challenge():
 	print("challenge started")

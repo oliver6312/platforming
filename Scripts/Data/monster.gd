@@ -4,8 +4,8 @@ var species: SpeciesResource
 var level: int = 1
 var image: Texture2D:
 	get:
-		if species == null:
-			return null
+#		if species == null:
+#			return null
 		return species.image
 
 var nickname: String
