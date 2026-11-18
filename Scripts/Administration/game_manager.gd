@@ -35,25 +35,40 @@ func _ready():
 	Events.request_challenge_npc.connect(_start_challenge)
 	Events.request_end_battle.connect(handle_end_battle)
 
-	var species_shadecry = preload("res://content/species/Shadecry.tres")
-	var species_clouddog = preload("res://content/species/Clouddog.tres")
+	var species_intaxilote = preload("res://content/species/Intaxilote.tres")
+	var species_umimmak = preload("res://content/species/Umimmak.tres")
+	var species_stjerne = preload("res://content/species/Stjerne.tres")
+	var species_uppik = preload("res://content/species/Uppik.tres")
+	var species_ritari = preload("res://content/species/Ritari.tres")
+	var species_natseq = preload("res://content/Species/Natseq.tres")
 
 	print_machine()
 
-	if player_monsters["player_monster_1"] == null:
-		print("they are null")
-		monster1 = MonsterController.create_monster(species_shadecry)
-		monster2 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
-		monster3 = MonsterController.create_monster(species_clouddog, "Evil Steven")
-	else:
-		print("they are not null")
-		monster1 = player_monsters["player_monster_1"]
-		monster2 = player_monsters["player_monster_1"]
-		monster3 = player_monsters["player_monster_1"]
+#	if player_monsters["player_monster_1"] == null:
+#		print("they are null")
+#		monster1 = MonsterController.create_monster(species_shadecry)
+#		monster2 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
+#		monster3 = MonsterController.create_monster(species_clouddog, "Evil Steven")
+#	else:
+#		print("they are not null")
+#		monster1 = player_monsters["player_monster_1"]
+#		monster2 = player_monsters["player_monster_1"]
+#		monster3 = player_monsters["player_monster_1"]
 
-	monster4 = MonsterController.create_monster(species_shadecry)
-	monster5 = MonsterController.create_monster(species_clouddog, "Evil Reggie")
-	monster6 = MonsterController.create_monster(species_clouddog, "Evil Steven")
+	monster1 = MonsterController.create_monster(species_ritari, "Our Lord and Savior")
+	monster2 = MonsterController.create_monster(species_stjerne, "Sinless Steve")
+	monster3 = MonsterController.create_monster(species_intaxilote, "Evil Steven")
+
+	monster4 = MonsterController.create_monster(species_umimmak, "non-evil Steven")
+	monster5 = MonsterController.create_monster(species_natseq, "Fat bastard")
+	monster6 = MonsterController.create_monster(species_uppik, "Sinful Steve")
+
+func set_player_monster():
+	var species_shadecry = preload("res://content/species/Shadecry.tres")
+	var species_clouddog = preload("res://content/species/Clouddog.tres")
+	player_monsters["player_monster_1"] = MonsterController.create_monster(species_shadecry)
+	player_monsters["player_monster_2"] = MonsterController.create_monster(species_clouddog, "Evil Reggie")
+	player_monsters["player_monster_3"] = MonsterController.create_monster(species_clouddog, "Evil Steven")
 
 func print_machine():
 	print(player_location)

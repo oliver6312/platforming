@@ -3,10 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://bna8udane235x" path="res://Sprites/Monster/10.png" id="1_ffp08"]
 [ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_j7htt"]
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_ffp08"]
+[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/Moves/vacuum_orb.tres" id="4_1gsp5"]
+[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/Moves/gust_of_wind.tres" id="5_qo1ot"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/Moves/tranquil_song.tres" id="6_vryi8"]
+[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/Moves/frost_bite.tres" id="7_6ein7"]
 
 [resource]
 script = ExtResource("1_j7htt")
 name = "Stjerne"
+starter_moves = Array[ExtResource("2_ffp08")]([ExtResource("4_1gsp5"), ExtResource("5_qo1ot"), ExtResource("6_vryi8"), ExtResource("7_6ein7")])
 base_max_hp = 50
 base_defense = 30
 base_speed = 0

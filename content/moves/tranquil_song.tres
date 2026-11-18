@@ -37,4 +37,5 @@ name = "Tranquil Song"
 target_ally = true
 use_effects = Array[ExtResource("2_wc7lj")]([SubResource("Resource_vscy3"), SubResource("Resource_fj45q"), SubResource("Resource_w8vnx"), SubResource("Resource_xlave")])
 element = 5
+single_use = true
 metadata/_custom_type_script = "uid://bsgae8faaj7p8"

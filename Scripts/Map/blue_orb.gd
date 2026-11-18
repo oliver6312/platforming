@@ -18,7 +18,6 @@ func _ready() -> void:
 						queue_free()
 					sprite_2d.texture = load("res://Sprites/Orb/BlueMatOrb.png")
 	pass
-	
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

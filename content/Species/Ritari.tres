@@ -3,11 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://bef7sd4ub3w1m" path="res://Sprites/Monster/3.png" id="1_7nef8"]
 [ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_b7cs1"]
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_7nef8"]
+[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/Moves/frost_bite.tres" id="4_bgwb2"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/Moves/tranquil_song.tres" id="5_3ibbc"]
+[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/Moves/gust_of_wind.tres" id="6_3e4p2"]
+[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/Moves/vacuum_orb.tres" id="7_eko6e"]
 
 [resource]
 script = ExtResource("1_b7cs1")
 name = "Ritari"
-base_max_hp = 40
+starter_moves = Array[ExtResource("2_7nef8")]([ExtResource("4_bgwb2"), ExtResource("5_3ibbc"), ExtResource("6_3e4p2"), ExtResource("7_eko6e")])
 base_defense = 40
 base_speed = 5
 base_melee_damage = 30

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcmycqy2p663g"]
+
+[ext_resource type="Script" uid="uid://bo0blalfrlis2" path="res://Scripts/Areas/pickup_monster.gd" id="1_gtsr5"]
+[ext_resource type="Resource" uid="uid://drsglnek0vvvs" path="res://content/Species/Uppik.tres" id="2_hdxjl"]
+[ext_resource type="Texture2D" uid="uid://b7juh7ad0dl8a" path="res://Sprites/Monster/1m.png" id="2_rc48v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtsr5"]
+size = Vector2(45.25, 46)
+
+[node name="PickupMonster" type="Area2D" unique_id=1057028307]
+script = ExtResource("1_gtsr5")
+monster = ExtResource("2_hdxjl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1509891996]
+texture = ExtResource("2_rc48v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008551725]
+shape = SubResource("RectangleShape2D_gtsr5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

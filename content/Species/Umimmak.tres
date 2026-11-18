@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://cv3lai601u55n" path="res://Scripts/Resource/species_resource.gd" id="1_hs3j1"]
 [ext_resource type="Texture2D" uid="uid://8gtg1pon738l" path="res://Sprites/Monster/2.png" id="1_ij8he"]
 [ext_resource type="Script" uid="uid://bsgae8faaj7p8" path="res://Scripts/Resource/move_resource.gd" id="2_ij8he"]
+[ext_resource type="Resource" uid="uid://cgenijyfskm6q" path="res://content/Moves/frost_bite.tres" id="4_3cnmg"]
+[ext_resource type="Resource" uid="uid://4hss2wsjr3um" path="res://content/Moves/tranquil_song.tres" id="5_6bs73"]
+[ext_resource type="Resource" uid="uid://ccosmkapn3kab" path="res://content/Moves/gust_of_wind.tres" id="6_wiyxo"]
+[ext_resource type="Resource" uid="uid://du6414rxjact4" path="res://content/Moves/vacuum_orb.tres" id="7_p5rd4"]
 
 [resource]
 script = ExtResource("1_hs3j1")
 name = "Umimmak"
+starter_moves = Array[ExtResource("2_ij8he")]([ExtResource("4_3cnmg"), ExtResource("5_6bs73"), ExtResource("6_wiyxo"), ExtResource("7_p5rd4")])
 base_max_hp = 60
 base_speed = 10
 base_melee_damage = 30

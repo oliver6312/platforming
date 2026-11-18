@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("2_kgim8")
 name = "evasive"
-duration = 20
 evasion = true
 short_name = "EVS"
 metadata/_custom_type_script = "uid://x2s2xwhft1pa"
